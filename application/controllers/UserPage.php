@@ -3,18 +3,37 @@ class UserPage extends CI_Controller {
 
         
 
-        public function view($page = 'home')
-{
-        if ( ! file_exists(APPPATH.'views/user/'.$page.'.php'))
-        {
-                // Whoops, we don't have a page for that!
-                show_404();
+        public function index(){
+                $this->load->view('user/header');
+                $this->load->view('user/home');
+                $this->load->view('user/footer');
         }
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
+        public function form_perorangan(){
+                $this->load->view('user/header');
+                $this->load->view('user/form_perorangan');
+                $this->load->view('user/footer');
+        }
 
-        $this->load->view('user/header', $data);
-        $this->load->view('user/'.$page, $data);
-        $this->load->view('user/footer', $data);
-}
+        public function form_keberatan(){
+                $this->load->view('user/form_keberatan');
+        }
+
+        public function login(){
+                $this->load->view('user/header');
+                $this->load->view('user/login');
+                $this->load->view('user/footer');
+        }
+
+        public function about(){
+                $this->load->view('user/header');
+                $this->load->view('user/about');
+                $this->load->view('user/footer');
+        }
+
+        public function kontak(){
+                $this->load->view('user/header');
+                $this->load->view('user/kontak');
+                $this->load->view('user/footer');
+        }
 }

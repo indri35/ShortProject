@@ -52,7 +52,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Beranda</a>
+                        <a href="<?php echo base_url() ?>">Beranda</a>
                     </li>
                     <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -60,7 +60,7 @@
                         </a>
                       <ul class="dropdown-menu">
                             <li>
-                                <a href="index.html">Perorangan</a>
+                                <a href="<?php echo base_url() ?>UserPage/form_perorangan">Perorangan</a>
                             </li>
                             <li>
                                 <a href="index.html">Kelompok Berbadan Hukum</a>
@@ -76,7 +76,7 @@
                         </a>
                       <ul class="dropdown-menu">
                             <li>
-                                <a href="index.html">Form Keberatan</a>
+                                <a href="<?php echo base_url() ?>UserPage/form_keberatan" target="_blank">Form Keberatan</a>
                             </li>
                         </ul>
                     </li>
@@ -84,13 +84,13 @@
                         <a href="contact.html">Daftar Dokumen</a>
                     </li>
                     <li>
-                        <a href="contact.html">Login Pemohon</a>
+                        <a href="<?php echo base_url() ?>UserPage/login">Login Pemohon</a>
                     </li>
                     <li>
-                        <a href="contact.html">Tentang</a>
+                        <a href="<?php echo base_url() ?>UserPage/about">Tentang</a>
                     </li>
                     <li>
-                        <a href="contact.html">Kontak Kami</a>
+                        <a href="<?php echo base_url() ?>UserPage/kontak">Kontak Kami</a>
                     </li>
                 </ul>
             </div>
