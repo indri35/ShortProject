@@ -19,6 +19,18 @@ class UserPage extends CI_Controller {
                 $this->load->view('user/form_keberatan');
         }
 
+        public function dokumen()
+        {
+
+                $this->load->model('model_dokumen');
+                $data = array (
+                        'dokumen' => $this->model_dokumen->getAll(),
+                );
+                $this->load->view('user/header'); 
+                $this->load->view('user/dokumen', $data);
+                $this->load->view('user/footer');
+        }
+
         public function login(){
                 $this->load->view('user/header');
                 $this->load->view('user/login');

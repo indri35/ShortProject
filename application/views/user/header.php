@@ -11,6 +11,9 @@
 
     <title>Business Casual - Start Bootstrap Theme</title>
 
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap.css">
+
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/user/css/bootstrap.min.css" rel="stylesheet">
 
@@ -81,7 +84,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="contact.html">Daftar Dokumen</a>
+                        <a href="<?php echo base_url() ?>UserPage/dokumen">Daftar Dokumen</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url() ?>UserPage/login">Login Pemohon</a>
