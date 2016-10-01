@@ -95,7 +95,7 @@
                         <a href="<?php echo base_url() ?>UserPage/dokumen">Daftar Dokumen</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url() ?>UserPage/login">Login Pemohon</a>
+                        <a href="<?php echo base_url() ?>UserPage/logout">Logout</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url() ?>UserPage/about">Tentang</a>
