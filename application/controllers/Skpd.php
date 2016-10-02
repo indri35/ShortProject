@@ -9,53 +9,26 @@ class Skpd extends CI_Controller{
     
     public function index(){
         // menyimpan data permohonan dokumen untuk dipassing ke view
-        $this->load->view('skpd/index');
+        $a = $this->model_skpd->getAllPendingReq();
+        $b = $this->model_skpd->getAllSentReq();
+        $c = $this->model_skpd->getAllReq();
+        $d = $this->model_skpd->getAllDoc();
+        $data= array( 'request'=> $a, 'sent' => $b,'all'=> $c,'dokumen'=> $d);
+        $this->load->view('skpd/index',$data);
     }
 
-    public function show(){
-        $this->load->model('model_siswa');
-        $siswa_id = $this->uri->segment(3);
-        $data['siswa'] = $this->model_siswa->siswa($siswa_id)->row_array();
-        $this->load->view('siswa/show',$data);
+    public function document(){
+        $data['document']=$this->model_skpd->getAllDoc();
+        $this->load->view('skpd/document',$data);
     }
 
-    public function create(){
-
-        $this->load->view('siswa/create');
+    public function pendingRequest(){
+        $data['pending']=$this->model_skpd->getAllPendingReq();
+        $this->load->view('skpd/pending',$data);
     }
 
-    public function store(){
-        $datasiswa = array(
-            'nis'       =>  $this->input->post('nis'),
-            'nama'      =>  $this->input->post('nama'),
-            'gender'    =>  $this->input->post('gender'));
-        $this->db->insert('siswa',$datasiswa);
-        redirect('siswa');    
+    public function sentRequest(){
+        $data['sents']=$this->model_skpd->getAllSentReq();
+        $this->load->view('skpd/sent',$data);
     }
-
-    public function edit(){
-        $this->load->model('model_siswa');
-        $siswa_id = $this->uri->segment(3);
-        $data['siswa'] = $this->model_siswa->siswa($siswa_id)->row_array();
-        $this->load->view('siswa/edit',$data);
-    }
-
-    function update(){
-        $siswa_id         = $this->input->post('siswa_id');
-        $datasiswa = array(
-            'nis'   =>  $this->input->post('nis'),
-            'nama'   =>  $this->input->post('nama'),
-            'gender'         =>  $this->input->post('gender'));
-        $this->db->where('siswa_id',$siswa_id);
-        $this->db->update('siswa',$datasiswa);
-        redirect('siswa');
-    }
-
-    function delete(){
-        $siswa_id = $this->uri->segment(3);
-        $this->db->where('siswa_id',$siswa_id);
-        $this->db->delete('siswa');
-        redirect('siswa');
-    }
-           
 }

@@ -5,9 +5,9 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A </b> SKPD</span>
+          <span class="logo-mini"><b>A </b> Humas</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Admin </b> SKPD</span>
+          <span class="logo-lg"><b>Admin </b> Humas</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -86,8 +86,11 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </i></a></li>
-            <li><a href="<?= base_url() ?>skpd/document"><i class="fa fa-book"></i> <span>Document list</span></a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
+            <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Document list</span></a></li>
+            <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>SKPD list</span></a></li>
+            <li class="header">USER MAINTANANCE</li>
+            <li><a href="documentation/index.html"><i class="fa fa-circle-o text-aqua"></i> <span>User list</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
