@@ -24,40 +24,39 @@ $this->load->view('template_admin/topside');
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3><?php
-                  echo $request->num_rows();?></h3>
+                  <h3><?php echo $request->num_rows();?></h3>
                   <p>New Request</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?= base_url() ?>skpd/pendingRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-4 ">
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3><?php echo $sent->num_rows();?></h3>
+                  <h3><?php echo $dokumen->num_rows();?></h3>
                   <p>Request sent</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="<?= base_url() ?>skpd/sentRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-4">
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3><?php echo $dokumen->num_rows();?></h3>
+                  <h3><?php echo $user->num_rows();?></h3>
                   <p>Document list</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="<?= base_url() ?>skpd/document" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
           </div><!-- /.row -->
@@ -81,7 +80,7 @@ $this->load->view('template_admin/topside');
                         </label>
                       </div>
                     </div>
-                    <div class="col-sm-6" align="right">
+                    <div class="col-sm-6">
                       <div id="example_filter" class="dataTables_filter">
                         <label>
                           Search :
@@ -93,18 +92,18 @@ $this->load->view('template_admin/topside');
                   <table id="example1" class="table table-bordered table-striped dataTable text-center" role="grid" aria-describedby="example1_info">
                     <thead>
                       <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="No: activate to sort column ascending">No</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="NIK pemohon: activate to sort column ascending" >NIK pemohon</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="NIK pemohon: activate to sort column ascending">Tanggal permohonan</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="NIK pemohon: activate to sort column ascending">Kode berkas</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="NIK pemohon: activate to sort column ascending">Tanggal respon</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="NIK pemohon: activate to sort column ascending">Status</th>
+                        <th>No</th>
+                        <th>NIK pemohon</th>
+                        <th>Tanggal permohonan</th>
+                        <th>Kode berkas</th>
+                        <th>Tanggal respon</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php 
                       $no=1;
-                      foreach ($all->result() as $req) { ?>
+                      foreach ($request->result() as $req) { ?>
                       <tr role="row">
                         <td><?php echo $no ;?></td>
                         <td><?php echo $req->nik_pemohon;?></td>
@@ -134,12 +133,13 @@ $this->load->view('template_admin/topside');
                       Showing
                       </div>
                     </div>
-                    <div class="col-sm-7" align="right">
+                    <div class="col-sm-7">
                       <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
                       <ul class="pagination">
                       <li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
                       <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
                       </li>
+                      <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li>
                       <li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a>
                       </li>
                       </ul>
