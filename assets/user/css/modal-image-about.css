@@ -23,6 +23,14 @@
 
 #myImg3:hover {opacity: 0.7;}
 
+#myImg4 {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg4:hover {opacity: 0.7;}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -43,7 +51,7 @@
     margin: auto;
     display: block;
     width: 100%;
-    max-width: 700px;
+    max-width: 500px;
 }
 
 @-webkit-keyframes zoom {
@@ -88,7 +96,8 @@
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
-}.close3 {
+}
+.close3 {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -100,6 +109,22 @@
 
 .close3:hover,
 .close3:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.close4 {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close4:hover,
+.close4:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;

@@ -19,12 +19,14 @@ class LoginVerify extends CI_Controller {
    if($this->form_validation->run() == FALSE)
    {
      //Field validation failed.  User redirected to login page
+     $this->load->view('user/header');
      $this->load->view('user/login');
+     $this->load->view('user/footer');
    }
    else
    {
      //Go to private area
-     redirect('UserPage/form_perorangan', 'refresh');
+     redirect('UserPage/profil', 'refresh');
    }
  
  }
@@ -43,9 +45,17 @@ class LoginVerify extends CI_Controller {
      foreach($result as $row)
      {
        $sess_array = array(
-         'email' => $row->email
+         'nik' => $row->nik,
+         'email' => $row->email,
+         'nama' => $row->nama,
+         'alamat' => $row->alamat,
+         'no_tlpn' => $row->no_tlpn,
+         'no_hp' => $row->no_hp,
+         'ktp' => $row->ktp,
+         'logged_in' => TRUE
        );
-       $this->session->set_userdata('logged_in', $sess_array);
+       $this->session->set_userdata( $sess_array);
+
      }
      return TRUE;
    }

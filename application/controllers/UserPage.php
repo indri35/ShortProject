@@ -8,15 +8,23 @@ class UserPage extends CI_Controller {
         
 
         public function index(){
+                if($this->session->userdata('logged_in')){
+                        $email = $this->session->userdata('email');
+                        $this->load->view('user/header_login');
+                        $this->load->view('user/home');
+                        $this->load->view('user/footer');
+                }
+                else{
+                //If no session, redirect to login page
                 $this->load->view('user/header');
                 $this->load->view('user/home');
                 $this->load->view('user/footer');
+                }
         }
 
         public function form_perorangan(){
                 if($this->session->userdata('logged_in')){
-                        $session_data = $this->session->userdata('logged_in');
-                        $data['email'] = $session_data['email'];
+                        $email = $this->session->userdata('email');
                         $this->load->view('user/header_login');
                         $this->load->view('user/form_perorangan');
                         $this->load->view('user/footer');
@@ -33,45 +41,105 @@ class UserPage extends CI_Controller {
 
         public function dokumen()
         {
-
-                $this->load->model('model_dokumen');
-                $data = array (
-                        'dokumen' => $this->model_dokumen->getAll(),
-                );
-                $this->load->view('user/header'); 
-                $this->load->view('user/dokumen', $data);
-                $this->load->view('user/footer');
+                if($this->session->userdata('logged_in')){
+                        $email = $this->session->userdata('email');
+                        $this->load->view('user/header_login');
+                        $this->load->view('user/form_dokumen');
+                        $this->load->view('user/footer');
+                }
+                else{
+                    //If no session, redirect to login page
+                    $this->load->model('model_dokumen');
+                    $data = array (
+                            'dokumen' => $this->model_dokumen->getAll(),
+                    );
+                    $this->load->view('user/header'); 
+                    $this->load->view('user/dokumen', $data);
+                    $this->load->view('user/footer');
+                }
         }
 
         public function login(){
+            if($this->session->userdata('logged_in'))
+            {   
+                $this->load->view('user/header_login');
+                $this->load->view('user/home');
+                $this->load->view('user/footer');
+            }
+            else
+            {
+                //If no session, redirect to login page
                 $this->load->helper(array('form'));
                 $this->load->view('user/header');
                 $this->load->view('user/login');
                 $this->load->view('user/footer');
+            }
         }
 
         function logout(){
                 $this->session->unset_userdata('logged_in');
                 session_destroy();
-                redirect('UserPage/login', 'refresh');
+                redirect('UserPage/', 'refresh');
         }
 
         public function register(){
+            if($this->session->userdata('logged_in'))
+            {   
+                $this->load->view('user/header_login');
+                $this->load->view('user/home');
+                $this->load->view('user/footer');
+            }
+            else
+            {
+                //If no session, redirect to login page
                 $this->load->view('user/header');
                 $this->load->view('user/register');
                 $this->load->view('user/footer');
+            }
+        }
+
+        public function profil(){
+            if($this->session->userdata('logged_in'))
+            {   
+                $this->load->view('user/header_login');
+                $this->load->view('user/profil');
+                $this->load->view('user/footer');
+            }
+            else
+            {
+                //If no session, redirect to login page
+                redirect('UserPage/login', 'refresh');
+            }
         }
 
         public function about(){
-                $this->load->view('user/header');
-                $this->load->view('user/about');
-                $this->load->view('user/footer');
+                if($this->session->userdata('logged_in')){
+                        $email = $this->session->userdata('email');
+                        $this->load->view('user/header_login');
+                        $this->load->view('user/about');
+                        $this->load->view('user/footer');
+                }
+                else{
+                    //If no session, redirect to login page
+                    $this->load->view('user/header');
+                    $this->load->view('user/about');
+                    $this->load->view('user/footer');
+                }    
         }
 
         public function kontak(){
-                $this->load->view('user/header');
-                $this->load->view('user/kontak');
-                $this->load->view('user/footer');
+            if($this->session->userdata('logged_in')){
+                        $email = $this->session->userdata('email');
+                        $this->load->view('user/header_login');
+                        $this->load->view('user/kontak');
+                        $this->load->view('user/footer');
+                }
+                else{
+                    //If no session, redirect to login page
+                    $this->load->view('user/header');
+                    $this->load->view('user/kontak');
+                    $this->load->view('user/footer');
+                }
         }
 
         

@@ -12,6 +12,7 @@ class Model_user extends CI_model{
 		}
 		$notif['info'] = 'Gagal menyimpan';
 	}
+	
 }
 
 

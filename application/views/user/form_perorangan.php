@@ -15,79 +15,68 @@
                                         <font color="#ff6600">Identitas Pemohon<br/><br/></font>
                                     </strong>
                                     <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">NIK <font color="red">*</font></label>
+                                        <label for="nik" class="control-label col-lg-3">NIK</label>
                                         <div class="col-lg-9">
-                                            <input class=" form-control" id="alamat" name="alamat" type="text" placeholder="Isikan NIK Pemohon." required>
+                                            <input class=" form-control" type="text" value="<?php echo $this->session->userdata('nik'); ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">Nama <font color="red">*</font></label>
+                                        <label for="nama" class="control-label col-lg-3">Nama </label>
                                         <div class="col-lg-9">
-                                             <input class=" form-control" id="kontak" name="kontak" type="text" placeholder="Isikan Nama Pemohon." required>
+                                             <input class=" form-control" type="text" value="<?php echo $this->session->userdata('nama'); ?>" disabled>
                                         </div>
                                      </div>
                                     <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">Alamat <font color="red">*</font></label>
+                                        <label for="alamat" class="control-label col-lg-3">Alamat </label>
                                         <div class="col-lg-9">
-                                            <textarea class=" form-control" id="no_identitas" name="no_identitas" type="text" placeholder="Isikan Alamat Pemohon." required></textarea>
+                                            <textarea class=" form-control" type="text" placeholder="<?php echo $this->session->userdata('alamat'); ?>" disabled></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">No Telepon </label>
+                                        <label for="no_tlpn" class="control-label col-lg-3">No Telepon </label>
                                         <div class="col-lg-9">
-                                            <input class=" form-control" id="no_identitas" name="no_identitas" type="text" placeholder="Isikan No Telepon Pemohon.">
+                                            <input class=" form-control" type="text" value="<?php echo $this->session->userdata('no_tlpn'); ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">No HP </label>
+                                        <label for="no_hp" class="control-label col-lg-3">No HP </label>
                                         <div class="col-lg-9">
-                                            <input class=" form-control" id="no_identitas" name="no_hp" type="text" placeholder="Isikan No HP Pemohon.">
+                                            <input class=" form-control" type="text" value="<?php echo $this->session->userdata('no_hp'); ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">Email <font color="red">*</font></label>
+                                        <label for="email" class="control-label col-lg-3">Email <font color="red">*</font></label>
                                         <div class="col-lg-9">
-                                            <input class=" form-control" id="no_identitas" name="email" type="email" placeholder="Isikan Alamat Email Pemohon." required>
+                                            <input class=" form-control" type="text" value="<?php echo $this->session->userdata('email'); ?>" disabled>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="nama1" class="control-label col-lg-3">Tujuan Permohonan Informasi <font color="red">*</font></label>
-                                        <div class="col-lg-9">
-                                            <textarea class=" form-control" id="no_identitas" name="email" type="email" placeholder="Tujuan Permohonan Informasi." required></textarea>
-                                        </div>
-                                    </div>
-                                    <font>Cara memperoleh informasi dan bentuk informasi yang diserahkan, akan dijelaskan kemudian melalui email.<br/><br/></font>
-                                    <strong>
-                                        <font color="#ff6600">File-File Pendukung <br/><br/></font>
-                                    </strong>
-                                    <div class="form-group">
-                                        <label for="nama1" class="control-label col-lg-3">File KTP <font color="red">*</font></label>
-                                        <div class="col-lg-9">
-                                            <input id="alamat" type="file"  name="userfile" id="gamgam" required>
-                                            <font class="help-block">Upload file dengan format.</font>
-                                        </div>    
-                                    </div>
-                                    <font>Informasi yang Saya peroleh akan Saya gunakan sesuai dengan ketentuan perundang-undangan yang berlaku.<br/> 
-                                    <br/>Surabaya,</font> 
-                                        <?php
-                                            echo date("d-m-Y") . "<br>";
-                                        ?>
-                                    <font>
-                                    <br/>Pemohon Informasi: 
-                                    <br/>
-                                    <br/>
-                                    <br/>(...............................)
+                                    <font>Cara memperoleh informasi dan bentuk informasi yang diserahkan, akan dijelaskan kemudian melalui email. Jika terdapat kesalahan pada data pribadi silahkan lakukan perubahan data pribadi.<br/><br/></font>
                                 </div>
                                 <div class="col-lg-6">
                                     <strong>
                                         <font color="#ff6600">Detail Permohonan Berkas<br/><br/></font>
                                     </strong>
+                                    <div class="form-group ">
+                                        <label for="tujuan_permohonan_info" class="control-label col-lg-3">Tujuan Permohonan Informasi <font color="red">*</font></label>
+                                        <div class="col-lg-9">
+                                            <textarea class=" form-control" name="tujuan_permohonan_info" type="text" placeholder="Tujuan Permohonan Informasi." required></textarea>
+                                        </div>
+                                    </div>
                                 <div class="form-group ">
                                     <label for="nama1" class="control-label col-lg-3">NIK <font color="red">*</font></label>
                                     <div class="col-lg-9">
                                         <input class=" form-control" id="alamat" name="alamat" type="text" placeholder="Isikan NIK Pemohon." required>
                                     </div>
                                 </div>
+                                <font>Informasi yang Saya peroleh akan Saya gunakan sesuai dengan ketentuan perundang-undangan yang berlaku.<br/> 
+                                    <br/>Surabaya, 
+                                        <?php
+                                            echo date("d-m-Y") . "<br>";
+                                        ?>
+                                    <br/>Pemohon Informasi: 
+                                    <br/>
+                                    <br/>
+                                    <br/>(<?php echo $this->session->userdata('nama'); ?>)</font>
                                 <div class="col-lg-offset-3 col-lg-9">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                     <button type="button" class="btn btn-default">Cancel</button>

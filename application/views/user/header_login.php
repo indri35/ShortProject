@@ -41,6 +41,11 @@
 
 </head>
 <body>
+    <ul class="topnav">
+  <li><a  href="<?php echo base_url() ?>UserPage/profil/">Hello <b><?php echo $this->session->userdata('nama'); ?></b></a></li>
+  <li><a href="#news">Request Saya</a></li>
+  <li class="right"><a href="<?php echo base_url() ?>UserPage/logout">Logout</a></li>
+</ul>
 
     <div class="brand">Layanan Informasi Publik</div>
     <div class="address-bar">Sesuai UU No. 14 Tahun 2008 Tentang KIP - Pemerintah Kota</div>
@@ -93,9 +98,6 @@
                     </li>
                     <li>
                         <a href="<?php echo base_url() ?>UserPage/dokumen">Daftar Dokumen</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url() ?>UserPage/logout">Logout</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url() ?>UserPage/about">Tentang</a>

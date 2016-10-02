@@ -95,13 +95,13 @@
                         <a href="<?php echo base_url() ?>UserPage/dokumen">Daftar Dokumen</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url() ?>UserPage/login">Login Pemohon</a>
-                    </li>
-                    <li>
                         <a href="<?php echo base_url() ?>UserPage/about">Tentang</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url() ?>UserPage/kontak">Kontak Kami</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url() ?>UserPage/login">Login Pemohon</a>
                     </li>
                 </ul>
             </div>
