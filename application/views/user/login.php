@@ -3,17 +3,19 @@
         <div class="col-md-4 col-md-offset-4" >
             <div class="box">
                 <p class="login-box-msg text-center">Login Pemohon</p>
-                  <form class="form-validate form-horizontal" method="post">
+                  <h3 class="text-center"><?php echo validation_errors(); ?></h3>
+                  <?php echo form_open('loginverify'); ?>
+                  <form class="form-validate form-horizontal">
                       <div class="form-group">
-                          <label for="nama1" class="control-label col-lg-3">Username </label>
+                          <label for="email" class="control-label col-lg-3">Email </label>
                           <div class="col-lg-9">
-                              <input class=" form-control" id="username" name="username" type="text" placeholder="" required>
+                              <input class=" form-control" name="email" id="email" type="text" placeholder="" required><br/>
                           </div>
                       </div>    
                       <div class="form-group">
-                          <label for="nama1" class="control-label col-lg-3">Password </label>
+                          <label for="password" class="control-label col-lg-3">Password </label>
                           <div class="col-lg-9">
-                              <input class=" form-control" id="password" name="password" type="text" placeholder="" required>
+                              <input class=" form-control" name="password" id="password" type="text" placeholder="" required><br/>
                           </div>
                       </div>
                       <div class="row">
@@ -30,7 +32,7 @@
                       </div>
                   </form>
                   <a href="#">I forgot my password</a><br>
-                  <a href="register.html" class="text-center">Register a new membership</a>
+                  <a href="<?php echo base_url() ?>UserPage/register" class="text-center">Register a new membership</a>
             </div>
         </div>
     </div>
