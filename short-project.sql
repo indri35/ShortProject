@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 30, 2016 at 07:14 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- Host: 127.0.0.1:3307
+-- Generation Time: Oct 03, 2016 at 03:48 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `short-project`
@@ -26,12 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `t_doc_req`
 --
 
-CREATE TABLE IF NOT EXISTS `t_doc_req` (
+CREATE TABLE `t_doc_req` (
   `id` int(16) NOT NULL,
   `kode_berkas` varchar(64) NOT NULL,
   `nama_berkas` varchar(128) NOT NULL,
-  `skpd` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
+  `skpd` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -44,19 +43,40 @@ INSERT INTO `t_doc_req` (`id`, `kode_berkas`, `nama_berkas`, `skpd`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_doc_respon`
+--
+
+CREATE TABLE `t_doc_respon` (
+  `id` int(3) NOT NULL,
+  `nik_pemohon` varchar(15) NOT NULL,
+  `request_at` date NOT NULL,
+  `response_at` date DEFAULT NULL,
+  `dokumen` varchar(285) NOT NULL,
+  `kode_skpd` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_doc_respon`
+--
+
+INSERT INTO `t_doc_respon` (`id`, `nik_pemohon`, `request_at`, `response_at`, `dokumen`, `kode_skpd`) VALUES
+(2, '5654557', '2016-09-29', '2016-10-03', 'Kalender.xlsx', 'skpd02gg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_dokumen`
 --
 
-CREATE TABLE IF NOT EXISTS `t_dokumen` (
-  `id` int(16) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `t_dokumen` (
+  `id` int(16) NOT NULL,
   `kode_berkas` varchar(128) NOT NULL,
   `upload_at` date NOT NULL,
   `nama_berkas` varchar(128) NOT NULL,
   `kategori` varchar(128) NOT NULL,
   `deskripsi` varchar(128) NOT NULL,
-  `kode_skpd` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `kode_skpd` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `t_dokumen`
@@ -72,14 +92,13 @@ INSERT INTO `t_dokumen` (`id`, `kode_berkas`, `upload_at`, `nama_berkas`, `kateg
 -- Table structure for table `t_request`
 --
 
-CREATE TABLE IF NOT EXISTS `t_request` (
-  `id` int(16) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `t_request` (
+  `id` int(16) NOT NULL,
   `nik_pemohon` int(32) NOT NULL,
   `request_at` date NOT NULL,
   `response_at` date DEFAULT NULL,
-  `kode_skpd` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `kode_skpd` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `t_request`
@@ -87,8 +106,9 @@ CREATE TABLE IF NOT EXISTS `t_request` (
 
 INSERT INTO `t_request` (`id`, `nik_pemohon`, `request_at`, `response_at`, `kode_skpd`) VALUES
 (1, 2565956, '2016-09-28', NULL, 'skpd12jkt'),
-(2, 5654557, '2016-09-29', NULL, 'skpd02gg'),
-(3, 5611124, '2016-09-28', NULL, 'skpd12jkt');
+(2, 5654557, '2016-09-29', '2016-10-03', 'skpd02gg'),
+(3, 5611124, '2016-09-28', NULL, 'skpd12jkt'),
+(4, 212135, '2016-10-03', NULL, 'sskpd');
 
 -- --------------------------------------------------------
 
@@ -96,12 +116,11 @@ INSERT INTO `t_request` (`id`, `nik_pemohon`, `request_at`, `response_at`, `kode
 -- Table structure for table `t_skpd`
 --
 
-CREATE TABLE IF NOT EXISTS `t_skpd` (
-  `id` int(16) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `t_skpd` (
+  `id` int(16) NOT NULL,
   `nama` varchar(128) NOT NULL,
-  `singkatan` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+  `singkatan` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `t_skpd`
@@ -150,8 +169,8 @@ INSERT INTO `t_skpd` (`id`, `nama`, `singkatan`) VALUES
 -- Table structure for table `t_user`
 --
 
-CREATE TABLE IF NOT EXISTS `t_user` (
-  `id` int(16) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `t_user` (
+  `id` int(16) NOT NULL,
   `hak_akses` int(16) NOT NULL,
   `nik` int(25) NOT NULL,
   `nama` varchar(128) NOT NULL,
@@ -160,10 +179,85 @@ CREATE TABLE IF NOT EXISTS `t_user` (
   `no_hp` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `ktp` varchar(128) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `password` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `t_user`
+--
+
+INSERT INTO `t_user` (`id`, `hak_akses`, `nik`, `nama`, `alamat`, `no_tlpn`, `no_hp`, `email`, `ktp`, `password`) VALUES
+(1, 1, 2342, 'hilmi', 'sukabumi', '085719579827', '085719579827', 'hilmisalim11@gmail.com', 'afeewaef1234', 'Hilmi');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `t_doc_req`
+--
+ALTER TABLE `t_doc_req`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_doc_respon`
+--
+ALTER TABLE `t_doc_respon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_dokumen`
+--
+ALTER TABLE `t_dokumen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_request`
+--
+ALTER TABLE `t_request`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_skpd`
+--
+ALTER TABLE `t_skpd`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_user`
+--
+ALTER TABLE `t_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `t_doc_respon`
+--
+ALTER TABLE `t_doc_respon`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `t_dokumen`
+--
+ALTER TABLE `t_dokumen`
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `t_request`
+--
+ALTER TABLE `t_request`
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `t_skpd`
+--
+ALTER TABLE `t_skpd`
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `t_user`
+--
+ALTER TABLE `t_user`
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
