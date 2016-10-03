@@ -153,12 +153,12 @@ class UserPage extends CI_Controller {
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload()){
-                        $error = array('error' => $this->upload->display_errors());
-                        $gambar_value = 'nopic.png';
+                    $error = array('error' => $this->upload->display_errors());
+                    $gambar_value = 'nopic.png';
                 }
                 else{
-                               $data = array('upload_data' => $this->upload->data());
-                               $gambar_value = $this->input->post('gambar_value');
+                    $data = array('upload_data' => $this->upload->data());
+                    $gambar_value = $this->input->post('gambar_value');
                 }
                         
                 // selesai upload foto, berikut adalah input database

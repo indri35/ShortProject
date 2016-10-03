@@ -26,6 +26,17 @@ class Model_skpd extends CI_model{
     function tanggapi($id){
         return $this->db->get_where('t_request',array('id'=>$id));
     }
+
+    function respon($daba,$data)
+    {
+        //untuk insert data ke database
+        if(isset($_POST['simpan'])) {
+            $this->db->insert($daba, $data);
+            $notif['info'] = 'Berhasil Menyimpan';
+            
+        }
+        $notif['info'] = 'Gagal menyimpan';
+    }
 }
 
 

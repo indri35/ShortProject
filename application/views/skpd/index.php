@@ -1,9 +1,4 @@
-<?php 
-$this->load->view('template_admin/header');
-$this->load->view('template_admin/topside');
-?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -31,7 +26,7 @@ $this->load->view('template_admin/topside');
                   <p>New Request</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="ion ion-email-unread"></i>
                 </div>
                 <a href="<?= base_url() ?>skpd/pendingRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -44,7 +39,7 @@ $this->load->view('template_admin/topside');
                   <p>Request sent</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-paper-airplane"></i>
                 </div>
                 <a href="<?= base_url() ?>skpd/sentRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -57,7 +52,7 @@ $this->load->view('template_admin/topside');
                   <p>Document list</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-android-document"></i>
                 </div>
                 <a href="<?= base_url() ?>skpd/document" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -69,7 +64,7 @@ $this->load->view('template_admin/topside');
                 <h3 class="box-title">Document Request List</h3>
               </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped" >
+                  <table id="example1" class="table table-bordered table-striped text-center" >
                     <thead>
                       <tr>
                         <th>No</th>

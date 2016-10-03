@@ -4,63 +4,52 @@ class Humas extends CI_Controller{
     function __construct() {
         parent::__construct();
         // meload model skpd
-        $this->load->model(array('model_skpd'));
+        $this->load->model(array('model_humas'));
     }
     
     public function index(){
         // menyimpan data permohonan dokumen untuk dipassing ke view
-        $a = $this->model_skpd->getAllReq();
-        $b = $this->model_skpd->getAllDoc();
-        $c = $this->model_skpd->getAllUser();
-        $d = $this->model_skpd->getAllSkpd();
-        $data= array( 'request'=> $a, 'dokumen' => $b,'user'=> $c, 'skpd' => $d);
-        $this->load->view('admin-humas/index',$data);
+        $a = $this->model_humas->getAllPendingReq();
+        $b = $this->model_humas->getAllSentReq();
+        $c = $this->model_humas->getAllDoc();
+        $d = $this->model_humas->getAllUser();
+
+        $data= array( 'pending'=> $a, 'sent' => $b,'dokumen'=> $c, 'user' => $d);
+
+        $this->load->view('humas/header');
+        $this->load->view('humas/index',$data);
+        $this->load->view('humas/footer');
     }
 
-    public function show(){
-        $this->load->model('model_siswa');
-        $siswa_id = $this->uri->segment(3);
-        $data['siswa'] = $this->model_siswa->siswa($siswa_id)->row_array();
-        $this->load->view('siswa/show',$data);
+    public function pendingRequest(){
+        $data['pending']=$this->model_humas->getAllPendingReq();
+
+        $this->load->view('humas/header');
+        $this->load->view('humas/pending',$data);
+        $this->load->view('humas/footer');
     }
 
-    public function create(){
-
-        $this->load->view('siswa/create');
+    public function sentRequest(){
+        $data['sents']=$this->model_humas->getAllSentReq();
+        
+        $this->load->view('humas/header');
+        $this->load->view('humas/sent',$data);
+        $this->load->view('humas/footer');
     }
 
-    public function store(){
-        $datasiswa = array(
-            'nis'       =>  $this->input->post('nis'),
-            'nama'      =>  $this->input->post('nama'),
-            'gender'    =>  $this->input->post('gender'));
-        $this->db->insert('siswa',$datasiswa);
-        redirect('siswa');    
+    public function document(){
+        $data['docs']=$this->model_humas->getAlldoc();
+        
+        $this->load->view('humas/header');
+        $this->load->view('humas/document',$data);
+        $this->load->view('humas/footer');
     }
-
-    public function edit(){
-        $this->load->model('model_siswa');
-        $siswa_id = $this->uri->segment(3);
-        $data['siswa'] = $this->model_siswa->siswa($siswa_id)->row_array();
-        $this->load->view('siswa/edit',$data);
+   
+    public function user(){
+        $data['users']=$this->model_humas->getAllUser();
+        
+        $this->load->view('humas/header');
+        $this->load->view('humas/user',$data);
+        $this->load->view('humas/footer');
     }
-
-    function update(){
-        $siswa_id         = $this->input->post('siswa_id');
-        $datasiswa = array(
-            'nis'   =>  $this->input->post('nis'),
-            'nama'   =>  $this->input->post('nama'),
-            'gender'         =>  $this->input->post('gender'));
-        $this->db->where('siswa_id',$siswa_id);
-        $this->db->update('siswa',$datasiswa);
-        redirect('siswa');
-    }
-
-    function delete(){
-        $siswa_id = $this->uri->segment(3);
-        $this->db->where('siswa_id',$siswa_id);
-        $this->db->delete('siswa');
-        redirect('siswa');
-    }
-           
 }
