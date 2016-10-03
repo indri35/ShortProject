@@ -22,6 +22,10 @@ class Model_skpd extends CI_model{
     function request($id){
         return $this->db->get_where('t_request',array('id'=>$id));
     }
+
+    function tanggapi($id){
+        return $this->db->get_where('t_request',array('id'=>$id));
+    }
 }
 
 
