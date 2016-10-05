@@ -3,7 +3,7 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                        <h2 class="intro-text text-center"><strong>Formulir Permohonan Informasi oleh Perorangan</strong></h2>
+                        <h2 class="intro-text text-center"><strong>Formulir Permohonan Informasi oleh Kelompok Tidak Berbadan Hukum</strong></h2>
                     <hr>
                 </div>
                 <div class="col-lg-12">
@@ -12,7 +12,7 @@
                                     <strong>
                                         <font color="#ff6600">Identitas Pemohon<br/><br/></font>
                                     </strong>
-                                    <?php echo form_open_multipart('UserPage/input_form_perorangan');?>
+                                    <?php echo form_open_multipart('UserPage/input_form_berbadan_hukum');?>
                                     <div class="form-group form-horizontal">
                                         <label for="nik" class="control-label col-lg-3">NIK</label>
                                         <div class="col-lg-9">
@@ -56,14 +56,24 @@
                                         <font color="#ff6600">Detail Permohonan Berkas<br/><br/></font>
                                     </strong>
                                     <div class="form-group form-horizontal">
-                                        <label for="tujuan_permohonan_info" class="control-label col-lg-3">Tujuan Permohonan Informasi <font color="red">*</font></label>
-                                        <div class="col-lg-9">
+                                        <label for="tujuan_permohonan_info" class="control-label col-lg-4">Tujuan Permohonan Informasi <font color="red">*</font></label>
+                                        <div class="col-lg-8">
                                             <textarea class=" form-control" name="tujuan_permohonan_info" type="text" placeholder="Tujuan Permohonan Informasi." required></textarea><br/>
                                         </div>
                                     </div>
                                     <div class="form-group form-horizontal">
-                                        <label class="control-label col-lg-3">Dokumen</label>
-                                        <div class="col-lg-9">
+                                        <label for="ktp" class="control-label col-lg-4">Dokumen TTD Seluruh Anggota <font color="red">*</font></label>
+                                        <div class="col-lg-8">
+                                            <input type="file"  name="userfile" id="gamgam" required>
+                                            <font class="help-block">Upload file dengan format .gif|.png|.jpg.</font>
+                                        </div>    
+                                    </div>
+                                    <div>
+                                        <input type="hidden" name="gambar_value" id="gamgum">
+                                    </div>
+                                    <div class="form-group form-horizontal">
+                                        <label class="control-label col-lg-4">Dokumen</label>
+                                        <div class="col-lg-8">
                                             <select class="form-control select2" multiple="multiple" data-placeholder="Select Kode Dokumen" name="dokumen[]"style="width: 100%;">
                                                 <?php 
                                                     foreach($dokumen->result() as $row){ 
@@ -87,10 +97,9 @@
                                         <br/>
                                         <br/>(<?php echo $this->session->userdata('nama'); ?>)</font>
                                         <input class=" form-control" type="hidden" name="nik_pemohon" value="<?php echo $this->session->userdata('nik'); ?>" >
-                                        <input class=" form-control" type="hidden" name="file_pendukung" value="<?php echo $this->session->userdata('ktp'); ?>" >
                                         <input class=" form-control" type="hidden" name="request_at" value="<?php echo date("Y-m-d"); ?>" >
                                     <div class="col-lg-offset-9 col-lg-3">
-                                        <input type="submit" class="btn btn-primary" value="Submit" name="simpan">
+                                        <input type="submit" class="btn btn-primary" onclick="coba()" value="Submit" name="simpan">
                                     </div>
                                     <?php echo form_close(); ?>
                                 </div>

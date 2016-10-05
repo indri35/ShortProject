@@ -19,6 +19,9 @@
     <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
+    <!-- Select2 -->
+<script src="<?php echo base_url() ?>assets/admin/plugins/select2/select2.full.min.js"></script>
+
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
@@ -28,6 +31,12 @@
     <!-- page script -->
     <script>
       $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+        $('#request_at').datepicker({
+                    format: "yyyy",
+                    autoclose:true
+                });
         $("#example1").DataTable();
         $('#example2').DataTable({
           "paging": true,

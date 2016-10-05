@@ -45,6 +45,7 @@ class LoginVerify extends CI_Controller {
      foreach($result as $row)
      {
        $sess_array = array(
+         'id' => $row->id,
          'nik' => $row->nik,
          'email' => $row->email,
          'nama' => $row->nama,

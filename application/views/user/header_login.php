@@ -19,6 +19,7 @@
 
     <!-- DataTables -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datepicker/datepicker3.css"/>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/user/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +27,12 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>assets/user/css/business-casual.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/fonts/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/ionicons.min.css">
+    <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2/select2.min.css">
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
@@ -43,7 +50,7 @@
 <body>
     <ul class="topnav">
   <li><a  href="<?php echo base_url() ?>UserPage/profil/">Hello <b><?php echo $this->session->userdata('nama'); ?></b></a></li>
-  <li><a href="#news">Request Saya</a></li>
+  <li><a href="<?php echo base_url() ?>UserPage/my_request">Request Saya</a></li>
   <li class="right"><a href="<?php echo base_url() ?>UserPage/logout">Logout</a></li>
 </ul>
 
@@ -79,10 +86,10 @@
                                 <a href="<?php echo base_url() ?>UserPage/form_perorangan">Perorangan</a>
                             </li>
                             <li>
-                                <a href="index.html">Kelompok Berbadan Hukum</a>
+                                <a href="<?php echo base_url() ?>UserPage/form_berbadan_hukum">Kelompok Berbadan Hukum</a>
                             </li>
                             <li>
-                                <a href="index.html">Kelompok Tidak Berbadan Hukum</a>
+                                <a href="<?php echo base_url() ?>UserPage/form_tidak_berbadan_hukum">Kelompok Tidak Berbadan Hukum</a>
                             </li>
                         </ul>
                     </li>

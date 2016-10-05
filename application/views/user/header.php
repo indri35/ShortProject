@@ -74,10 +74,10 @@
                                 <a href="<?php echo base_url() ?>UserPage/form_perorangan">Perorangan</a>
                             </li>
                             <li>
-                                <a href="index.html">Kelompok Berbadan Hukum</a>
+                                <a href="<?php echo base_url() ?>UserPage/form_berbadan_hukum">Kelompok Berbadan Hukum</a>
                             </li>
                             <li>
-                                <a href="index.html">Kelompok Tidak Berbadan Hukum</a>
+                                <a href="<?php echo base_url() ?>UserPage/form_tidak_berbadan_hukum">Kelompok Tidak Berbadan Hukum</a>
                             </li>
                         </ul>
                     </li>
