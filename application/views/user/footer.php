@@ -33,10 +33,6 @@
       $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
-        $('#request_at').datepicker({
-                    format: "yyyy",
-                    autoclose:true
-                });
         $("#example1").DataTable();
         $('#example2').DataTable({
           "paging": true,

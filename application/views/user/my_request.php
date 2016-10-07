@@ -10,12 +10,13 @@
                     <thead>
                     <tr>
                       <th></th>
+                      <th>Tujuan Permohonan Informasi</th>
                       <th>Kode Berkas</th>
-                      <th>Tanggal Upload</th>
                       <th>Nama Berkas</th>
-                      <th>Kategori</th>
-                      <th>Deskripsi Berkas</th>
-                      <th>SKPD</th>
+                      <th>Kode SKPD</th>
+                      <th>Tanggal Request</th>
+                      <th>Tanggal Respon</th>
+                      <th>Berkas</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,11 +27,12 @@
                         <tr>
                             <td><?= $i ?></td>    
                             <td><?php echo $row->tujuan_permohonan_info; ?></td>
-                            <td><?php echo $row->nik_pemohon; ?></td>
-                            <td><?php echo $row->request_at; ?></td>
                             <td><?php echo $row->kode_berkas; ?></td>
                             <td><?php echo $row->nama_berkas; ?></td>
                             <td><?php echo $row->kode_skpd; ?></td>
+                            <td><?php echo $row->request_at; ?></td>
+                            <td><?php echo $row->date_upload; ?></td>
+                            <td><a href="<?php echo base_url() ?>assets/user/img/<?php echo $row->berkas_upload; ?>"><?php echo $row->berkas_upload; ?></a></td>
                         </tr>
                         <?php
                             $i++; }
