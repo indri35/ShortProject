@@ -5,7 +5,7 @@
         <section class="content-header">
           <h1>
             Profile
-            <small>Admin SKPD </small>
+            <small>Admin</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -17,7 +17,7 @@
         <section class="content">
           <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Profile Admin SKPD</h3>
+                <h3 class="box-title">Profile Admin</h3>
               </div><!-- /.box-header -->
               <div class="box-body">
                 <table class="table table-bordered table-striped dataTable text-center">

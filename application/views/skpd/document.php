@@ -48,7 +48,7 @@
                       <td> <?php echo $doc->deskripsi;?></td>
                       <td> <?php echo $doc->kode_skpd;?></td>
                       <td><a class="btn btn-primary" href="<?= base_url() ?>skpd/edit/<?= $doc->id ?>">Update</a>
-                          <a class="btn btn-danger" href="<?= base_url() ?>skpd/delete/<?= $doc->id ?>">Delete</a></td>
+                          <a class="btn btn-danger" href="<?= base_url() ?>skpd/delete/<?= $doc->id ?>" onClick="return doconfirm();">Delete</a></td>
                     <?php $no++; };?>
                   </tbody>
                 </table>

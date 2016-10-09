@@ -54,19 +54,54 @@ class LoginVerify extends CI_Controller {
      $sess_array = array();
      foreach($result as $row)
      {
-       $sess_array = array(
-         'id' => $row->id,
-         'kode_skpd' => $row->kode_skpd,
-         'nik' => $row->nik,
-         'email' => $row->email,
-         'nama' => $row->nama,
-         'alamat' => $row->alamat,
-         'no_tlpn' => $row->no_tlpn,
-         'no_hp' => $row->no_hp,
-         'ktp' => $row->ktp,
-         'logged_in' => TRUE
-       );
-       $this->session->set_userdata( $sess_array);
+      if($row->hak_akses==1){
+            $sess_array = array(
+             'id' => $row->id,
+             'hak_akses' => $row->hak_akses,
+             'kode_skpd' => $row->kode_skpd,
+             'nik' => $row->nik,
+             'email' => $row->email,
+             'nama' => $row->nama,
+             'alamat' => $row->alamat,
+             'no_tlpn' => $row->no_tlpn,
+             'no_hp' => $row->no_hp,
+             'ktp' => $row->ktp,
+             'logged_in' => TRUE
+          );
+          }
+          elseif ($row->hak_akses==2) {
+            $sess_array = array(
+             'id' => $row->id,
+             'hak_akses' => $row->hak_akses,
+             'kode_skpd' => $row->kode_skpd,
+             'nik' => $row->nik,
+             'email' => $row->email,
+             'nama' => $row->nama,
+             'alamat' => $row->alamat,
+             'no_tlpn' => $row->no_tlpn,
+             'no_hp' => $row->no_hp,
+             'ktp' => $row->ktp,
+             'humas' => TRUE
+          );
+          }
+          else{
+            $sess_array = array(
+             'id' => $row->id,
+             'hak_akses' => $row->hak_akses,
+             'kode_skpd' => $row->kode_skpd,
+             'nik' => $row->nik,
+             'email' => $row->email,
+             'nama' => $row->nama,
+             'alamat' => $row->alamat,
+             'no_tlpn' => $row->no_tlpn,
+             'no_hp' => $row->no_hp,
+             'ktp' => $row->ktp,
+             'skpd' => TRUE
+          );
+          }
+       
+       
+       $this->session->set_userdata($sess_array);
 
      }
      return TRUE;

@@ -30,6 +30,10 @@ class Model_humas extends CI_model{
     function getAllSkpd(){
          return $this->db->get('t_skpd');
     }
+    
+    function profile($id){
+        return $this->db->get_where('t_user',array('id'=>$id));
+    }
 
     function request($id){
         return $this->db->get_where('t_request',array('id'=>$id));

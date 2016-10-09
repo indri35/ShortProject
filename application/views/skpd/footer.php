@@ -42,6 +42,15 @@
         });
       });
     </script>
-
+    <script>
+    function doconfirm()
+    {
+        job=confirm("Are you sure to delete permanently?");
+        if(job!=true)
+        {
+            return false;
+        }
+    }
+    </script>
   </body>
 </html>

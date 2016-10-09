@@ -54,7 +54,7 @@
                       <td> <?php echo $user->no_hp;?></td>
                       <td> <?php echo $user->email;?></td>
                       <td><a class="btn btn-primary" href="<?= base_url() ?>humas/edit/<?= $user->id ?>">Update</a>
-                          <a class="btn btn-danger" href="<?= base_url() ?>humas/delete/<?= $user->id ?>">Delete</a>
+                          <a class="btn btn-danger" href="<?= base_url() ?>humas/delete/<?= $user->id ?>" onClick="return doconfirm();">Delete</a>
                       </td>
                     <?php $no++; };?>
                   </tbody>
