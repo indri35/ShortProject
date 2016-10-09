@@ -32,7 +32,7 @@
                             <td><?php echo $row->kode_skpd; ?></td>
                             <td><?php echo $row->request_at; ?></td>
                             <td><?php echo $row->date_upload; ?></td>
-                            <td><a href="<?php echo base_url() ?>assets/user/img/<?php echo $row->berkas_upload; ?>"><?php echo $row->berkas_upload; ?></a></td>
+                            <td><a href="<?php echo base_url() ?>assets/user/img/<?php echo $row->berkas_upload; ?> " target="_blank"><?php echo $row->berkas_upload; ?></a></td>
                         </tr>
                         <?php
                             $i++; }
