@@ -43,7 +43,7 @@
                       <td><?php echo $pen->nama_berkas;?></td>
                       <td><?php echo $pen->nik_pemohon;?></td>
                       <td><?php echo $pen->kode_skpd;?></td>
-                      <td><?php echo ($pen->berkas_upload==TRUE)? $req->date_upload : '<button type="button" class="btn btn-success">Tanggapi</button>'; ?>
+                      <td><?php echo ($pen->berkas_upload==TRUE)? $pen->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$pen->no_req,'Tanggapi')."</button>"; ?>
                       </td>
                       <td><?php echo ($pen->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
                     <?php $no++; };?>
