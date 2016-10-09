@@ -15,7 +15,7 @@ class LoginVerify extends CI_Controller {
  
    $this->form_validation->set_rules('email', 'Email', 'trim|required');
    $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
- 
+  
    if($this->form_validation->run() == FALSE)
    {
      //Field validation failed.  User redirected to login page
@@ -23,12 +23,22 @@ class LoginVerify extends CI_Controller {
      $this->load->view('user/login');
      $this->load->view('user/footer');
    }
-   else
-   {
-     //Go to private area
+   else{
+    $email = $this->input->post('email');
+    $hak_akses= $this->user->cekHakAkses($email);
+
+    if ($hak_akses == 1 ){
      redirect('UserPage/profil', 'refresh');
-   }
- 
+    }
+   elseif ($hak_akses == 2 )
+    {
+     redirect('humas', 'refresh'); 
+    }
+   else 
+    {
+      redirect('skpd', 'refresh');
+    }
+  }
  }
  
  function check_database($password)
@@ -46,6 +56,7 @@ class LoginVerify extends CI_Controller {
      {
        $sess_array = array(
          'id' => $row->id,
+         'kode_skpd' => $row->kode_skpd,
          'nik' => $row->nik,
          'email' => $row->email,
          'nama' => $row->nama,

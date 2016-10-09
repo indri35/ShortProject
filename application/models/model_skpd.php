@@ -2,21 +2,21 @@
 class Model_skpd extends CI_model{
     
     
-    function getAllPendingReq(){
+    function getAllPendingReq($kode_skpd){
         // mereturn seluruh data dari tabel t-request
-         return $this->db->query("SELECT * FROM t_request WHERE response_at IS NULL;");
+         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NULL AND kode_skpd='$kode_skpd';");
     }
 
-    function getAllSentReq(){
-         return $this->db->query("SELECT * FROM t_request WHERE response_at IS NOT NULL;");
+    function getAllSentReq($kode_skpd){
+         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NOT NULL AND kode_skpd='$kode_skpd' ;");
     }
 
-    function getAllReq(){
-         return $this->db->get('t_request');
+    function getAllReq($kode_skpd){
+         return $this->db->get_where('t_doc_req_data',array('kode_skpd'=>$kode_skpd));
     } 
 
-    function getAllDoc(){
-         return $this->db->get('t_dokumen');
+    function getAllDoc($kode_skpd){
+         return $this->db->get_where('t_dokumen',array('kode_skpd'=>$kode_skpd));
     }
 
     function request($id){
@@ -25,6 +25,14 @@ class Model_skpd extends CI_model{
 
     function tanggapi($id){
         return $this->db->get_where('t_request',array('id'=>$id));
+    }
+
+    function dokumen($id){
+        return $this->db->get_where('t_dokumen',array('id'=>$id));
+    }
+
+    function profile($id){
+        return $this->db->get_where('t_user',array('id'=>$id));
     }
 
     function respon($daba,$data)

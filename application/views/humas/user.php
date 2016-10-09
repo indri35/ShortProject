@@ -4,7 +4,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Document list
+            User list
             <small>SKPD </small>
           </h1>
           <ol class="breadcrumb">
@@ -17,9 +17,12 @@
         <section class="content">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Document Request List</h3>
-            </div><!-- /.box-header -->
+              <h3 class="box-title">User List</h3>
+              <br /><br />
+              <a class="btn btn-primary" href="<?= base_url() ?>humas/create">Add User</a>
+            </div><!-- /.box-header --> 
               <div class="box-body">
+
                 <table id="example1" class="table table-bordered table-striped dataTable text-center">
                   <thead>
                     <tr>
@@ -31,6 +34,7 @@
                       <th>No. Telpon</th>
                       <th>No. Handphone</th>
                       <th>Email</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -39,13 +43,19 @@
                     foreach ($users->result() as $user) { ?>
                     <tr role="row">
                       <td><?php echo $no ;?></td>
-                      <td><?php echo $user->hak_akses;?></td>
+                      <td><?php if($user->hak_akses==1){echo 'User';}
+                      elseif ($user->hak_akses==2){echo 'Admin Humas';}
+                      else echo 'Admin SKPD';?>
+                      </td>
                       <td><?php echo $user->nik;?></td>
                       <td> <?php echo $user->nama;?></td>
                       <td> <?php echo $user->alamat;?></td>
                       <td> <?php echo $user->no_tlpn;?></td>
                       <td> <?php echo $user->no_hp;?></td>
                       <td> <?php echo $user->email;?></td>
+                      <td><a class="btn btn-primary" href="<?= base_url() ?>humas/edit/<?= $user->id ?>">Update</a>
+                          <a class="btn btn-danger" href="<?= base_url() ?>humas/delete/<?= $user->id ?>">Delete</a>
+                      </td>
                     <?php $no++; };?>
                   </tbody>
                 </table>

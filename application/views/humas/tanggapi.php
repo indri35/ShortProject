@@ -5,11 +5,11 @@
     <section class="content-header">
       <h1>
         Respond Request
-        <small>SKPD </small>
+        <small>Admin </small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="<?= base_url() ?>skpd/index">Request list</a></li>
+        <li><a href="<?= base_url() ?>humas/index"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?= base_url() ?>humas/index">Request list</a></li>
         <li class="active">Respond Request</li>
       </ol>
     </section>
@@ -24,7 +24,7 @@
               <h3 class="box-title">Respond Request</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <?php echo form_open_multipart('skpd/do_upload'); ?>
+            <?php echo form_open_multipart('humas/do_upload'); ?>
             <?php echo form_hidden('no_req',$this->uri->segment(3)); ?>
               <div class="box-body">
                 <div class="form-group">
