@@ -40,8 +40,8 @@
                     </h2>
                     <hr>
                     <div class="col-lg-6">
-                        <a href="#" class="btn btn-default btn-block" weight=100%>INFORMASI PUBLIK KOTA SURABAYA</a>
-                        <a href="#" class="btn btn-default btn-block">HUMAS KOTA SURABAYA</a>
+                        <a href="#" class="btn btn-default btn-block" weight=100%>INFORMASI PUBLIK KOTA BOGOR</a>
+                        <a href="#" class="btn btn-default btn-block">HUMAS KOTA BOGOR</a>
                     </div>
                 </div>
             </div>
