@@ -81,8 +81,8 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>NIK pemohon</th>
-                          <th>Tanggal permohonan</th>
+                          <th>Kode berkas</th>
+                          <th>Nama berkas</th>
                           <th>Tujuan permohonan</th>
                           <th>Tanggal respon</th>
                           <th>Status</th>
@@ -94,12 +94,12 @@
                         foreach ($sent->result() as $s) { ?>
                         <tr role="row">
                           <td><?php echo $no ;?></td>
-                          <td><?php echo $s->nik_pemohon;?></td>
-                          <td><?php echo $s->request_at;?></td>
+                          <td><?php echo $s->kode_berkas;?></td>
+                          <td><?php echo $s->nama_berkas;?></td>
                           <td><?php echo $s->kode_skpd;?></td>
-                          <td><?php echo ($s->response_at==TRUE)? $s->response_at : '<button type="button" class="btn btn-success">Tanggapi</button>'; ?>
+                          <td><?php echo ($s->berkas_upload==TRUE)? $s->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$s->no_req,'Tanggapi')."</button>"; ?>
                           </td>
-                          <td><?php echo ($s->response_at==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                          <td><?php echo ($s->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
                         </tr>
                         <?php $no++; };?>
                       </tbody>
@@ -117,9 +117,10 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>NIK pemohon</th>
-                          <th>Tanggal permohonan</th>
-                          <th>Tujuan pemohonan</th>
+                          <th>Kode berkas</th>
+                          <th>Nama berkas</th>
+                          <th>Tujuan permohonan</th>
+                          <th>Tanggal respon</th>
                           <th>Status</th>
                         </tr>
                       </thead>
@@ -129,11 +130,12 @@
                         foreach ($pending->result() as $p) { ?>
                         <tr role="row">
                           <td><?php echo $no ;?></td>
-                          <td><?php echo $p->nik_pemohon;?></td>
-                          <td><?php echo $p->request_at;?></td>
-                          <td><?php echo ($p->response_at==TRUE)? $req->response_at :  $p->kode_skpd; ?>
+                          <td><?php echo $p->kode_berkas;?></td>
+                          <td><?php echo $p->nama_berkas;?></td>
+                          <td><?php echo $p->kode_skpd;?></td>
+                          <td><?php echo ($p->berkas_upload==TRUE)? $p->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$p->no_req,'Tanggapi')."</button>"; ?>
                           </td>
-                          <td><?php echo ($p->response_at==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                          <td><?php echo ($p->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
                         </tr>
                         <?php $no++; };?>
                       </tbody>

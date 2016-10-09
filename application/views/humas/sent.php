@@ -25,10 +25,12 @@
                   <thead>
                     <tr role="row">
                       <th>No</th>
-                      <th >NIK pemohon</th>
-                      <th>Tanggal permohonan</th>
+                      <th>Kode berkas</th>
+                      <th>Nama berkas</th>
+                      <th>NIK pemohon</th>
+                      <th>Tujuan permohonan</th>
+                      <th>Berkas</th>
                       <th>Tanggal respon</th>
-                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -37,11 +39,13 @@
                     foreach ($sents->result() as $sent) { ?>
                     <tr role="row">
                       <td><?php echo $no ;?></td>
+                      <td><?php echo $sent->kode_berkas;?></td>
+                      <td><?php echo $sent->nama_berkas;?></td>
                       <td><?php echo $sent->nik_pemohon;?></td>
-                      <td><?php echo $sent->request_at;?></td>
-                      <td><?php echo ($sent->response_at==TRUE)? $sent->response_at : '<button type="button" class="btn btn-success">Tanggapi</button>'; ?>
+                      <td><?php echo $sent->kode_skpd;?></td>
+                      <td><?php echo ($sent->berkas_upload==TRUE)? $sent->date_upload : '<button type="button" class="btn btn-success">Tanggapi</button>'; ?>
                       </td>
-                      <td><?php echo ($sent->response_at==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                      <td><?php echo ($sent->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
                     <?php $no++; };?>
                   </tbody>
                 </table>
