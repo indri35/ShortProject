@@ -43,7 +43,7 @@
 <body>
 
     <div class="brand">Layanan Informasi Publik</div>
-    <div class="address-bar">Sesuai UU No. 14 Tahun 2008 Tentang KIP - Pemerintah Kota</div>
+    <div class="address-bar">Sesuai UU No. 14 Tahun 2008 Tentang KIP - Pemerintah Kota Bogor</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
