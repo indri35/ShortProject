@@ -25,21 +25,12 @@
             </div><!-- /.box-header -->
             <!-- form start -->
             <?php echo form_open_multipart('skpd/do_upload'); ?>
-            <?php echo form_hidden('id',$this->uri->segment(3)); ?>
+            <?php echo form_hidden('no_req',$this->uri->segment(3)); ?>
               <div class="box-body">
                 <div class="form-group">
-                  <label>NIK pemohon</label>
-                  <?php echo form_input('nik_pemohon', $reqs['nik_pemohon'],array('class'=>'form-control','readonly'=>'true')); ?>
-                </div>
-                <div class="form-group">
-                  <label>Tanggal permohonan</label>
-                  <?php echo form_input('request_at', $reqs['request_at'],array('class'=>'form-control', 'readonly'=>'true')); ?>
-                </div>
-                <div class="form-group">
                   <label>Tanggal pemberian</label>
-                  <input class="form-control" type="date" name="response_at" value="<?php echo date("Y-m-d"); ?>" readonly>
+                  <input class="form-control" type="date" name="date_upload" value="<?php echo date("Y-m-d"); ?>" readonly>
                 </div>
-                  <input class="form-control" type="hidden" name="kode_skpd" value="<?php echo $reqs['kode_skpd']; ?>">
                 <div class="form-group">
                   <label for="dokumen">Document file <font color="red">*</font></label>
                   <div>

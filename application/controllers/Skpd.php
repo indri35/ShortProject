@@ -13,9 +13,9 @@ class Skpd extends CI_Controller{
             {   
                 $skpd= $this->session->userdata('kode_skpd');
                 // menyimpan data permohonan dokumen untuk dipassing ke vie
-                $a = $this->model_skpd->getAllPendingReq();
-                $b = $this->model_skpd->getAllSentReq();
-                $c = $this->model_skpd->getAllReq();
+                $a = $this->model_skpd->getAllPendingReq($skpd);
+                $b = $this->model_skpd->getAllSentReq($skpd);
+                $c = $this->model_skpd->getAllReq($skpd);
                 $d = $this->model_skpd->getAllDoc($skpd);
                 $data= array( 'request'=> $a, 'sent' => $b,'all'=> $c,'dokumen'=> $d);
                 
@@ -49,8 +49,9 @@ class Skpd extends CI_Controller{
         $this->load->view('skpd/footer');
     }
 
-    public function pendingRequest(){
-        $data['pending']=$this->model_skpd->getAllPendingReq();
+    public function pendingRequest(){   
+        $skpd= $this->session->userdata('kode_skpd');
+        $data['pending']=$this->model_skpd->getAllPendingReq($skpd);
 
         $this->load->view('skpd/header');
         $this->load->view('skpd/pending',$data);
@@ -58,7 +59,8 @@ class Skpd extends CI_Controller{
     }
 
     public function sentRequest(){
-        $data['sents']=$this->model_skpd->getAllSentReq();
+        $skpd= $this->session->userdata('kode_skpd');
+        $data['sents']=$this->model_skpd->getAllSentReq($skpd);
         
         $this->load->view('skpd/header');
         $this->load->view('skpd/sent',$data);
@@ -106,21 +108,17 @@ class Skpd extends CI_Controller{
         }
                 
         // selesai upload foto, berikut adalah input database
-        $response_at=$this->input->post('response_at');   
-        $id= $this->input->post('id');     
+        $date_upload=$this->input->post('date_upload');   
+        $no_req= $this->input->post('no_req');     
         $data = array(
-                        'id' => $id,
-                        'nik_pemohon' => $this->input->post('nik_pemohon'),
-                        'request_at' => $this->input->post('request_at'),
-                        'response_at' => $response_at,
-                        'dokumen' => $gambar_value,
-                        'kode_skpd' => $this->input->post('kode_skpd')
+                        'no_req' => $no_req,
+                        'date_upload' => $date_upload,
+                        'berkas_upload' => $gambar_value
                      );
-        $this->model_skpd->respon('t_doc_respon',$data); //passing variable $data ke products_model
 
-        $this->db->query("UPDATE t_request SET response_at='$response_at' WHERE id='$id';");
+        $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value'  WHERE no_req='$no_req';");
 
-        redirect('skpd/index'); //redirect page ke halaman utama controller products   
+        redirect('skpd/index'); //redirect page ke halaman utama controller products      
     }
 
     public function logout(){

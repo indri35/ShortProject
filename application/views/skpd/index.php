@@ -69,7 +69,8 @@
                       <tr>
                         <th>No</th>
                         <th>NIK pemohon</th>
-                        <th>Tanggal permohonan</th>
+                        <th>Kode berkas</th>
+                        <th>Nama berkas</th>
                         <th>Tanggal respon</th>
                         <th>Status</th>
                       </tr>
@@ -81,11 +82,12 @@
                       <tr role="row">
                         <td><?php echo $no ;?></td>
                         <td><?php echo $req->nik_pemohon;?></td>
-                        <td><?php echo $req->request_at;?></td>
-                        <td><?php echo ($req->response_at==TRUE)? $req->response_at : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$req->id,'Tanggapi')."</button>"; ?>
+                        <td><?php echo $req->kode_berkas;?></td>
+                        <td><?php echo $req->nama_berkas;?></td>
+                        <td><?php echo ($req->berkas_upload==TRUE)? $req->date_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$req->no_req,'Tanggapi')."</button>"; ?>
                           
                         </td>
-                        <td><?php echo ($req->response_at==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                        <td><?php echo ($req->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
                       </tr>
                       <?php $no++; };?>
                     </tbody>
