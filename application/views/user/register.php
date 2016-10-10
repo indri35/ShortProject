@@ -10,7 +10,8 @@
                       <div class="form-group form-horizontal">
                           <label for="nik" class="control-label col-lg-3">NIK <font color="red">*</font></label>
                           <div class="col-lg-9">
-                              <input class=" form-control" name="nik" type="text" placeholder="Isikan NIK Pemohon." required><br/>
+                              <input class=" form-control" name="nik" type="text" placeholder="Isikan NIK Pemohon." required>
+                              <?php echo form_error('nik'); ?><br/>
                           </div>
                       </div>
                       <div class="form-group form-horizontal">
@@ -40,7 +41,8 @@
                       <div class="form-group form-horizontal">
                           <label for="email" class="control-label col-lg-3">Email <font color="red">*</font></label>
                           <div class="col-lg-9">
-                              <input class=" form-control" name="email" type="email" placeholder="Isikan Alamat Email Pemohon." required><br/>
+                              <input class=" form-control" name="email" type="email" placeholder="Isikan Alamat Email Pemohon." required>
+                              <?php echo form_error('email'); ?><br/>
                           </div>
                       </div>
                       <div class="form-group form-horizontal">
@@ -53,7 +55,7 @@
                           <label for="ktp" class="control-label col-lg-3">File KTP <font color="red">*</font></label>
                           <div class="col-lg-9">
                               <input type="file"  name="userfile" id="gamgam" required>
-                              <font class="help-block">Upload file dengan nama file NIK anda.</font>
+                              <font class="help-block">Upload ktp dengan format .jpg|.png</font>
                           </div>    
                       </div>
                       <div>

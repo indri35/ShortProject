@@ -210,10 +210,7 @@ class UserPage extends CI_Controller {
         
         public function do_upload(){
                 $config['upload_path'] = 'assets/ktp/';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']     = '1000';
-                $config['max_width']  = '1024';
-                $config['max_height']  = '768';
+                $config['allowed_types'] = 'jpg|png';
 
                 $this->load->library('upload', $config);
 
@@ -227,7 +224,25 @@ class UserPage extends CI_Controller {
                 }
                         
                 // selesai upload foto, berikut adalah input database
-                        
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules(
+                    'email', 'email', 'trim|required|valid_email|callback_isEmailExist'
+                );
+                $this->form_validation->set_rules(
+                    'nik', 'nik', 'trim|required|callback_isNIKExist'
+                );
+
+
+                if ($this->form_validation->run() == FALSE)
+                {
+                    // fails
+                    $this->load->view('user/header');
+                    $this->load->view('user/register');
+                    $this->load->view('user/footer');
+                }
+                else
+                {
+
                 $data = array(
                                 'hak_akses' => $this->input->post('hak_akses'),
                                 'nik' => $this->input->post('nik'),
@@ -240,9 +255,40 @@ class UserPage extends CI_Controller {
                                 'ktp' => $gambar_value
                                 );
                 $this->model_user->addUser('t_user',$data); //passing variable $data ke products_model
-                
-                redirect('UserPage/form_perorangan'); //redirect page ke halaman utama controller products   
+                echo "<script>window.alert('Registrasi berhasil, silahkan lakukan login.')
+           window.location.href='login/';</script>";//redirect page ke halaman utama controller products 
+                }  
         }
+
+        public function isEmailExist($email) {
+                $this->load->library('form_validation');
+                $this->load->model('user');
+                $is_exist = $this->user->isEmailExist($email);
+
+                if ($is_exist) {
+                    $this->form_validation->set_message(
+                        'isEmailExist', '<font size="3" color=red>Email already registered.</font>'
+                    );    
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+        public function isNIKExist($nik) {
+                $this->load->library('form_validation');
+                $this->load->model('user');
+                $is_exist = $this->user->isNIKExist($nik);
+
+                if ($is_exist) {
+                    $this->form_validation->set_message(
+                        'isNIKExist', '<font size="3" color=red>NIK already registered.</font>'
+                    );    
+                    return false;
+                } else {
+                    return true;
+                }
+            }
 
         public function edit_profil_data(){
                 $config['upload_path'] = 'assets/ktp/';

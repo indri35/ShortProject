@@ -31,5 +31,29 @@ Class User extends CI_Model
          }
       }    
   }
+
+  function isEmailExist($email) {
+    $this->db->select('id');
+    $this->db->where('email', $email);
+    $query = $this->db->get('t_user');
+
+    if ($query->num_rows() > 0) {
+        return true;
+      } else {
+          return false;
+      }
+  }
+
+  function isNIKExist($nik) {
+    $this->db->select('id');
+    $this->db->where('nik', $nik);
+    $query = $this->db->get('t_user');
+
+    if ($query->num_rows() > 0) {
+        return true;
+      } else {
+          return false;
+      }
+  }
 }
 ?>
