@@ -21,7 +21,7 @@
                 <h3 class="box-title">Document Request List</h3>
               </div><!-- /.box-header -->
               <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped dataTable text-center">
+                <table id="example1" class="table table-bordered table-striped dataTable">
                   <thead>
                     <tr role="row">
                       <th>No</th>

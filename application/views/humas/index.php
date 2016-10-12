@@ -77,7 +77,7 @@
                   <h3 class="box-title">Request responded</h3>
                 </div><!-- /.box-header -->
                   <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped dataTable text-center">
+                    <table id="example1" class="table table-bordered table-striped dataTable">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -113,7 +113,7 @@
                   <h3 class="box-title">Request pending</h3>
                 </div><!-- /.box-header -->
                   <div class="box-body">
-                    <table id="example3" class="table table-bordered table-striped dataTable text-center">
+                    <table id="example3" class="table table-bordered table-striped dataTable">
                       <thead>
                         <tr>
                           <th>No</th>

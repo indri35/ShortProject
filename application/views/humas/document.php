@@ -22,7 +22,7 @@
               <a class="btn btn-primary" href="<?= base_url() ?>humas/exportExcel">Export to Excel</a>
             </div><!-- /.box-header -->
               <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped dataTable text-center">
+                <table id="example1" class="table table-bordered table-striped dataTable">
                   <thead>
                     <tr>
                       <th>No</th>
