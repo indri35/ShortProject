@@ -1,4 +1,5 @@
 <?php
+
 class Humas extends CI_Controller{
     
     function __construct() {
@@ -276,6 +277,83 @@ class Humas extends CI_Controller{
             $this->session->unset_userdata('humas');
             session_destroy();
             redirect('UserPage/', 'refresh');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function exportExcel(){
+    if($this->session->userdata('humas'))
+        {
+            $data=$this->model_humas->getAlldoc();
+          
+            $this->load->library("PHPExcel/Classes/PHPExcel");
+ 
+            //membuat objek PHPExcel
+            $objPHPExcel = new PHPExcel();
+
+            //membuat heading
+            $heading=array('No','Id','Kode berkas','Tercatat pada','Nama berkas','Kategori','Deskripsi','Kepemilikan');
+
+            $rowNumberH = 1;
+            $colH = 'A';
+            foreach($heading as $h){
+                $objPHPExcel->getActiveSheet(0)->setCellValue($colH.$rowNumberH,$h);
+                $colH++;   
+            }
+
+            $totaln=$data->num_rows();
+            $maxrow=$totaln+1;
+            // Isi
+            $no=1;
+            $row=2;
+            foreach ($data->result() as $dat) {
+            //echo $dat->id;
+            
+            //set Sheet yang akan diolah 
+            $objPHPExcel->setActiveSheetIndex(0)
+                    //mengisikan value pada tiap-tiap cell, A1 cell 
+                                        ->setCellValue('A'.$row, $no)
+                                        ->setCellValue('B'.$row, $dat->id)
+                                        ->setCellValue('C'.$row, $dat->kode_berkas)
+                                        ->setCellValue('D'.$row, $dat->upload_at)
+                                        ->setCellValue('E'.$row, $dat->nama_berkas)
+                                        ->setCellValue('F'.$row, $dat->kategori)
+                                        ->setCellValue('G'.$row, $dat->deskripsi)
+                                        ->setCellValue('H'.$row, $dat->kode_skpd);
+                                        $no++;
+                                        $row++;
+            }
+
+            //border tabel
+            $styleArray = array(
+                'borders' => array(
+                    'allborders' => array(
+                        'style' => PHPExcel_Style_Border::BORDER_THIN
+                    )
+                )
+            );
+            $objPHPExcel->getActiveSheet()->getStyle('A1:H'.$maxrow)->applyFromArray($styleArray);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->getFont()->setBold(true);
+            //set title pada sheet (me rename nama sheet)
+            $objPHPExcel->getActiveSheet()->setTitle('Excel Pertama');
+ 
+            //mulai menyimpan excel format xlsx, kalau ingin xls ganti Excel2007 menjadi Excel5          
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+ 
+            //sesuaikan headernya 
+            header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+            header("Cache-Control: no-store, no-cache, must-revalidate");
+            header("Cache-Control: post-check=0, pre-check=0", false);
+            header("Pragma: no-cache");
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            //ubah nama file saat diunduh
+            header('Content-Disposition: attachment;filename="hasilExcel.xlsx"');
+            //unduh file
+            $objWriter->save("php://output");
         }
     else
         {
