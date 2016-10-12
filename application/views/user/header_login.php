@@ -49,14 +49,12 @@
 </head>
 <body>
     <ul class="topnav">
-  <li><a  href="<?php echo base_url() ?>UserPage/profil/">Hello <b><?php echo $this->session->userdata('nama'); ?></b></a></li>
-  <li><a href="<?php echo base_url() ?>UserPage/my_request">Request Saya</a></li>
-  <li class="right"><a href="<?php echo base_url() ?>UserPage/logout">Logout</a></li>
+  
 </ul>
 
     <div class="brand">Layanan Informasi Publik</div>
     <div class="address-bar">Sesuai UU No. 14 Tahun 2008 Tentang KIP - Pemerintah Kota</div>
-
+<a  href="<?php echo base_url() ?>UserPage/profil/">Hello <b><?php echo $this->session->userdata('nama'); ?></b></a>
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -69,7 +67,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
+                <a class="navbar-brand" href="index.html">PPID Kota Bogor</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -92,26 +90,14 @@
                                 <a href="<?php echo base_url() ?>UserPage/form_tidak_berbadan_hukum">Kelompok Tidak Berbadan Hukum</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span>Download</span>
-                        </a>
-                      <ul class="dropdown-menu">
-                            <li>
-                                <a href="<?php echo base_url() ?>UserPage/form_keberatan" target="_blank">Form Keberatan</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
+
+                      <li><a href="<?php echo base_url() ?>UserPage/my_request">Request Saya</a></li>
+                     
                     <li>
                         <a href="<?php echo base_url() ?>UserPage/dokumen">Daftar Dokumen</a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url() ?>UserPage/about">Tentang</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url() ?>UserPage/kontak">Kontak Kami</a>
-                    </li>
+                     <li class="right"><a href="<?php echo base_url() ?>UserPage/logout">Logout</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
