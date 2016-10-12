@@ -55,5 +55,55 @@ Class User extends CI_Model
           return false;
       }
   }
+
+  public function temp_reset_password($temp_pass){
+    $data =array(
+                'email' =>$this->input->post('email'),
+                'reset_pass'=>$temp_pass);
+                $email = $data['email'];
+
+    if($data){
+        $this->db->where('email', $email);
+        $this->db->update('t_user', $data);  
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+  }
+
+  public function is_temp_pass_valid($temp_pass){
+      $this->db->where('reset_pass', $temp_pass);
+      $query = $this->db->get('t_user');
+      if($query->num_rows() == 1){
+          return TRUE;
+      }
+      else return FALSE;
+  }
+
+  public function email_exists(){
+    $email = $this->input->post('email');
+    $query = $this->db->query("SELECT email, password FROM t_user WHERE email='$email'");    
+    if($row = $query->row()){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+ }
+
+  function getUserPass($temp_pass)
+  {
+    //select produk berdasarkan id yang dimiliki
+    $this->db->where('reset_pass', $temp_pass); //Akan melakukan select terhadap row yang memiliki productId sesuai dengan productId yang telah dipilih
+        $this->db->select("*");
+        $this->db->from("t_user");
+        
+        return $this->db->get();
+  }
+
+  function editNewPass($daba,$data,$reset_pass)
+  { 
+      $this->db->where($reset_pass);
+      $this->db->update($daba, $data);
+  }
 }
 ?>

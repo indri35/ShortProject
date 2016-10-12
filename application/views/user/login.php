@@ -31,7 +31,7 @@
                           </div>
                       </div>
                   </form>
-                  <a href="#">I forgot my password</a><br>
+                  <a href="<?php echo base_url() ?>UserPage/recover">I forgot my password</a><br>
                   <a href="<?php echo base_url() ?>UserPage/register" class="text-center">Register a new membership</a>
             </div>
         </div>

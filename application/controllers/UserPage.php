@@ -425,4 +425,90 @@ class UserPage extends CI_Controller {
                     $this->load->view('user/footer');
                 }
         }
+
+        public function recover(){
+            //Loads the view for the recover password process.
+            $this->load->view('user/header'); 
+            $this->load->view('user/forgot');
+            $this->load->view('user/footer');
+        }
+
+        public function recover_password(){
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|callback_validate_credentials');
+
+                    //check if email is in the database
+                $this->load->model('user');
+                if($this->user->email_exists()){
+                    //$password is the varible to be sent to the user's email 
+                    $temp_pass = md5(uniqid());
+                    //send email with #password as a link
+                    $this->load->library('email');
+                    $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://smtp.gmail.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'shortproject1@gmail.com', # Change this
+                        'smtp_pass' => 'short123', # Change this too
+                        'mailtype'  => 'html', 
+                        'charset'   => 'utf-8'
+                    );
+                    $this->email->initialize($config);
+                    $this->email->set_newline("\r\n");
+                    $this->email->clear();
+                    $this->email->from('shortproject1@gmail.com');
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject("Reset your Password");
+
+                    $message = "<p>This email has been sent as a request to reset our password</p>";
+                    $message .= "<p><a href=".base_url()."UserPage/reset_password/".$temp_pass.">Click here </a>if you want to reset your password,
+                                if not, then ignore</p>";
+                    $this->email->message($message);
+
+                    if($this->email->send()){
+                        $this->load->model('user');
+                        if($this->user->temp_reset_password($temp_pass)){
+                            echo "check your email for instructions, thank you";
+                        }
+                    }
+                    else{
+                        echo "email was not sent, please contact your administrator";
+                    }
+
+                }else{
+                    echo "your email is not in our database";
+                }
+        }
+        public function reset_password($temp_pass){
+            $this->load->model('user');
+            $data['listTable'] = $this->user->getUserPass($temp_pass);
+            if($this->user->is_temp_pass_valid($temp_pass)){
+
+                $this->load->view('user/header'); 
+                $this->load->view('user/reset_password', $data);
+                $this->load->view('user/footer');
+
+            }else{
+                echo "the key is not valid";    
+            }
+
+        }
+        public function update_password(){
+            $this->load->library('form_validation');
+                $this->form_validation->set_rules('password', 'Password', 'required|trim');
+                $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|trim|matches[password]');
+                    if($this->form_validation->run()){
+                    $data = array(
+                                'password' => md5($this->input->post('password'))
+                                );
+                    $condition['reset_pass'] = $this->input->post('reset_pass');
+                    $this->load->model('user');
+                    $this->user->editNewPass('t_user',$data, $condition); //passing variable $data ke products_model
+                    echo "<script>window.alert('reset password berhasil, silahkan lakukan login.')
+           window.location.href='login/';</script>";
+                    }else{
+                    echo "<script>window.alert('password do not match')
+           window.location.href='javascript:history.back()';</script>"; 
+                    }
+        }
 }
