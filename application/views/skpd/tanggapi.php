@@ -35,7 +35,7 @@
                   <label for="dokumen">Document file <font color="red">*</font></label>
                   <div>
                       <input type="file"  name="userfile" id="gamgam" required>
-                      <font class="help-block">Upload file dengan format .jpg .png.</font>
+                      <font class="help-block">Upload file dengan format .jpg .png .xls .doc .pdf.</font>
                   </div>    
                 </div>
                 <div>

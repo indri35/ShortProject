@@ -193,6 +193,21 @@ class Skpd extends CI_Controller{
         }
     }
 
+
+    public function show(){
+    if($this->session->userdata('skpd'))
+        {
+            $this->load->view('skpd/headerform');
+            $this->load->view('skpd/form_berbadan_hukum');
+            $this->load->view('skpd/footerform');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
     public function create(){
     if($this->session->userdata('skpd'))
         {
@@ -210,15 +225,36 @@ class Skpd extends CI_Controller{
     public function store(){
     if($this->session->userdata('skpd'))
         {
+            $config['upload_path'] = 'assets/dokumen/';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|csv|xls|xlsx|doc|docx';
+            $config['max_size']     = '1000';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()){
+                $error = array('error' => $this->upload->display_errors());
+                $gambar_value = 'nopic.png';
+            }
+            else{
+                $data = array('upload_data' => $this->upload->data());
+                $gambar_value = $this->input->post('gambar_value');
+            }
+                    
+            // selesai upload foto, berikut adalah input database
             $data = array(
                 'kode_berkas'       =>  $this->input->post('kode_berkas'),
                 'upload_at'      =>  $this->input->post('upload_at'),
                 'nama_berkas'    =>  $this->input->post('nama_berkas'),
+                'berkas' => $gambar_value,
                 'kategori'    =>  $this->input->post('kategori'),
                 'deskripsi'    =>  $this->input->post('deskripsi'),
                 'kode_skpd'    =>  $this->input->post('kode_skpd')
                 );
+
             $this->db->insert('t_dokumen',$data);
+            
             redirect('skpd/document'); 
         }
     else
@@ -249,15 +285,35 @@ class Skpd extends CI_Controller{
     public function updatee(){
     if($this->session->userdata('skpd'))
         {
+            $config['upload_path'] = 'assets/dokumen/';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|csv|xls|xlsx|doc|docx';
+            $config['max_size']     = '1000';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()){
+                $error = array('error' => $this->upload->display_errors());
+                $gambar_value = 'nopic.png';
+            }
+            else{
+                $data = array('upload_data' => $this->upload->data());
+                $gambar_value = $this->input->post('gambar_value');
+            }
+                    
+            // selesai upload foto, berikut adalah input database
             $id = $this->input->post('id');
             $data = array(
                 'kode_berkas'      =>  $this->input->post('kode_berkas'),
                 'upload_at'    =>  $this->input->post('upload_at'),
                 'nama_berkas'    =>  $this->input->post('nama_berkas'),
+                'berkas' => $gambar_value,
                 'kategori'    =>  $this->input->post('kategori'),
                 'deskripsi'    =>  $this->input->post('deskripsi'),
                 'kode_skpd'    =>  $this->input->post('kode_skpd')
                 );
+
             $this->db->where('id',$id);
             $this->db->update('t_dokumen',$data);
             redirect('skpd/document');

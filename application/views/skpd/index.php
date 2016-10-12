@@ -71,6 +71,7 @@
                         <th>NIK pemohon</th>
                         <th>Kode berkas</th>
                         <th>Nama berkas</th>
+                        <th>Detail pemohon</th>
                         <th>Tanggal respon</th>
                         <th>Status</th>
                       </tr>
@@ -84,6 +85,7 @@
                         <td><?php echo $req->nik_pemohon;?></td>
                         <td><?php echo $req->kode_berkas;?></td>
                         <td><?php echo $req->nama_berkas;?></td>
+                        <td><a href="<?= base_url() ?>skpd/show/<?= $req->nik_pemohon ?>" class="btn btn-info"> Detail</a></td>
                         <td><?php echo ($req->berkas_upload==TRUE)? $req->date_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$req->no_req,'Tanggapi')."</button>"; ?>
                           
                         </td>

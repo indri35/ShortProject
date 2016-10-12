@@ -19,6 +19,7 @@
             <div class="box-header">
               <h3 class="box-title">Document List</h3>
               <br /><br />
+              <a class="btn btn-success" href="<?= base_url() ?>humas/createDoc">Add Document</a>
               <a class="btn btn-primary" href="<?= base_url() ?>humas/exportExcel">Export to Excel</a>
             </div><!-- /.box-header -->
               <div class="box-body">
@@ -29,6 +30,7 @@
                       <th>Kode berkas</th>
                       <th>Tercatat pada</th>
                       <th>Nama berkas</th>
+                      <th>Berkas</th>
                       <th>Kategori</th>
                       <th>Deskripsi</th>
                       <th>Kepemilikan</th>
@@ -43,6 +45,7 @@
                       <td><?php echo $doc->kode_berkas;?></td>
                       <td><?php echo $doc->upload_at;?></td>
                       <td> <?php echo $doc->nama_berkas;?></td>
+                      <td> <?php echo $doc->berkas;?></td>
                       <td> <?php echo $doc->kategori;?></td>
                       <td> <?php echo $doc->deskripsi;?></td>
                       <td> <?php echo $doc->kode_skpd;?></td>

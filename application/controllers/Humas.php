@@ -170,6 +170,49 @@ class Humas extends CI_Controller{
         }
     }
 
+    //upload ketika isi list
+    public function doc_upload(){
+    if($this->session->userdata('humas'))
+        {
+            $config['upload_path'] = 'assets/dokumen/';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|csv|xls|xlsx|doc|docx';
+            $config['max_size']     = '1000';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()){
+                $error = array('error' => $this->upload->display_errors());
+                $gambar_value = 'nopic.png';
+            }
+            else{
+                $data = array('upload_data' => $this->upload->data());
+                $gambar_value = $this->input->post('gambar_value');
+            }
+                    
+            // selesai upload foto, berikut adalah input database   
+            $data = array(
+                            'kode_berkas' => $this->input->post('kode_berkas'),
+                            'upload_at' => $this->input->post('upload_at'), 
+                            'nama_berkas' => $this->input->post('nama_berkas'),  
+                            'berkas' => $gambar_value,
+                            'kategori' => $this->input->post('kategori'), 
+                            'deskripsi' => $this->input->post('deskripsi'), 
+                            'kode_skpd' => $this->input->post('kode_skpd'), 
+                         );
+
+            $this->db->insert('t_dokumen',$data);
+
+            redirect('humas/document');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
     public function create(){
     if($this->session->userdata('humas'))
         {
@@ -177,6 +220,22 @@ class Humas extends CI_Controller{
 
             $this->load->view('humas/header');
             $this->load->view('humas/create',$data);
+            $this->load->view('humas/footer');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function createDoc(){
+    if($this->session->userdata('humas'))
+        {
+        $data['skpd']=$this->model_humas->getAllSkpd();
+
+            $this->load->view('humas/header');
+            $this->load->view('humas/createDoc',$data);
             $this->load->view('humas/footer');
         }
     else

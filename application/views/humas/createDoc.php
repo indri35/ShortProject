@@ -21,8 +21,8 @@
                 <h3 class="box-title">Add User</h3>
               </div><!-- /.box-header -->
               <!-- form start -->
-              <?php echo form_open_multipart('skpd/store'); ?>
-              <?php echo form_hidden('kode_skpd',$this->session->userdata('kode_skpd')); ?>
+              <?php echo form_open_multipart('humas/doc_upload'); ?>
+  
                 <div class="box-body">
                     <div class="form-group">
                       <input class="form-control" type="hidden" name="upload_at" value="<?php echo date("Y-m-d"); ?>" readonly>
@@ -34,6 +34,14 @@
                     <div class="form-group">
                       <label>Nama Berkas</label>
                       <input type="text" name="nama_berkas" class="form-control"  placeholder="Berkas warga negara indonesia">
+                    </div>
+                    <div class="form-group">
+                      <label>Kepemilikan Berkas</label>
+                      <select type="text" name="kode_skpd" class="form-control" placeholder="Nama SKPD">
+                      <?php foreach ($skpd->result() as $s) { ?>
+                        <option value="<?php echo $s->singkatan; ?>"><?php echo $s->nama; ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>kategori</label>

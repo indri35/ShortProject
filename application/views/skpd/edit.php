@@ -21,7 +21,7 @@
                 <h3 class="box-title">Add User</h3>
               </div><!-- /.box-header -->
               <!-- form start -->
-              <?php echo form_open('skpd/updatee'); ?>
+              <?php echo form_open_multipart('skpd/updatee'); ?>
               <?php echo form_hidden('id',$this->uri->segment(3)); ?>
               <?php echo form_hidden('kode_skpd',$this->session->userdata('kode_skpd')); ?>
                 <div class="box-body">
@@ -37,6 +37,10 @@
                       <input type="text" name="nama_berkas" value="<?php echo $docs['nama_berkas']; ?>" class="form-control"  placeholder="Berkas warga negara indonesia">
                     </div>
                     <div class="form-group">
+                      <label>Berkas</label>
+                      <input type="text" value="<?php echo $docs['berkas']; ?>" class="form-control"  readonly>
+                    </div>
+                    <div class="form-group">
                       <label>kategori</label>
                       <input type="text" name="kategori" value="<?php echo $docs['kategori']; ?>" class="form-control"  placeholder="Masyarakat">
                     </div>
@@ -44,7 +48,18 @@
                       <label>Deskripsi</label>
                       <input type="text" name="deskripsi" value="<?php echo $docs['deskripsi']; ?>" class="form-control"  placeholder="berkas berisikan ...">
                     </div>
-                  <button type="submit" class="btn btn-primary" >Update</button>
+                    <div class="form-group">
+                    <label for="dokumen">Document file <font color="red">*</font></label>
+                    <div>
+                        <input type="file"  name="userfile" id="gamgam">
+                        <font class="help-block">Upload file dengan format .jpg .png .xls .doc .pdf. <br />
+                        Pastikan nama file <strong>berbeda dengan nama file sebelumnya.</strong></font>
+                    </div>    
+                  </div>
+                  <div>
+                    <input type="hidden" name="gambar_value" id="gamgum">
+                  </div>
+                  <button type="submit" class="btn btn-primary" onclick="coba()">Update</button>
               </div><!-- /.box-body -->
             <?php echo form_close();?>
           </div><!-- /.box -->
