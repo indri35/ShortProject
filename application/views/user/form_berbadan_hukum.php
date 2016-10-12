@@ -97,6 +97,7 @@
                                         <br/>
                                         <br/>(<?php echo $this->session->userdata('nama'); ?>)</font>
                                         <input class=" form-control" type="hidden" name="nik_pemohon" value="<?php echo $this->session->userdata('nik'); ?>" >
+                                        <input class=" form-control" type="hidden" name="jenis_request" value="badan-hukum" >
                                         <input class=" form-control" type="hidden" name="request_at" value="<?php echo date("Y-m-d"); ?>" >
                                     <div class="col-lg-offset-9 col-lg-3">
                                         <input type="submit" class="btn btn-primary" onclick="coba()" value="Submit" name="simpan">

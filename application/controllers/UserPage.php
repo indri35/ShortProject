@@ -331,6 +331,7 @@ class UserPage extends CI_Controller {
                                 'nik_pemohon' => $this->input->post('nik_pemohon'),
                                 'request_at' => $this->input->post('request_at'),
                                 'file_pendukung' => $this->input->post('file_pendukung'),
+                                'jenis_request' => $this->input->post('jenis_request'),
                                 'tujuan_permohonan_info' => $this->input->post('tujuan_permohonan_info')
                                 );
                 $this->model_request->addRequest('t_request',$data); //passing variable $data ke products_model
@@ -369,6 +370,7 @@ class UserPage extends CI_Controller {
                                 'nik_pemohon' => $this->input->post('nik_pemohon'),
                                 'request_at' => $this->input->post('request_at'),
                                 'file_pendukung' => $gambar_value,
+                                'jenis_request' => $this->input->post('jenis_request'),
                                 'tujuan_permohonan_info' => $this->input->post('tujuan_permohonan_info')
                                 );
                 $this->model_request->addRequest('t_request',$data); //passing variable $data ke products_model

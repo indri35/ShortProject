@@ -65,7 +65,7 @@
                         <input type="submit" class="btn btn-primary" onclick="coba()" value="Register" name="simpan">
                       </div>
                   <?php echo form_close(); ?>
-                  <a href="<?php echo base_url() ?>UserPage/register" class="text-center">I already have a membership</a>
+                  <a href="<?php echo base_url() ?>UserPage/login" class="text-center">I already have a membership</a>
             </div>
         </div>
     </div>
