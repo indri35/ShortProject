@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-lg-3">
               <!-- small box -->
-              <div class="small-box bg-aqua">
+              <div class="small-box bg-green">
                 <div class="inner">
                   <h3><?php echo $sent->num_rows();?></h3>
                   <p>Request responded</p>
@@ -32,7 +32,7 @@
             </div><!-- ./col -->
             <div class="col-lg-3 ">
               <!-- small box -->
-              <div class="small-box bg-green">
+              <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3><?php echo $pending->num_rows();?></h3>
                   <p>Request pending</p>
@@ -84,6 +84,7 @@
                           <th>Kode berkas</th>
                           <th>Nama berkas</th>
                           <th>Tujuan permohonan</th>
+                          <th>Detail pemohon</th>
                           <th>Tanggal respon</th>
                           <th>Status</th>
                         </tr>
@@ -97,6 +98,7 @@
                           <td><?php echo $s->kode_berkas;?></td>
                           <td><?php echo $s->nama_berkas;?></td>
                           <td><?php echo $s->kode_skpd;?></td>
+                          <td><a href="<?= base_url() ?>humas/show/<?= $s->nik_pemohon ?>/<?= $s->no_req ?>" class="btn btn-success"> Detail</a></td>
                           <td><?php echo ($s->berkas_upload==TRUE)? $s->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$s->no_req,'Tanggapi')."</button>"; ?>
                           </td>
                           <td><?php echo ($s->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
@@ -120,6 +122,7 @@
                           <th>Kode berkas</th>
                           <th>Nama berkas</th>
                           <th>Tujuan permohonan</th>
+                          <th>Detail pemohon</th>
                           <th>Tanggal respon</th>
                           <th>Status</th>
                         </tr>
@@ -133,6 +136,7 @@
                           <td><?php echo $p->kode_berkas;?></td>
                           <td><?php echo $p->nama_berkas;?></td>
                           <td><?php echo $p->kode_skpd;?></td>
+                          <td><a href="<?= base_url() ?>humas/show/<?= $p->nik_pemohon ?>/<?= $p->no_req ?>" class="btn btn-info"> Detail</a></td>
                           <td><?php echo ($p->berkas_upload==TRUE)? $p->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$p->no_req,'Tanggapi')."</button>"; ?>
                           </td>
                           <td><?php echo ($p->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>

@@ -29,6 +29,7 @@
                       <th>Nama berkas</th>
                       <th>NIK pemohon</th>
                       <th>Tujuan permohonan</th>
+                      <th>Detail pemohon</th>
                       <th>Berkas</th>
                       <th>Tanggal respon</th>
                     </tr>
@@ -43,6 +44,7 @@
                       <td><?php echo $sent->nama_berkas;?></td>
                       <td><?php echo $sent->nik_pemohon;?></td>
                       <td><?php echo $sent->kode_skpd;?></td>
+                      <td><a href="<?= base_url() ?>humas/show/<?= $sent->nik_pemohon ?>/<?= $sent->no_req ?>" class="btn btn-success"> Detail</a></td>
                       <td><?php echo ($sent->berkas_upload==TRUE)? $sent->date_upload : '<button type="button" class="btn btn-success">Tanggapi</button>'; ?>
                       </td>
                       <td><?php echo ($sent->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>

@@ -197,8 +197,17 @@ class Skpd extends CI_Controller{
     public function show(){
     if($this->session->userdata('skpd'))
         {
+            $this->load->model('model_skpd');
+            $nik = $this->uri->segment(3);
+            $a['data'] = $this->model_skpd->pemohon($nik)->row_array();
+
+            $id = $this->uri->segment(4);
+            $b['req'] = $this->model_skpd->show($id)->row_array();
+
+            $merge = array_merge($a, $b);
+
             $this->load->view('skpd/headerform');
-            $this->load->view('skpd/form_berbadan_hukum');
+            $this->load->view('skpd/showdetail',$merge);
             $this->load->view('skpd/footerform');
         }
     else

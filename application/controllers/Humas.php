@@ -112,6 +112,29 @@ class Humas extends CI_Controller{
             }
     }
 
+    public function show(){
+    if($this->session->userdata('humas')){
+
+            $this->load->model('model_skpd');
+            $nik = $this->uri->segment(3);
+            $a['data'] = $this->model_skpd->pemohon($nik)->row_array();
+
+            $id = $this->uri->segment(4);
+            $b['req'] = $this->model_skpd->show($id)->row_array();
+
+            $merge = array_merge($a, $b);
+
+            $this->load->view('humas/headerform');
+            $this->load->view('humas/showdetail',$merge);
+            $this->load->view('humas/footerform');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
     public function tanggapi(){
     if($this->session->userdata('humas'))
         {
@@ -275,7 +298,7 @@ class Humas extends CI_Controller{
         {
             $this->load->model('model_humas');
             $id = $this->uri->segment(3);
-            $a = $this->model_humas->user($id)->row_array();
+    $a = $this->model_humas->user($id)->row_array();
             $b=$this->model_humas->getAllSkpd();
 
             $data= array( 'user'=> $a, 'skpd' => $b);

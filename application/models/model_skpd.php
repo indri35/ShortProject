@@ -23,12 +23,20 @@ class Model_skpd extends CI_model{
         return $this->db->get_where('t_request',array('id'=>$id));
     }
 
+    function show($id){
+        return $this->db->get_where('t_doc_req_data',array('no_req'=>$id));
+    }
+
     function tanggapi($id){
         return $this->db->get_where('t_request',array('id'=>$id));
     }
 
     function dokumen($id){
         return $this->db->get_where('t_dokumen',array('id'=>$id));
+    }
+
+    function pemohon($nik){
+        return $this->db->get_where('t_user',array('nik'=>$nik));
     }
 
     function profile($id){

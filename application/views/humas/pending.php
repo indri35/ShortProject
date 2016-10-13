@@ -30,6 +30,7 @@
                       <th>NIK pemohon</th>
                       <th>Tujuan permohonan</th>
                       <th>Berkas</th>
+                      <th>Detail pemohon</th>
                       <th>Tanggal respon</th>
                     </tr>
                   </thead>
@@ -43,6 +44,7 @@
                       <td><?php echo $pen->nama_berkas;?></td>
                       <td><?php echo $pen->nik_pemohon;?></td>
                       <td><?php echo $pen->kode_skpd;?></td>
+                      <td><a href="<?= base_url() ?>humas/show/<?= $pen->nik_pemohon ?>/<?= $pen->no_req ?>" class="btn btn-info"> Detail</a></td>
                       <td><?php echo ($pen->berkas_upload==TRUE)? $pen->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$pen->no_req,'Tanggapi')."</button>"; ?>
                       </td>
                       <td><?php echo ($pen->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
