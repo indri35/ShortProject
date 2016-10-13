@@ -42,6 +42,10 @@ class Model_humas extends CI_model{
     function user($id){
         return $this->db->get_where('t_user',array('id'=>$id));
     }
+    
+    function dokumen($id){
+        return $this->db->get_where('t_dokumen',array('id'=>$id));
+    }
 
 }
 

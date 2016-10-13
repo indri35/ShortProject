@@ -34,6 +34,7 @@
                       <th>Kategori</th>
                       <th>Deskripsi</th>
                       <th>Kepemilikan</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -49,6 +50,8 @@
                       <td> <?php echo $doc->kategori;?></td>
                       <td> <?php echo $doc->deskripsi;?></td>
                       <td> <?php echo $doc->kode_skpd;?></td>
+                      <td><a class="btn btn-primary" href="<?= base_url() ?>humas/editt/<?= $doc->id ?>">Update</a>
+                          <a class="btn btn-danger" href="<?= base_url() ?>humas/deletee/<?= $doc->id ?>" onClick="return doconfirm();">Delete</a></td>
                     <?php $no++; };?>
                   </tbody>
                 </table>

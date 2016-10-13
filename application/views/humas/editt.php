@@ -4,13 +4,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Edit Berkas
-            <small>for SKPD</small>
+            Add User
+            <small>for Admin</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="<?= base_url() ?>skpd/document">Document list</a></li>
-            <li class="active">Edit berkas</li>
+            <li><a href="<?= base_url() ?>humas/index"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="<?= base_url() ?>humas/user">User list</a></li>
+            <li class="active">Add User</li>
           </ol>
         </section>
       
@@ -21,7 +21,7 @@
                 <h3 class="box-title">Add User</h3>
               </div><!-- /.box-header -->
               <!-- form start -->
-              <?php echo form_open_multipart('skpd/updatee'); ?>
+              <?php echo form_open_multipart('humas/updatee'); ?>
               <?php echo form_hidden('id',$this->uri->segment(3)); ?>
               <?php echo form_hidden('kode_skpd',$this->session->userdata('kode_skpd')); ?>
                 <div class="box-body">

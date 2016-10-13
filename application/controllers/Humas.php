@@ -269,6 +269,7 @@ class Humas extends CI_Controller{
         }
     }
 
+    //edit untuk user list
     public function edit(){
     if($this->session->userdata('humas'))
         {
@@ -289,6 +290,26 @@ class Humas extends CI_Controller{
             redirect('UserPage/login', 'refresh');
         }
     }
+
+    //edit untuk dokumen list
+    public function editt(){
+    if($this->session->userdata('humas'))
+        {
+            $this->load->model('model_humas');
+            $id = $this->uri->segment(3);
+            $data['docs'] = $this->model_humas->dokumen($id)->row_array();
+
+            $this->load->view('humas/header');
+            $this->load->view('humas/editt',$data);
+            $this->load->view('humas/footer');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
 
     public function update(){
     if($this->session->userdata('humas'))
@@ -336,6 +357,64 @@ class Humas extends CI_Controller{
             $this->session->unset_userdata('humas');
             session_destroy();
             redirect('UserPage/', 'refresh');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function updatee(){
+    if($this->session->userdata('humas'))
+        {
+            $config['upload_path'] = 'assets/dokumen/';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|csv|xls|xlsx|doc|docx';
+            $config['max_size']     = '1000';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()){
+                $error = array('error' => $this->upload->display_errors());
+                $gambar_value = 'nopic.png';
+            }
+            else{
+                $data = array('upload_data' => $this->upload->data());
+                $gambar_value = $this->input->post('gambar_value');
+            }
+                    
+            // selesai upload foto, berikut adalah input database
+            $id = $this->input->post('id');
+            $data = array(
+                'kode_berkas'      =>  $this->input->post('kode_berkas'),
+                'upload_at'    =>  $this->input->post('upload_at'),
+                'nama_berkas'    =>  $this->input->post('nama_berkas'),
+                'berkas' => $gambar_value,
+                'kategori'    =>  $this->input->post('kategori'),
+                'deskripsi'    =>  $this->input->post('deskripsi'),
+                'kode_skpd'    =>  $this->input->post('kode_skpd')
+                );
+
+            $this->db->where('id',$id);
+            $this->db->update('t_dokumen',$data);
+            redirect('humas/document');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function deletee(){
+    if($this->session->userdata('humas'))
+        {
+            $id = $this->uri->segment(3);
+            $this->db->where('id',$id);
+            $this->db->delete('t_dokumen');
+            redirect('humas/document');
         }
     else
         {
