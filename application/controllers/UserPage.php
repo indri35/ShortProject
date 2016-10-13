@@ -116,16 +116,6 @@ class UserPage extends CI_Controller {
             }
         }
 
-        public function relogin(){
-                $this->session->unset_userdata('logged_in');
-                session_destroy();
-                //If no session, redirect to login page
-                $this->load->helper(array('form'));
-                $this->load->view('user/header');
-                $this->load->view('user/relogin');
-                $this->load->view('user/footer');
-        }
-
         function logout(){
                 $this->session->unset_userdata('logged_in');
                 session_destroy();
@@ -293,9 +283,7 @@ class UserPage extends CI_Controller {
         public function edit_profil_data(){
                 $config['upload_path'] = 'assets/ktp/';
                 $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']     = '1000';
-                $config['max_width']  = '1024';
-                $config['max_height']  = '768';
+                $config['overwrite'] = TRUE;
 
                 $this->load->library('upload', $config);
 
@@ -322,7 +310,10 @@ class UserPage extends CI_Controller {
                 $condition['id'] = $this->input->post('id');
                 $this->model_user->editProfil('t_user',$data, $condition); //passing variable $data ke products_model
                 
-                redirect('UserPage/relogin'); //redirect page ke halaman utama controller products   
+                $this->session->unset_userdata('logged_in');
+                session_destroy();
+                echo "<script>window.alert('Edit profil berhasil, silahkan lakukan login ulang.')
+           window.location.href='login/';</script>"; //redirect page ke halaman utama controller products   
         }
 
         public function input_form_perorangan(){
