@@ -53,8 +53,8 @@
 </ul>
 
     <div class="brand">Layanan Informasi Publik</div>
-    <div class="address-bar">Sesuai UU No. 14 Tahun 2008 Tentang KIP - Pemerintah Kota</div>
-<a  href="<?php echo base_url() ?>UserPage/profil/">Hello <b><?php echo $this->session->userdata('nama'); ?></b></a>
+    <div class="address-bar">Sesuai UU No. 14 Tahun 2008 Tentang KIP - Pemerintah Kota Bogor</div>
+<h2 class="intro-text text-center"><a  href="<?php echo base_url() ?>UserPage/profil/">Hello <b><?php echo $this->session->userdata('nama'); ?></b></a></h2>
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
