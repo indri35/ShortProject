@@ -140,7 +140,11 @@ class Humas extends CI_Controller{
         {
             $this->load->model('model_skpd');
             $id = $this->uri->segment(3);
-            $data['reqs'] = $this->model_skpd->request($id)->row_array();
+            $a['reqs'] = $this->model_skpd->request($id)->row_array();
+
+            $b['doc']=$this->model_humas->getAllDoc();
+
+            $data = array_merge($a, $b);
 
             $this->load->view('humas/header');
             $this->load->view('humas/tanggapi',$data);
@@ -156,6 +160,11 @@ class Humas extends CI_Controller{
     public function do_upload(){
     if($this->session->userdata('humas'))
         {
+        if($this->input->post('doc') != 'NULL'){
+            $gambar_value = $this->input->post('doc');
+        }
+        else{
+
             $config['upload_path'] = 'assets/dokumen/';
             $config['allowed_types'] = 'gif|jpg|png|pdf|csv|xls|xlsx|doc|docx';
             $config['max_size']     = '1000';
@@ -172,7 +181,7 @@ class Humas extends CI_Controller{
                 $data = array('upload_data' => $this->upload->data());
                 $gambar_value = $this->input->post('gambar_value');
             }
-                    
+        }          
             // selesai upload foto, berikut adalah input database
             $date_upload=$this->input->post('date_upload');   
             $no_req= $this->input->post('no_req');     
@@ -239,7 +248,7 @@ class Humas extends CI_Controller{
     public function create(){
     if($this->session->userdata('humas'))
         {
-            $data['skpd']=$this->model_humas->getAllSkpd();
+            
 
             $this->load->view('humas/header');
             $this->load->view('humas/create',$data);
