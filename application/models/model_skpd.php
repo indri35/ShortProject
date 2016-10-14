@@ -4,7 +4,7 @@ class Model_skpd extends CI_model{
     
     function getAllPendingReq($kode_skpd){
         // mereturn seluruh data dari tabel t-request
-         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NULL AND kode_skpd='$kode_skpd';");
+         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NULL OR berkas_upload='' AND kode_skpd='$kode_skpd';");
     }
 
     function getAllSentReq($kode_skpd){

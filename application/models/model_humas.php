@@ -4,7 +4,7 @@ class Model_humas extends CI_model{
     
     function getAllPendingReq(){
         // mereturn seluruh data dari tabel t-request
-         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NULL;");
+         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NULL OR berkas_upload='';");
     }
 
     function getAllSentReq(){

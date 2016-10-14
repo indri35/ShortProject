@@ -175,7 +175,7 @@ class Humas extends CI_Controller{
 
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
-                $gambar_value = 'nopic.png';
+                $gambar_value = NULL;
             }
             else{
                 $data = array('upload_data' => $this->upload->data());

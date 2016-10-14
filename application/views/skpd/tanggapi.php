@@ -32,14 +32,24 @@
                   <input class="form-control" type="date" name="date_upload" value="<?php echo date("Y-m-d"); ?>" readonly>
                 </div>
                 <div class="form-group">
+                  <label>Gunakan file yang sudah ada</label>
+                  <select type="text" name="doc" class="form-control">
+                  <option value="NULL">Select document..</option>
+                  <?php foreach ($doc->result() as $d) { ?>
+                    <option value="<?php echo $d->berkas; ?>"><?php echo $d->berkas; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+                <h4><strong>Atau upload file baru </strong></h4> 
+                <div class="form-group">
                   <label for="dokumen">Document file <font color="red">*</font></label>
                   <div>
-                      <input type="file"  name="userfile" id="gamgam" required>
+                      <input type="file"  name="userfile" id="gamgam">
                       <font class="help-block">Upload file dengan format .jpg .png .xls .doc .pdf.</font>
                   </div>    
                 </div>
                 <div>
-                  <input type="hidden" name="gambar_value" id="gamgum">
+                  <input type="hidden" name="gambar_value" id="gamgum" required>
                 </div>
               </div><!-- /.box-body -->
               <div class="box-footer">

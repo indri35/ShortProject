@@ -106,7 +106,12 @@ class Skpd extends CI_Controller{
         { 
             $this->load->model('model_skpd');
             $id = $this->uri->segment(3);
-            $data['reqs'] = $this->model_skpd->tanggapi($id)->row_array();
+            $a['reqs'] = $this->model_skpd->tanggapi($id)->row_array();
+
+            $skpd= $this->session->userdata('kode_skpd');
+            $b['doc']=$this->model_skpd->getAllDoc($skpd);
+
+            $data = array_merge($a, $b);
 
             $this->load->view('skpd/header');
             $this->load->view('skpd/tanggapi',$data);
@@ -142,6 +147,10 @@ class Skpd extends CI_Controller{
     public function do_upload(){
     if($this->session->userdata('skpd'))
         {
+            if($this->input->post('doc') != 'NULL'){
+            $gambar_value = $this->input->post('doc');
+        }
+        else{
             $config['upload_path'] = 'assets/dokumen/';
             $config['allowed_types'] = 'gif|jpg|png|pdf|csv|xls|xlsx|doc|docx';
             $config['max_size']     = '1000';
@@ -152,12 +161,13 @@ class Skpd extends CI_Controller{
 
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
-                $gambar_value = 'nopic.png';
+                $gambar_value = FALSE;
             }
             else{
                 $data = array('upload_data' => $this->upload->data());
                 $gambar_value = $this->input->post('gambar_value');
             }
+        }
                     
             // selesai upload foto, berikut adalah input database
             $date_upload=$this->input->post('date_upload');   
@@ -171,6 +181,7 @@ class Skpd extends CI_Controller{
             $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value'  WHERE no_req='$no_req';");
 
             redirect('skpd/index'); //redirect page ke halaman utama controller products      
+            
         }
     else
         {
