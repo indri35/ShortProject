@@ -343,7 +343,7 @@ class UserPage extends CI_Controller {
 
         public function input_form_berbadan_hukum(){
                 $config['upload_path'] = 'assets/file_pendukung/';
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'pdf|jpg|png';
 
                 $this->load->library('upload', $config);
 

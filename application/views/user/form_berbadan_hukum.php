@@ -65,7 +65,7 @@
                                         <label for="ktp" class="control-label col-lg-3">Dokumen Akta <font color="red">*</font></label>
                                         <div class="col-lg-9">
                                             <input type="file"  name="userfile" id="gamgam" required>
-                                            <font class="help-block">Upload file dengan format .gif|.png|.jpg.</font>
+                                            <font class="help-block">Upload file dengan format .pdf|.png|.jpg.</font>
                                         </div>    
                                     </div>
                                     <div>

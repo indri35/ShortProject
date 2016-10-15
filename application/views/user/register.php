@@ -55,7 +55,7 @@
                           <label for="ktp" class="control-label col-lg-3">File KTP <font color="red">*</font></label>
                           <div class="col-lg-9">
                               <input type="file"  name="userfile" id="gamgam" required>
-                              <font class="help-block">Upload ktp dengan format .jpg|.png</font>
+                              <font class="help-block">Upload ktp dengan format .jpg|.png, nama file adalah nik</font>
                           </div>    
                       </div>
                       <div>
