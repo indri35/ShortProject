@@ -22,15 +22,15 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="checkbox icheck">
                           <label>
                             <input type="checkbox"> Remember Me
                           </label>
                         </div>
                       </div>
-                      <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                      <div class="col-xs-5">
+                        <button type="submit" class="btn-system btn-small">Sign In</button>
                       </div>
                     </div>
                   </form>

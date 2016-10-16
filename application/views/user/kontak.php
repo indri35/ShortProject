@@ -1,4 +1,4 @@
-<!-- Start Page Banner -->
+    <!-- Start Page Banner -->
     <div class="page-banner" style="padding:40px 0; background: url(<?php echo base_url() ?>assets/user/margo/images/slide-02-bg.jpg) center #f9f9f9;">
       <div class="container">
         <div class="row">

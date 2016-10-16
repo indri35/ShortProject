@@ -6,7 +6,13 @@
 <head>
 
   <!-- Basic -->
-  <title>Margo | About Us</title>
+  <title>PPID - Kota Bogor</title>
+
+  <script type="text/javascript">
+        function coba(){
+            gamgum.value = gamgam.value.substring(12);  
+        }
+  </script>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -24,6 +30,9 @@
 
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/user/margo/css/font-awesome.min.css" type="text/css" media="screen">
+
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/select2/select2.min.css">
 
   <!-- Slicknav -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/user/margo/css/slicknav.css" media="screen">

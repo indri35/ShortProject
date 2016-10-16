@@ -380,6 +380,46 @@ class UserPage extends CI_Controller {
                 redirect('UserPage/my_request'); //redirect page ke halaman utama controller products   
         }
 
+        public function input_form_keberatan(){
+                $config['upload_path'] = 'assets/file_pendukung/';
+                $config['allowed_types'] = 'pdf|jpg|png';
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()){
+                    $error = array('error' => $this->upload->display_errors());
+                    $gambar_value = 'nopic.png';
+                }
+                else{
+                    $data = array('upload_data' => $this->upload->data());
+                    $gambar_value = $this->input->post('gambar_value');
+                }
+                        
+                // selesai upload foto, berikut adalah input database
+                $data = array(
+                                'form_keberatan' => $gambar_value
+                                );
+                $condition['no_req'] = $this->input->post('no_req');
+                $this->model_request->RequestKeberatan('t_doc_req',$data, $condition); //passing variable $data ke products_model
+            
+                redirect('UserPage/my_request'); //redirect page ke halaman utama controller products   
+        }
+
+        public function upload_form_keberatan($no_req){
+                if($this->session->userdata('logged_in')){
+                        $this->load->model('model_request');
+                        $data = array (
+                                'request' => $this->model_request->request_detail($no_req),
+                        );
+                        $this->load->view('user/header_login');
+                        $this->load->view('user/upload_form_keberatan',$data);
+                        $this->load->view('user/footer');
+                }
+                else{
+                //If no session, redirect to login page
+                redirect('UserPage/login', 'refresh');
+                }
+        }
         public function request()
         {
                 if($this->session->userdata('logged_in')){
@@ -404,11 +444,30 @@ class UserPage extends CI_Controller {
                 $nik =  $this->session->userdata('nik');
                 if($this->session->userdata('logged_in')){
                     $this->load->model('model_request');
-                    $data = array (
-                            'my_request' => $this->model_request->my_request($nik),
-                    );
+                    $data['request_all'] = $this->model_request->request_all($nik);
+                    $data['request_ditanggapi'] = $this->model_request->request_ditanggapi($nik);
+                    $data['request_belum_ditanggapi'] = $this->model_request->request_belum_ditanggapi($nik);
+                    
                     $this->load->view('user/header_login'); 
                     $this->load->view('user/my_request', $data);
+                    $this->load->view('user/footer');
+                }
+                else{
+                    //If no session, redirect to login page
+                    $this->load->view('user/header'); 
+                    $this->load->view('user/login');
+                    $this->load->view('user/footer');
+                }
+        }
+
+        public function request_detail($no_req)
+        {       
+                if($this->session->userdata('logged_in')){
+                    $this->load->model('model_request');
+                    $data['request_detail'] = $this->model_request->request_detail($no_req);
+                    
+                    $this->load->view('user/header_login'); 
+                    $this->load->view('user/detail_request', $data);
                     $this->load->view('user/footer');
                 }
                 else{

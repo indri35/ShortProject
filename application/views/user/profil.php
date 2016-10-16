@@ -1,12 +1,28 @@
-    <div class="container">
+    <!-- Start Page Banner -->
+    <div class="page-banner" style="padding:40px 0; background: url(<?php echo base_url() ?>assets/user/margo/images/slide-02-bg.jpg) center #f9f9f9;">
+      <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3" >
-                <div class="box">
-                    <div class="box-header">
-                      <hr>
-                        <h2 class="intro-text text-center"><strong>Profil Pemohon</strong></h2>
-                      <hr>  
-                    </div>
+          <div class="col-md-6">
+            <h2>Hello <b><a  href="<?php echo base_url() ?>UserPage/profil/"><?php echo $this->session->userdata('nama'); ?></b></a></h2>
+          </div>
+          <div class="col-md-6">
+            <ul class="breadcrumbs">
+              <li><a href="<?php echo base_url() ?>">Home</a></li>
+              <li>Profil</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Page Banner -->
+    <!-- Start Content -->
+    <div id="content">   
+      <div class="container">
+        <div class="page-content">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3" >
+                <div class="call-action call-action-boxed call-action-style2 clearfix">
+                  <h3 class="classic-title"><span><strong>Data Diri Pemohon</strong></span></h3>
                     <li class="list-group-item col-lg-12">
                       <p class =
                       "col-lg-4"><b>NIK</b></p> <p class="col-lg-8">: <?php echo $this->session->userdata('nik'); ?></p>
@@ -34,43 +50,19 @@
                     <link href="<?php echo base_url() ?>assets/user/css/modal-image-about.css" rel="stylesheet">
                     <li class="list-group-item col-lg-12">
                       <p class =
-                      "col-lg-4"><b>KTP</b></p> <p class="col-lg-8">: 
-                      <img id="myImg4" class="img-responsive img-border img-center " src="<?php echo base_url() ?>assets/ktp/<?php echo $this->session->userdata('ktp'); ?>" alt="" width=200px>
-
-                        <!-- The Modal -->
-                        <div id="myModal4" class="modal">
-                          <span class="close4">×</span>
-                          <img class="modal-content" id="img04">
-                        </div>
-
-                        <script>
-                        // Get the modal
-                        var modal = document.getElementById('myModal4');
-
-                        // Get the image and insert it inside the modal - use its "alt" text as a caption
-                        var img = document.getElementById('myImg4');
-                        var modalImg = document.getElementById("img04");
-                        img.onclick = function(){
-                            modal.style.display = "block";
-                            modalImg.src = this.src;
-                            captionText.innerHTML = this.alt;
-                        }
-
-                        // Get the <span> element that closes the modal
-                        var span = document.getElementsByClassName("close4")[0];
-
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function() {
-                            modal.style.display = "none";
-                        }
-                        </script>
+                      "col-lg-4"><b>KTP</b></p> <p class="col-lg-8">
+                      <a href="<?php echo base_url() ?>assets/ktp/<?php echo $this->session->userdata('ktp'); ?>" class="lightbox">
+                        <img alt="" src="<?php echo base_url() ?>assets/ktp/<?php echo $this->session->userdata('ktp'); ?>"> 
+                      </a>
                       </p>
                     </li>
                     <li class="list-group-item col-lg-12">
                       <p class="text-center"><strong><a href="<?php echo base_url() ?>UserPage/edit_profil">EDIT PROFIL </a></strong></p>
                     </li>
                 </div>
-            </div>    
-        </div>
+              </div>
+            </div>
+        </div>    
+      </div>
     </div>
     <!-- /.container -->

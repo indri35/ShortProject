@@ -17,13 +17,50 @@ class Model_request extends CI_model{
         return $query;
     }
 
-    function my_request($nik){
+    function request_detail($no_req){
+
+    	$this->db->select('*');
+		$this->db->from('t_request AS t1');
+		$this->db->join('t_doc_req_data AS t2', 't1.id = t2.id_req');
+		$this->db->where('t2.no_req',$no_req);
+
+		$query = $this->db->get();
+        return $query;
+    }
+
+    function request_all($nik){
 
     	$this->db->select('*');
 		$this->db->from('t_request AS t1');
 		$this->db->join('t_doc_req_data AS t2', 't1.id = t2.id_req');
 		$this->db->where('t1.nik_pemohon',$nik);
-		
+		$this->db->order_by("t2.id_req","desc");
+
+		$query = $this->db->get();
+        return $query;
+    }
+
+    function request_ditanggapi($nik){
+
+    	$this->db->select('*');
+		$this->db->from('t_request AS t1');
+		$this->db->join('t_doc_req_data AS t2', 't1.id = t2.id_req');
+		$this->db->where('t1.nik_pemohon',$nik);
+		$this->db->where('t2.berkas_upload is NOT NULL', NULL, FALSE);
+		$this->db->order_by("t2.id_req","desc");		
+
+		$query = $this->db->get();
+        return $query;
+    }
+
+    function request_belum_ditanggapi($nik){
+
+    	$this->db->select('*');
+		$this->db->from('t_request AS t1');
+		$this->db->join('t_doc_req_data AS t2', 't1.id = t2.id_req');
+		$this->db->where('t1.nik_pemohon',$nik);
+		$this->db->where('t2.berkas_upload', NULL);
+		$this->db->order_by("t2.id_req","desc");		
 
 		$query = $this->db->get();
         return $query;
@@ -34,6 +71,18 @@ class Model_request extends CI_model{
 		//untuk insert data ke database
 		if(isset($_POST['simpan'])) {
 			$this->db->insert($daba, $data);
+			$notif['info'] = 'Berhasil Menyimpan';
+			
+		}
+		$notif['info'] = 'Gagal menyimpan';
+	}
+
+	function RequestKeberatan($daba,$data, $no_req)
+	{
+		//untuk insert data ke database
+		if(isset($_POST['simpan'])) {
+			$this->db->where($no_req);
+			$this->db->update($daba, $data);
 			$notif['info'] = 'Berhasil Menyimpan';
 			
 		}
