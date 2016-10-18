@@ -19,6 +19,8 @@
           <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Sent Request List</h3>
+                <br /> <br />
+                <a class="btn btn-primary" href="<?= base_url() ?>humas/exportExcelRequest">Export to Excel (All Request)</a>
               </div><!-- /.box-header -->
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped dataTable text-center">

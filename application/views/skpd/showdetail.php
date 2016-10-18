@@ -1,22 +1,33 @@
-    <div class="container">
+<!-- Start Page Banner -->
+    <div class="page-banner" style="padding:40px 0; background: url(<?php echo base_url() ?>assets/user/margo/images/slide-02-bg.jpg) center #f9f9f9;">
+      <div class="container">
         <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                        <h2 class="intro-text text-center"><strong><?php if($req['jenis_request']=='perorangan')  {echo 'Formulir Permohonan Informasi oleh Perorangan ';}
-                        elseif ($req['jenis_request']=='badan-hukum') {
-                            echo 'Formulir Permohonan Informasi oleh Kelompok Berbadan Hukum';} 
-                        else {echo 'Formulir Permohonan Informasi oleh Kelompok Tidak Berbadan Hukum';}
-                        ?>
-                        </strong></h2>
-                    <hr>
-                </div>
-                <div class="col-lg-12">
-                    <div class="panel-body">
+          <div class="col-md-6">
+            <?php if($req['jenis_request']=='perorangan')  {echo '<h2>Formulir Permohonan Informasi</h2><h3> oleh Perorangan</h3> ';}
+                    elseif ($req['jenis_request']=='badan-hukum') {
+                        echo '<h2>Formulir Permohonan Informasi</h2><h3> oleh Kelompok Berbadan Hukum</h3>';} 
+                    else {echo '<h2>Formulir Permohonan Informasi</h2><h3> oleh Kelompok Tidak Berbadan Hukum</h3>';}
+                    ?>
+          </div>
+          <div class="col-md-6">
+            <ul class="breadcrumbs">
+              <li><a href="<?php echo base_url() ?>">Home</a></li>
+              <li>Detail Pemohon</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Page Banner --> 
+    <div id="content"> 
+        <div class="container">
+            <div class="page-content">
+                <div class="row">
+                    <div class="call-action call-action-boxed call-action-style1 clearfix">
+                        <div class="col-lg-12">
+                            <div class="panel-body">
                                 <div class="col-lg-6">
-                                    <strong>
-                                        <font color="#ff6600">Identitas Pemohon<br/><br/></font>
-                                    </strong>
+                                    <h3 class="classic-title"><span><strong>Data Diri Pemohon</strong></span></h3>
                                     
                                     <div class="form-group form-horizontal">
                                         <label for="nik" class="control-label col-lg-3">NIK</label>
@@ -57,9 +68,7 @@
                                     <font>Cara memperoleh informasi dan bentuk informasi yang diserahkan, akan dijelaskan kemudian melalui email. Jika terdapat kesalahan pada data pribadi silahkan lakukan perubahan data pribadi.<br/><br/></font>
                                 </div>
                                 <div class="col-lg-6">
-                                    <strong>
-                                        <font color="#ff6600">Detail Permohonan Berkas<br/><br/></font>
-                                    </strong>
+                                    <h3 class="classic-title"><span><strong>Detail Permohonan Berkas</strong></span></h3>
                                     <div class="form-group form-horizontal">
                                         <label for="tujuan_permohonan_info" class="control-label col-lg-3">Tujuan Permohonan Informasi </label>
                                         <div class="col-lg-9">
@@ -97,6 +106,8 @@
                                         <br/>
                                         <br/>(<?php echo $data['nama']; ?>)</font>
                                 </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

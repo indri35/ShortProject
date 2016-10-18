@@ -19,7 +19,8 @@
             <div class="box-header">
               <h3 class="box-title">User List</h3>
               <br /><br />
-              <a class="btn btn-primary" href="<?= base_url() ?>humas/create">Add User</a>
+              <a class="btn btn-success" href="<?= base_url() ?>humas/create">Add User</a>
+              <a class="btn btn-primary" href="<?= base_url() ?>humas/exportExcelUser">Export to Excel</a>
             </div><!-- /.box-header --> 
               <div class="box-body">
 

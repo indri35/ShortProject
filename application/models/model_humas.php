@@ -8,7 +8,7 @@ class Model_humas extends CI_model{
     }
 
     function getAllSentReq(){
-         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload IS NOT NULL;");
+         return $this->db->query("SELECT * FROM t_doc_req_data WHERE berkas_upload !='';");
     }
 
     function tanggapi($id_req){

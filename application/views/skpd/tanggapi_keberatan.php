@@ -4,13 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Respond Request
+        Respond User Complain
         <small>SKPD </small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="<?= base_url() ?>skpd/index">Request list</a></li>
-        <li class="active">Respond Request</li>
+        <li class="active">>Complain list</a></li>
       </ol>
     </section>
 
@@ -21,10 +20,10 @@
 	        <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Respond Request</h3>
+              <h3 class="box-title">User Complain</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <?php echo form_open_multipart('skpd/do_upload'); ?>
+            <?php echo form_open_multipart('skpd/do_upload_keberatan'); ?>
             <?php echo form_hidden('no_req',$this->uri->segment(3)); ?>
               <div class="box-body">
                 <div class="form-group">

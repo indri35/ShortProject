@@ -48,6 +48,10 @@
                       <font class="help-block">Upload file dengan format .jpg .png.</font>
                   </div>    
                 </div>
+                <div class="form-group">
+                <label>Pesan</label>
+                  <textarea class="form-control" type="text" name="pesan" placeholder="Tinggalkan pesan untuk pemohon.."></textarea>
+                </div>
                 <div>
                   <input type="hidden" name="gambar_value" id="gamgum">
                 </div>

@@ -101,7 +101,11 @@
                           <td><a href="<?= base_url() ?>humas/show/<?= $s->nik_pemohon ?>/<?= $s->no_req ?>" class="btn btn-success"> Detail</a></td>
                           <td><?php echo ($s->berkas_upload==TRUE)? $s->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$s->no_req,'Tanggapi')."</button>"; ?>
                           </td>
-                          <td><?php echo ($s->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                          <td><?php if ($s->berkas_upload==TRUE && $s->pesan_tolak==FALSE){echo '<i class="fa fa-fw fa-check"></i>';} 
+                            elseif ($s->berkas_upload==FALSE && $req->pesan_tolak==FALSE) {
+                               echo '<i class="fa fa-fw fa-close"></i>';}
+                            elseif ($s->berkas_upload==FALSE && $s->pesan_tolak==TRUE) { echo 'Tolak'; }
+                            ?></td>
                         </tr>
                         <?php $no++; };?>
                       </tbody>
@@ -137,9 +141,16 @@
                           <td><?php echo $p->nama_berkas;?></td>
                           <td><?php echo $p->kode_skpd;?></td>
                           <td><a href="<?= base_url() ?>humas/show/<?= $p->nik_pemohon ?>/<?= $p->no_req ?>" class="btn btn-info"> Detail</a></td>
-                          <td><?php echo ($p->berkas_upload==TRUE)? $p->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$p->no_req,'Tanggapi')."</button>"; ?>
+                          <td>
+                          <?php if (($p->berkas_upload==TRUE && $p->pesan_tolak==FALSE)){echo $p->date_upload;}
+                         elseif($p->berkas_upload==FALSE && $p->pesan_tolak==FALSE){echo "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$p->no_req,'Tanggapi')."</button>";}
+                         elseif ($p->berkas_upload==FALSE && $p->pesan_tolak==TRUE) { echo $p->date_upload; } ?>
                           </td>
-                          <td><?php echo ($p->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                          <td><?php if ($p->berkas_upload==TRUE && $p->pesan_tolak==FALSE){echo '<i class="fa fa-fw fa-check"></i>';} 
+                            elseif ($p->berkas_upload==FALSE && $p->pesan_tolak==FALSE) {
+                               echo '<i class="fa fa-fw fa-close"></i>';}
+                            elseif ($p->berkas_upload==FALSE && $p->pesan_tolak==TRUE) { echo 'Tolak'; }
+                            ?></td>
                         </tr>
                         <?php $no++; };?>
                       </tbody>

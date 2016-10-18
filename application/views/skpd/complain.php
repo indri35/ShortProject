@@ -4,13 +4,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Sent request list
+            User complain list
             <small>SKPD </small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="<?= base_url() ?>skpd/index">Document list</a></li>
-            <li class="active">Sent Request</li>
+            <li class="active">User complain</li>
           </ol>
         </section>
 
@@ -18,9 +17,7 @@
         <section class="content">
           <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Sent Request List</h3>
-                <br /> <br />
-                <a class="btn btn-primary" href="<?= base_url() ?>skpd/exportExcelReq">Export to Excel (All Request)</a>
+                <h3 class="box-title">User Complain List</h3>
               </div><!-- /.box-header -->
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped dataTable text-center">
@@ -29,23 +26,25 @@
                       <th>No</th>
                       <th>NIK pemohon</th>
                       <th>Nama berkas</th>
-                      <th>Detail pemohon</th>
-                      <th>Tanggal respon</th>
-                      <th>Status</th>
+                      <th>Detail pemohon</th>     
+                      <th>Tanggal respon terakhir</th>
+                      <th>Form keberatan</th>
+                      <th>Tanggapi kembali</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php 
                     $no=1;
-                    foreach ($sents->result() as $sent) { ?>
+                    foreach ($comp->result() as $com) { ?>
                     <tr role="row">
                       <td><?php echo $no ;?></td>
-                      <td><?php echo $sent->nik_pemohon;?></td>
-                      <td><?php echo $sent->nama_berkas;?></td>
-                      <td><a href="<?= base_url() ?>skpd/show/<?= $sent->nik_pemohon ?>/<?= $sent->no_req ?>" class="btn btn-success"> Detail</a></td>
-                      <td><?php echo ($sent->berkas_upload==TRUE)? $sent->date_upload : '<button type="button" class="btn btn-success">Tanggapi</button>'; ?>
-                      </td>
-                      <td><?php echo ($sent->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                      <td><?php echo $com->nik_pemohon;?></td>
+                      <td><?php echo $com->nama_berkas;?></td>
+                      <td><a href="<?= base_url() ?>skpd/show/<?= $com->nik_pemohon ?>/<?= $com->no_req ?>" class="btn btn-success"> Detail</a></td>
+                      <td><?php echo $com->date_upload; ?></td>
+                      <td><?php echo $com->form_keberatan;?></td>
+                      <td><?php echo "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi_keberatan/'.$com->no_req,'Tanggapi')."</button>"; ?>
+                          </td>
                     <?php $no++; };?>
                   </tbody>
                 </table>

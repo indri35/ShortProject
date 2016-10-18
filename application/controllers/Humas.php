@@ -184,14 +184,16 @@ class Humas extends CI_Controller{
         }          
             // selesai upload foto, berikut adalah input database
             $date_upload=$this->input->post('date_upload');   
-            $no_req= $this->input->post('no_req');     
+            $no_req= $this->input->post('no_req');   
+            $pesan= $this->input->post('pesan');     
             $data = array(
                             'no_req' => $no_req,
                             'date_upload' => $date_upload,
-                            'berkas_upload' => $gambar_value
+                            'berkas_upload' => $gambar_value,
+                            'pesan' => $pesan
                          );
 
-            $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value'  WHERE no_req='$no_req';");
+            $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value', pesan='$pesan'  WHERE no_req='$no_req';");
 
             redirect('humas/index'); //redirect page ke halaman utama controller products   
         }
@@ -248,8 +250,8 @@ class Humas extends CI_Controller{
     public function create(){
     if($this->session->userdata('humas'))
         {
+            $data['skpd']=$this->model_humas->getAllSkpd();
             
-
             $this->load->view('humas/header');
             $this->load->view('humas/create',$data);
             $this->load->view('humas/footer');
@@ -521,7 +523,7 @@ class Humas extends CI_Controller{
             header("Pragma: no-cache");
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             //ubah nama file saat diunduh
-            header('Content-Disposition: attachment;filename="hasilExcel.xlsx"');
+            header('Content-Disposition: attachment;filename="Excel_Dokumen.xlsx"');
             //unduh file
             $objWriter->save("php://output");
         }
@@ -532,4 +534,167 @@ class Humas extends CI_Controller{
         }
     }
 
+    public function exportExcelUser(){
+    if($this->session->userdata('humas'))
+        {
+            $data=$this->model_humas->getAllUser();
+          
+            $this->load->library("PHPExcel/Classes/PHPExcel");
+ 
+            //membuat objek PHPExcel
+            $objPHPExcel = new PHPExcel();
+
+            //membuat heading
+            $heading=array('No','Id','Hak akses','Kode SKPD','NIK','Nama','Alamat','Nomor telepon','No handphone','Email',);
+
+            $rowNumberH = 1;
+            $colH = 'A';
+            foreach($heading as $h){
+                $objPHPExcel->getActiveSheet(0)->setCellValue($colH.$rowNumberH,$h);
+                $colH++;   
+            }
+
+            $totaln=$data->num_rows();
+            $maxrow=$totaln+1;
+            // Isi
+            $no=1;
+            $row=2;
+            foreach ($data->result() as $dat) {
+            //echo $dat->id;
+            
+            //set Sheet yang akan diolah 
+            $objPHPExcel->setActiveSheetIndex(0)
+                    //mengisikan value pada tiap-tiap cell, A1 cell 
+                                        ->setCellValue('A'.$row, $no)
+                                        ->setCellValue('B'.$row, $dat->id)
+                                        ->setCellValue('C'.$row, $dat->hak_akses)
+                                        ->setCellValue('D'.$row, $dat->kode_skpd)
+                                        ->setCellValue('E'.$row, $dat->nik)
+                                        ->setCellValue('F'.$row, $dat->nama)
+                                        ->setCellValue('G'.$row, $dat->alamat)
+                                        ->setCellValue('H'.$row, $dat->no_tlpn)
+                                        ->setCellValue('I'.$row, $dat->no_hp)
+                                        ->setCellValue('J'.$row, $dat->email);
+                                        $no++;
+                                        $row++;
+            }
+
+            //border tabel
+            $styleArray = array(
+                'borders' => array(
+                    'allborders' => array(
+                        'style' => PHPExcel_Style_Border::BORDER_THIN
+                    )
+                )
+            );
+            $objPHPExcel->getActiveSheet()->getStyle('A1:J'.$maxrow)->applyFromArray($styleArray);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
+            //set title pada sheet (me rename nama sheet)
+            $objPHPExcel->getActiveSheet()->setTitle('Excel Pertama');
+ 
+            //mulai menyimpan excel format xlsx, kalau ingin xls ganti Excel2007 menjadi Excel5          
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+ 
+            //sesuaikan headernya 
+            header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+            header("Cache-Control: no-store, no-cache, must-revalidate");
+            header("Cache-Control: post-check=0, pre-check=0", false);
+            header("Pragma: no-cache");
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            //ubah nama file saat diunduh
+            header('Content-Disposition: attachment;filename="Excel_User.xlsx"');
+            //unduh file
+            $objWriter->save("php://output");
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function exportExcelRequest(){
+    if($this->session->userdata('humas'))
+        {
+            $data=$this->model_humas->getAllReq();
+          
+            $this->load->library("PHPExcel/Classes/PHPExcel");
+ 
+            //membuat objek PHPExcel
+            $objPHPExcel = new PHPExcel();
+
+            //membuat heading
+            $heading=array('No','No request','NIK pemohon','Kode berkas','Nama berkas','Kategori berkas','Deskripsi berkas','Tujuan permohonan','Jenis permohonan','Kode SKPD','Berkas','Pesan','Pesan apabila ditolak','Form keberatan','Tanggal upload','Tanggal upload untuk keberatan pemohon');
+
+            $rowNumberH = 1;
+            $colH = 'A';
+            foreach($heading as $h){
+                $objPHPExcel->getActiveSheet(0)->setCellValue($colH.$rowNumberH,$h);
+                $colH++;   
+            }
+
+            $totaln=$data->num_rows();
+            $maxrow=$totaln+1;
+            // Isi
+            $no=1;
+            $row=2;
+            foreach ($data->result() as $dat) {
+            //echo $dat->id;
+            
+            //set Sheet yang akan diolah 
+            $objPHPExcel->setActiveSheetIndex(0)
+                    //mengisikan value pada tiap-tiap cell, A1 cell 
+                                        ->setCellValue('A'.$row, $no)
+                                        ->setCellValue('B'.$row, $dat->no_req)
+                                        ->setCellValue('C'.$row, $dat->nik_pemohon)
+                                        ->setCellValue('D'.$row, $dat->kode_berkas)
+                                        ->setCellValue('E'.$row, $dat->nama_berkas)
+                                        ->setCellValue('F'.$row, $dat->kategori_berkas)
+                                        ->setCellValue('G'.$row, $dat->deskripsi_berkas)
+                                        ->setCellValue('H'.$row, $dat->tujuan_permohonan_info)
+                                        ->setCellValue('I'.$row, $dat->jenis_request)
+                                        ->setCellValue('J'.$row, $dat->kode_skpd)
+                                        ->setCellValue('K'.$row, $dat->berkas_upload)
+                                        ->setCellValue('L'.$row, $dat->pesan)
+                                        ->setCellValue('M'.$row, $dat->pesan_tolak)
+                                        ->setCellValue('N'.$row, $dat->form_keberatan)
+                                        ->setCellValue('O'.$row, $dat->date_upload)
+                                        ->setCellValue('P'.$row, $dat->date_upload_keberatan);
+                                        $no++;
+                                        $row++;
+            }
+
+            //border tabel
+            $styleArray = array(
+                'borders' => array(
+                    'allborders' => array(
+                        'style' => PHPExcel_Style_Border::BORDER_THIN
+                    )
+                )
+            );
+            $objPHPExcel->getActiveSheet()->getStyle('A1:P'.$maxrow)->applyFromArray($styleArray);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:P1')->getFont()->setBold(true);
+            //set title pada sheet (me rename nama sheet)
+            $objPHPExcel->getActiveSheet()->setTitle('Excel Pertama');
+ 
+            //mulai menyimpan excel format xlsx, kalau ingin xls ganti Excel2007 menjadi Excel5          
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+ 
+            //sesuaikan headernya 
+            header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+            header("Cache-Control: no-store, no-cache, must-revalidate");
+            header("Cache-Control: post-check=0, pre-check=0", false);
+            header("Pragma: no-cache");
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            //ubah nama file saat diunduh
+            header('Content-Disposition: attachment;filename="Excel_Request.xlsx"');
+            //unduh file
+            $objWriter->save("php://output");
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
 }
