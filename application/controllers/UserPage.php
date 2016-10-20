@@ -72,10 +72,6 @@ class UserPage extends CI_Controller {
                 }
         }
 
-        public function form_keberatan(){
-                $this->load->view('user/form_keberatan');
-        }
-
         public function dokumen()
         {
                 if($this->session->userdata('logged_in')){

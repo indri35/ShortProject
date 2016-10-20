@@ -156,7 +156,7 @@
               <li>
                 <a href="#">Download</a>
                 <ul class="dropdown">
-                  <li><a href="<?php echo base_url() ?>UserPage/form_keberatan" target="_blank">Form Keberatan</a></li>
+                  <li><a href="<?php echo base_url() ?>assets/user/img/NoLaporan_SKPD-Tujuan.docx" download>Form Keberatan</a></li>
                 </ul>
               </li>
               <li>
@@ -192,7 +192,7 @@
               <li>
                 <a href="#">Download</a>
                 <ul class="dropdown">
-                  <li><a href="<?php echo base_url() ?>UserPage/form_keberatan" target="_blank">Form Keberatan</a></li>
+                  <li><a href="<?php echo base_url() ?>assets/user/img/NoLaporan_SKPD-Tujuan.docx" download>Form Keberatan</a></li>
                 </ul>
               </li>
               <li>
