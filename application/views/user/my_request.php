@@ -93,7 +93,7 @@
                               <td><?php echo $row->nama_berkas; ?></td>
                               <td><?php echo $row->kode_skpd; ?></td>
                               <td><?php echo $row->request_at; ?></td>
-                              <td><a href="<?php echo base_url() ?>assets/user/img/<?php echo $row->berkas_upload; ?> " download class="btn btn-success btn-xs">Download</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></td>
+                              <td><a href="<?php echo base_url() ?>assets/dokumen/<?php echo $row->berkas_upload; ?> " download class="btn btn-success btn-xs">Download</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></td>
                           </tr>
                           <?php
                               $i++; }
