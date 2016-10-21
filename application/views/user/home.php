@@ -14,52 +14,15 @@
         <!-- Carousel inner -->
         <div class="carousel-inner">
           <div class="item active">
-            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/bg1.jpg" alt="slider">
-            <div class="slider-content">
-              <div class="col-md-12 text-center">
-                <h2 class="animated2">
-                              <span>Welcome to <strong>Margo</strong></span>
-                              </h2>
-                <h3 class="animated3">
-                                <span>The ultimate aim of your business</span>
-                              </h3>
-                <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Check Now</a>
-                </p>
-              </div>
-            </div>
+            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/WeLoveBogor-1.jpg" alt="slider">
           </div>
           <!--/ Carousel item end -->
           <div class="item">
-            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/bg2.jpg" alt="slider">
-            <div class="slider-content">
-              <div class="col-md-12 text-center">
-                <h2 class="animated4">
-                                <span><strong>Margo</strong> for the highest</span>
-                            </h2>
-                <h3 class="animated5">
-                              <span>The Key of your Success</span>
-                            </h3>
-                <p class="animated6"><a href="#" class="slider btn btn-system btn-large">Buy Now</a>
-                </p>
-              </div>
-            </div>
+            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/IstanaPresidenBogor-01.jpg" alt="slider">
           </div>
           <!--/ Carousel item end -->
           <div class="item">
-            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/bg3.jpg" alt="slider">
-            <div class="slider-content">
-              <div class="col-md-12 text-center">
-                <h2 class="animated7 white">
-                                <span>The way of <strong>Success</strong></span>
-                            </h2>
-                <h3 class="animated8 white">
-                              <span>Why you are waiting</span>
-                            </h3>
-                <div class="">
-                  <a class="animated4 slider btn btn-system btn-large btn-min-block" href="#">Get Now</a><a class="animated4 slider btn btn-default btn-min-block" href="#">Live Demo</a>
-                </div>
-              </div>
-            </div>
+            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/GunungSalak.jpg" alt="slider">
           </div>
           <!--/ Carousel item end -->
         </div>
