@@ -43,7 +43,7 @@
                       <td><a href="<?= base_url() ?>skpd/show/<?= $com->nik_pemohon ?>/<?= $com->no_req ?>" class="btn btn-success"> Detail</a></td>
                       <td><?php echo $com->date_upload; ?></td>
                       <td><?php echo $com->form_keberatan;?></td>
-                      <td><?php echo "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi_keberatan/'.$com->no_req,'Tanggapi')."</button>"; ?>
+                      <td><a href="<?= base_url() ?>skpd/tanggapi_keberatan/<?= $com->no_req ?>/<?= $com->no_req ?>" class="btn btn-success">Tanggapi</a>
                           </td>
                     <?php $no++; };?>
                   </tbody>

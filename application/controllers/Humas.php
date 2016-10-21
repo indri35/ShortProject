@@ -176,6 +176,7 @@ class Humas extends CI_Controller{
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
                 $gambar_value = NULL;
+                $this->session->set_flashdata('something', 'Tanggapi, Upload file gagal!');
             }
             else{
                 $data = array('upload_data' => $this->upload->data());
@@ -195,7 +196,7 @@ class Humas extends CI_Controller{
 
             $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value', pesan='$pesan'  WHERE no_req='$no_req';");
 
-            redirect('humas/index'); //redirect page ke halaman utama controller products   
+            redirect('humas',$notif); //redirect page ke halaman utama controller products   
         }
     else
         {
@@ -219,6 +220,7 @@ class Humas extends CI_Controller{
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
                 $gambar_value = 'nopic.png';
+                $this->session->set_flashdata('something', 'Upload file gagal!');
             }
             else{
                 $data = array('upload_data' => $this->upload->data());
@@ -413,6 +415,7 @@ class Humas extends CI_Controller{
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
                 $gambar_value = 'nopic.png';
+                $this->session->set_flashdata('something', 'Upload file gagal!');
             }
             else{
                 $data = array('upload_data' => $this->upload->data());

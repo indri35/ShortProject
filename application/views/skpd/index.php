@@ -72,6 +72,12 @@
             </div><!-- ./col -->
           </div><!-- /.row -->
 
+              <?php if ($this->session->flashdata('something')) {
+              echo "<div class='callout callout-danger lead'>
+              <h4>". $this->session->flashdata('something') ." </h4>
+              <p>File tidak sesuai sesuai format file yang diijinkan.</p>
+              </div>" ; }?>
+
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Document Request List</h3>
@@ -100,7 +106,7 @@
                         <td><?php echo $req->nama_berkas;?></td>
                         <td><a href="<?= base_url() ?>skpd/show/<?= $req->nik_pemohon ?>/<?= $req->no_req ?>" class="btn btn-info"> Detail</a></td>
                         <td><?php if (($req->berkas_upload==TRUE && $req->pesan_tolak==FALSE)){echo $req->date_upload;}
-                         elseif($req->berkas_upload==FALSE && $req->pesan_tolak==FALSE){echo "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$req->no_req,'Tanggapi')."</button> | <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal$req->no_req' >Tolak</button> ";}
+                         elseif($req->berkas_upload==FALSE && $req->pesan_tolak==FALSE){echo "<a href='skpd/tanggapi/$req->no_req' class='btn btn-success'>Tanggapi</a> <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal$req->no_req' >Tolak</button> ";}
                          elseif ($req->berkas_upload==FALSE && $req->pesan_tolak==TRUE) { echo $req->date_upload; } 
                           ?>
                         </td>

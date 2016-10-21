@@ -99,7 +99,8 @@
                           <td><?php echo $s->nama_berkas;?></td>
                           <td><?php echo $s->kode_skpd;?></td>
                           <td><a href="<?= base_url() ?>humas/show/<?= $s->nik_pemohon ?>/<?= $s->no_req ?>" class="btn btn-success"> Detail</a></td>
-                          <td><?php echo ($s->berkas_upload==TRUE)? $s->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$s->no_req,'Tanggapi')."</button>"; ?>
+                          <td>
+                          <?php echo ($s->berkas_upload==TRUE)? $s->berkas_upload : "<button type='button' class='btn btn-default'>".anchor('skpd/tanggapi/'.$s->no_req,'Tanggapi')."</button>"; ?>
                           </td>
                           <td><?php if ($s->berkas_upload==TRUE && $s->pesan_tolak==FALSE){echo '<i class="fa fa-fw fa-check"></i>';} 
                             elseif ($s->berkas_upload==FALSE && $req->pesan_tolak==FALSE) {
@@ -112,7 +113,12 @@
                     </table>
                   </div>
                 </div>
-
+                
+                    <?php if ($this->session->flashdata('something')) {
+                    echo "<div class='callout callout-danger lead'>
+                    <h4>". $this->session->flashdata('something') ." </h4>
+                    <p>File tidak sesuai sesuai format file yang diijinkan.</p>
+                    </div>" ; }?>
 
               <div class="box box-danger">
                 <div class="box-header">
@@ -143,7 +149,7 @@
                           <td><a href="<?= base_url() ?>humas/show/<?= $p->nik_pemohon ?>/<?= $p->no_req ?>" class="btn btn-info"> Detail</a></td>
                           <td>
                           <?php if (($p->berkas_upload==TRUE && $p->pesan_tolak==FALSE)){echo $p->date_upload;}
-                         elseif($p->berkas_upload==FALSE && $p->pesan_tolak==FALSE){echo "<button type='button' class='btn btn-default'>".anchor('humas/tanggapi/'.$p->no_req,'Tanggapi')."</button>";}
+                         elseif($p->berkas_upload==FALSE && $p->pesan_tolak==FALSE){echo "<a href='humas/tanggapi/$p->no_req' class='btn btn-success'>Tanggapi</a>";}
                          elseif ($p->berkas_upload==FALSE && $p->pesan_tolak==TRUE) { echo $p->date_upload; } ?>
                           </td>
                           <td><?php if ($p->berkas_upload==TRUE && $p->pesan_tolak==FALSE){echo '<i class="fa fa-fw fa-check"></i>';} 

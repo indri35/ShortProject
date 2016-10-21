@@ -22,6 +22,13 @@
               <a class="btn btn-success" href="<?= base_url() ?>humas/createDoc">Add Document</a>
               <a class="btn btn-primary" href="<?= base_url() ?>humas/exportExcel">Export to Excel</a>
             </div><!-- /.box-header -->
+
+            <?php if ($this->session->flashdata('something')) {
+            echo "<div class='callout callout-danger lead'>
+            <h4>". $this->session->flashdata('something') ." </h4>
+            <p>File tidak sesuai sesuai format file yang diijinkan.</p>
+            </div>" ; }?>
+
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped dataTable">
                   <thead>

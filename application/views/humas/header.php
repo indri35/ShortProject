@@ -115,7 +115,7 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li>
-              <a href="<?= base_url() ?>humas/index">
+              <a href="<?= base_url() ?>humas">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
               </a>
             </li>

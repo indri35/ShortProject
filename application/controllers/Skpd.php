@@ -223,6 +223,7 @@ class Skpd extends CI_Controller{
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
                 $gambar_value = FALSE;
+                $this->session->set_flashdata('something', 'Tanggapi, Upload file gagal!');
             }
             else{
                 $data = array('upload_data' => $this->upload->data());
@@ -243,7 +244,7 @@ class Skpd extends CI_Controller{
 
             $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value',  pesan='$pesan'  WHERE no_req='$no_req';");
 
-            redirect('skpd/index'); //redirect page ke halaman utama controller products      
+            redirect('skpd'); //redirect page ke halaman utama controller products      
             
         }
     else
@@ -271,6 +272,7 @@ class Skpd extends CI_Controller{
             if (!$this->upload->do_upload()){
                 $error = array('error' => $this->upload->display_errors());
                 $gambar_value = FALSE;
+                $this->session->set_flashdata('something', 'Upload file gagal!');
             }
             else{
                 $data = array('upload_data' => $this->upload->data());
@@ -291,7 +293,7 @@ class Skpd extends CI_Controller{
 
             $this->db->query("UPDATE t_doc_req SET date_upload_keberatan='$date_upload', berkas_upload='$gambar_value',  pesan='$pesan'  WHERE no_req='$no_req';");
 
-            redirect('skpd/index'); //redirect page ke halaman utama controller products      
+            redirect('skpd'); //redirect page ke halaman utama controller products      
             
         }
     else
