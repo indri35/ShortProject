@@ -79,7 +79,7 @@
                               <?php 
                                 ;} else {
                               ?>
-                              <a href="<?php echo base_url() ?>assets/user/img/<?php echo $row->berkas_upload; ?>" download class="btn btn-success btn-ms">Download Berkas</a>&nbsp<a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-ms">Ajukan Keberatan</a></p>
+                              <a href="<?php echo base_url() ?>assets/dokumen/<?php echo $row->berkas_upload; ?>" download class="btn btn-success btn-ms">Download Berkas</a>&nbsp<a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-ms">Ajukan Keberatan</a></p>
                               <?php
                                 ;}
                               ?>
