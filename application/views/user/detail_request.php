@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-6">
             <h2>Daftar Permohonan Saya</h2>
-            <p>Detail Permohonan <?php echo $row->no_req; ?></p>
+            <p>Detail Permohonan Nomor <strong><?php echo $row->no_req; ?></strong></p>
           </div>
           <div class="col-md-6">
             <ul class="breadcrumbs">

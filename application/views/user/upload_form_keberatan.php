@@ -29,7 +29,7 @@
                     <label for="form_keberatan" class="control-label col-lg-4">Form Keberatan <font color="red">*</font></label>
                     <div class="col-lg-8">
                       <input type="file"  name="userfile" id="gamgam" required>
-                        <font class="help-block">Upload form keberatan dengan format .jpg|.png</font>
+                        <font class="help-block">Upload form keberatan dengan format .doc|.docx</font>
                     </div>    
                   </div>
                   <div>

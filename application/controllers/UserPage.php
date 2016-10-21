@@ -202,23 +202,26 @@ class UserPage extends CI_Controller {
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = 'nopic.png';
+                    $gambar_value = FALSE;
+                    echo "<script>window.alert('Format file ktp tidak sesuai')
+           window.location.href='javascript:history.back()';</script>";
+
                 }
                 else{
                     $data = array('upload_data' => $this->upload->data());
                     $gambar_value = $this->input->post('gambar_value');
-                }
+                
                         
-                // selesai upload foto, berikut adalah input database
-                $this->load->library('form_validation');
-                $this->form_validation->set_rules(
-                    'email', 'email', 'trim|required|valid_email|callback_isEmailExist'
-                );
-                $this->form_validation->set_rules(
-                    'nik', 'nik', 'trim|required|callback_isNIKExist'
-                );
+                    // selesai upload foto, berikut adalah input database
+                    $this->load->library('form_validation');
+                    $this->form_validation->set_rules(
+                        'email', 'email', 'trim|required|valid_email|callback_isEmailExist'
+                    );
+                    $this->form_validation->set_rules(
+                        'nik', 'nik', 'trim|required|callback_isNIKExist'
+                    );
 
-
+                
                 if ($this->form_validation->run() == FALSE)
                 {
                     // fails
@@ -243,7 +246,8 @@ class UserPage extends CI_Controller {
                 $this->model_user->addUser('t_user',$data); //passing variable $data ke products_model
                 echo "<script>window.alert('Registrasi berhasil, silahkan lakukan login.')
            window.location.href='login/';</script>";//redirect page ke halaman utama controller products 
-                }  
+                }
+            }  
         }
 
         public function isEmailExist($email) {
@@ -285,12 +289,14 @@ class UserPage extends CI_Controller {
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = '$gambar_value';
+                    $gambar_value = FALSE;
+                    echo "<script>window.alert('Format file ktp tidak sesuai')
+           window.location.href='javascript:history.back()';</script>";
                 }
                 else{
                     $data = array('upload_data' => $this->upload->data());
                     $gambar_value = $this->input->post('gambar_value');
-                }
+                
                         
                 // selesai upload foto, berikut adalah input database
                         
@@ -310,6 +316,7 @@ class UserPage extends CI_Controller {
                 session_destroy();
                 echo "<script>window.alert('Edit profil berhasil, silahkan lakukan login ulang.')
            window.location.href='login/';</script>"; //redirect page ke halaman utama controller products   
+            }
         }
 
         public function input_form_perorangan(){
@@ -334,7 +341,8 @@ class UserPage extends CI_Controller {
                                 );
                 $this->model_request->addRequest('t_doc_req',$data); //passing variable $data ke products_model
             }
-                redirect('UserPage/my_request'); //redirect page ke halaman utama controller products   
+                echo "<script>window.alert('Permohonan berhasil')
+           window.location.href='my_request/';</script>"; //redirect page ke halaman utama controller products   
         }
 
         public function input_form_berbadan_hukum(){
@@ -345,12 +353,14 @@ class UserPage extends CI_Controller {
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = 'nopic.png';
+                    $gambar_value = FALSE;
+                    echo "<script>window.alert('Format file ktp tidak sesuai')
+           window.location.href='javascript:history.back()';</script>";
                 }
                 else{
                     $data = array('upload_data' => $this->upload->data());
                     $gambar_value = $this->input->post('gambar_value');
-                }
+                
                         
                 // selesai upload foto, berikut adalah input database
                 $data = array(
@@ -372,24 +382,28 @@ class UserPage extends CI_Controller {
                                 'id_req' => $max
                                 );
                 $this->model_request->addRequest('t_doc_req',$data); //passing variable $data ke products_model
+                echo "<script>window.alert('Permohonan berhasil')
+           window.location.href='my_request/';</script>";
+                }
             }
-                redirect('UserPage/my_request'); //redirect page ke halaman utama controller products   
         }
 
         public function input_form_keberatan(){
                 $config['upload_path'] = 'assets/file_pendukung/';
-                $config['allowed_types'] = 'pdf|jpg|png';
+                $config['allowed_types'] = 'doc|docx';
 
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = 'nopic.png';
+                    $gambar_value = FALSE;
+                    echo "<script>window.alert('Format file ktp tidak sesuai')
+           window.location.href='javascript:history.back()';</script>";
                 }
                 else{
                     $data = array('upload_data' => $this->upload->data());
                     $gambar_value = $this->input->post('gambar_value');
-                }
+                
                         
                 // selesai upload foto, berikut adalah input database
                 $data = array(
@@ -398,7 +412,9 @@ class UserPage extends CI_Controller {
                 $condition['no_req'] = $this->input->post('no_req');
                 $this->model_request->RequestKeberatan('t_doc_req',$data, $condition); //passing variable $data ke products_model
             
-                redirect('UserPage/my_request'); //redirect page ke halaman utama controller products   
+                echo "<script>window.alert('Input form keberatan berhasil')
+           window.location.href='my_request/';</script>";
+                }   
         }
 
         public function upload_form_keberatan($no_req){

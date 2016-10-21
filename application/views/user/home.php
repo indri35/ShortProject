@@ -73,8 +73,8 @@
                       <h1><strong>Links</strong></h1>
                     </div>
                     <div class="col-lg-6">
-                        <a href="#" class="btn btn-primary btn-block" weight=100%>INFORMASI PUBLIK KOTA BOGOR</a>
-                        <a href="#" class="btn btn-primary btn-block">HUMAS KOTA BOGOR</a>
+                        <a href="http://kotabogor.go.id/" class="btn btn-primary btn-block" weight=100%>INFORMASI PUBLIK KOTA BOGOR</a>
+                        <a href="http://kotabogor.go.id/" class="btn btn-primary btn-block">HUMAS KOTA BOGOR</a>
                     </div>
                 </div>
             </div>

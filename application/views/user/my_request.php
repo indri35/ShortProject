@@ -128,7 +128,7 @@
                               <td><?php echo $row->nama_berkas; ?></td>
                               <td><?php echo $row->kode_skpd; ?></td>
                               <td><?php echo $row->request_at; ?></td>
-                              <td><a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-ms">Ajukan Keberatan</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></td>
+                              <td><a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-xs">Ajukan Keberatan</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></td>
                           </tr>
                           <?php
                               $i++; }

@@ -10,7 +10,7 @@
 
   <script type="text/javascript">
         function coba(){
-            gamgum.value = gamgam.value.substring(12);  
+            gamgum.value = gamgam.value.substring(128);  
         }
   </script>
 
@@ -137,7 +137,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index.html"><img alt="" src="images/margo.png"></a>
+            <a class="navbar-brand" href="#"><img alt="" src="<?php echo base_url() ?>assets/user/margo/images/logo-bogor.png"></a>
           </div>
           <div class="navbar-collapse collapse">
             <!-- Start Navigation List -->
