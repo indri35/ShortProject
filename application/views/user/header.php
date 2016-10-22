@@ -8,12 +8,6 @@
   <!-- Basic -->
   <title>PPID - Kota Bogor</title>
 
-  <script type="text/javascript">
-        function coba(){
-            gamgum.value = gamgam.value.substring(12);  
-        }
-  </script>
-
   <!-- Define Charset -->
   <meta charset="utf-8">
 

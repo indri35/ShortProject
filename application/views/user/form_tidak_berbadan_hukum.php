@@ -77,12 +77,9 @@
                         <div class="form-group form-horizontal">
                             <label for="ktp" class="control-label col-lg-4">Dokumen TTD Seluruh Anggota <font color="red">*</font></label>
                             <div class="col-lg-8">
-                                <input type="file"  name="userfile" id="gamgam" required>
+                                <input type="file"  name="userfile" required>
                                 <font class="help-block">Upload file dengan format .pdf|.png|.jpg.</font>
                             </div>    
-                        </div>
-                        <div>
-                            <input type="hidden" name="gambar_value" id="gamgum">
                         </div>
                         <div class="form-group form-horizontal">
                             <label class="control-label col-lg-4">Dokumen</label>
@@ -114,7 +111,7 @@
                                 <input class=" form-control" type="hidden" name="jenis_request" value="bukan-badan-hukum" >
                                 <input class=" form-control" type="hidden" name="request_at" value="<?php echo date("Y-m-d"); ?>" >
                             <div class="col-lg-offset-9 col-lg-3">
-                                <input type="submit" class="btn btn-primary" onclick="coba()" value="Submit" name="simpan">
+                                <input type="submit" class="btn btn-primary" value="Submit" name="simpan">
                             </div>
                             <?php echo form_close(); ?>
                           </div>

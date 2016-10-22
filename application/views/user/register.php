@@ -55,15 +55,12 @@
                       <div class="form-group form-horizontal">
                         <label for="ktp" class="control-label col-lg-3">File KTP <font color="red">*</font></label>
                         <div class="col-lg-9">
-                          <input type="file"  name="userfile" id="gamgam" required>
-                            <font class="help-block">Upload ktp dengan format .jpg|.png, nama file adalah nik</font>
+                          <input type="file"  name="userfile" required>
+                            <font class="help-block">Upload ktp dengan format .jpg|.png, nama file adalah sesuai nik (cth:1050241708900001.jpg)</font>
                         </div>    
                       </div>
-                      <div>
-                        <input type="hidden" name="gambar_value" id="gamgum">
-                      </div>
                       <div class="col-lg-offset-9 col-lg-3">
-                        <input type="submit" class="btn btn-primary" onclick="coba()" value="Register" name="simpan">
+                        <input type="submit" class="btn btn-primary" value="Register" name="simpan">
                       </div>
                   <?php echo form_close(); ?>
                   <a href="<?php echo base_url() ?>UserPage/login" class="text-center">I already have a membership</a>

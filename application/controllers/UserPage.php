@@ -197,19 +197,19 @@ class UserPage extends CI_Controller {
         public function do_upload(){
                 $config['upload_path'] = 'assets/ktp/';
                 $config['allowed_types'] = 'jpg|png';
+                $config['overwrite'] = TRUE;
 
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = FALSE;
                     echo "<script>window.alert('Format file ktp tidak sesuai')
            window.location.href='javascript:history.back()';</script>";
 
                 }
                 else{
-                    $data = array('upload_data' => $this->upload->data());
-                    $gambar_value = $this->input->post('gambar_value');
+                    $upload_data = $this->upload->data();
+                    $gambar_value = $upload_data['file_name'];
                 
                         
                     // selesai upload foto, berikut adalah input database
@@ -289,13 +289,12 @@ class UserPage extends CI_Controller {
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = FALSE;
                     echo "<script>window.alert('Format file ktp tidak sesuai')
            window.location.href='javascript:history.back()';</script>";
                 }
                 else{
-                    $data = array('upload_data' => $this->upload->data());
-                    $gambar_value = $this->input->post('gambar_value');
+                    $upload_data = $this->upload->data();
+                    $gambar_value = $upload_data['file_name'];
                 
                         
                 // selesai upload foto, berikut adalah input database
@@ -348,18 +347,18 @@ class UserPage extends CI_Controller {
         public function input_form_berbadan_hukum(){
                 $config['upload_path'] = 'assets/file_pendukung/';
                 $config['allowed_types'] = 'pdf|jpg|png';
+                $config['overwrite'] = TRUE;
 
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = FALSE;
                     echo "<script>window.alert('Format file ktp tidak sesuai')
            window.location.href='javascript:history.back()';</script>";
                 }
                 else{
-                    $data = array('upload_data' => $this->upload->data());
-                    $gambar_value = $this->input->post('gambar_value');
+                    $upload_data = $this->upload->data();
+                    $gambar_value = $upload_data['file_name'];
                 
                         
                 // selesai upload foto, berikut adalah input database
@@ -391,23 +390,24 @@ class UserPage extends CI_Controller {
         public function input_form_keberatan(){
                 $config['upload_path'] = 'assets/file_pendukung/';
                 $config['allowed_types'] = 'doc|docx';
+                $config['overwrite'] = TRUE;
 
                 $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    $gambar_value = FALSE;
                     echo "<script>window.alert('Format file ktp tidak sesuai')
            window.location.href='javascript:history.back()';</script>";
                 }
                 else{
-                    $data = array('upload_data' => $this->upload->data());
-                    $gambar_value = $this->input->post('gambar_value');
+                    $upload_data = $this->upload->data();
+                    $gambar_value = $upload_data['file_name'];
                 
                         
                 // selesai upload foto, berikut adalah input database
                 $data = array(
-                                'form_keberatan' => $gambar_value
+                                'form_keberatan' => $gambar_value,
+                                'date_upload_keberatan' => $this->input->post('date_upload_keberatan')
                                 );
                 $condition['no_req'] = $this->input->post('no_req');
                 $this->model_request->RequestKeberatan('t_doc_req',$data, $condition); //passing variable $data ke products_model

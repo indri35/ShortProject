@@ -64,15 +64,12 @@
                     <div class="form-group form-horizontal">
                       <label for="ktp" class="control-label col-lg-2">File KTP <font color="red">*</font></label>
                       <div class="col-lg-10">
-                        <input type="file"  name="userfile" id="gamgam" required>
-                        <font class="help-block">Reupload ktp dengan format .jpg|.png, nama file adalah nik</font>
+                        <input type="file"  name="userfile" required>
+                        <font class="help-block">Reupload ktp dengan format .jpg|.png, nama file adalah sesuai nik (cth:1050241708900001.jpg)</font>
                       </div>    
                     </div>
-                    <div>
-                      <input type="hidden" name="gambar_value" id="gamgum">
-                    </div>
                     <div class="col-lg-offset-10 col-lg-2">
-                      <input type="submit" class="btn btn-primary" onclick="coba()" value="Ubah Profil" name="simpan">
+                      <input type="submit" class="btn btn-primary" value="Ubah Profil" name="simpan">
                     </div>
                     <?php echo form_close(); ?>
                     <a href="<?php echo base_url() ?>UserPage/profil"><i class="fa fa-arrow-left fa-3x"></i></a>
