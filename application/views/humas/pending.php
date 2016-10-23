@@ -47,9 +47,15 @@
                       <td><?php echo $pen->nik_pemohon;?></td>
                       <td><?php echo $pen->kode_skpd;?></td>
                       <td><a href="<?= base_url() ?>humas/show/<?= $pen->nik_pemohon ?>/<?= $pen->no_req ?>" class="btn btn-info"> Detail</a></td>
-                      <td><?php echo ($pen->berkas_upload==TRUE)? $pen->berkas_upload : "<a href='tanggapi/$pen->no_req' class='btn btn-success'>Tanggapi</a>"; ?>
+                      <td><?php if (($pen->berkas_upload==TRUE && $pen->pesan_tolak==FALSE)){echo $pen->date_upload;}
+                         elseif($pen->berkas_upload==FALSE && $pen->pesan_tolak==FALSE){echo "<a href='../humas/tanggapi/$pen->no_req' class='btn btn-success'>Tanggapi</a>";}
+                         elseif ($pen->berkas_upload==FALSE && $pen->pesan_tolak==TRUE) { echo $pen->date_upload; } ?>
                       </td>
-                      <td><?php echo ($pen->berkas_upload==TRUE)? '<i class="fa fa-fw fa-check"></i>' : '<i class="fa fa-fw fa-close"></i>'; ?></td>
+                      <td><?php if ($pen->berkas_upload==TRUE && $pen->pesan_tolak==FALSE){echo '<i class="fa fa-fw fa-check"></i>';} 
+                            elseif ($pen->berkas_upload==FALSE && $pen->pesan_tolak==FALSE) {
+                               echo '<i class="fa fa-fw fa-close"></i>';}
+                            elseif ($pen->berkas_upload==FALSE && $pen->pesan_tolak==TRUE) { echo 'Tolak'; }
+                            ?></td>
                     <?php $no++; };?>
                   </tbody>
                 </table>

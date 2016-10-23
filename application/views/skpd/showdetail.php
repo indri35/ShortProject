@@ -82,7 +82,7 @@
                                             else {echo 'Dokumen TTD Seluruh Anggota ';}
                                             ?></label>
                                         <div class="col-lg-9">
-                                            <img src="<?php echo base_url(); ?>assets/ktp/<?php echo $data['ktp']; ?>" >
+                                            <img src="<?php echo base_url(); ?>assets/file_pendukung/<?php echo $req['file_pendukung']; ?>" >
                                         </div>    
                                     </div>
                                     <div>
