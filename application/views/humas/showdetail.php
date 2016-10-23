@@ -86,7 +86,9 @@
                                             else {echo 'TTD Seluruh Anggota ';}
                                             ?></label>
                                         <div class="col-lg-9">
-                                            <img src="<?php echo base_url(); ?>assets/ktp/<?php echo $data['ktp']; ?>" >
+                                            <?php if($req['jenis_request']=='perorangan')  {?> <img src="<?php echo base_url(); ?>assets/ktp/<?php echo $req['file_pendukung']; ?>" > <?php ;}
+                                            else {?> <img src="<?php echo base_url(); ?>assets/file_pendukung/<?php echo $req['file_pendukung']; ?>" >
+                                            <?php ;} ?>
                                         </div>    
                                     </div>
                                     <div>

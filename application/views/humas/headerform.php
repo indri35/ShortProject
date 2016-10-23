@@ -141,7 +141,7 @@
           <div class="navbar-collapse collapse">
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
-              <li class="right"><a href="<?php echo base_url() ?>humas/index">Back</a></li>
+              <li class="right"><a href="<?php echo base_url() ?>humas">Back</a></li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -149,7 +149,7 @@
 
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
-              <li class="right"><a href="<?php echo base_url() ?>humas/index">Back</a></li>
+              <li class="right"><a href="<?php echo base_url() ?>humas">Back</a></li>
         </ul>
         <!-- Mobile Menu End -->
 
