@@ -10,10 +10,6 @@
                     ?>
           </div>
           <div class="col-md-6">
-            <ul class="breadcrumbs">
-              <li><a href="<?php echo base_url() ?>">Home</a></li>
-              <li>Detail Pemohon</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -84,7 +80,7 @@
                                         <div class="col-lg-9">
                                         <?php if($req['jenis_request']=='perorangan')  {?><a href="<?php echo base_url() ?>assets/ktp/<?php echo $req['file_pendukung']; ?> " download class="btn btn-success btn-xs">Download</a> <img src="<?php echo base_url(); ?>assets/ktp/<?php echo $req['file_pendukung']; ?>" > <?php ;}
                                             else {?> <a href="<?php echo base_url() ?>assets/file_pendukung/<?php echo $req['file_pendukung']; ?> " download class="btn btn-success btn-xs">Download</a> <img src="<?php echo base_url(); ?>assets/file_pendukung/<?php echo $req['file_pendukung']; ?>" > 
-                                            <?php ;} ?>
+                                        <?php ;} ?>
                                         </div>    
                                     </div>
                                     <div>
@@ -99,10 +95,7 @@
                                     </div>
                                     <div class="row"></div>
                                     <font><br/>Informasi yang Saya peroleh akan Saya gunakan sesuai dengan ketentuan perundang-undangan yang berlaku.<br/> 
-                                        <br/>Bogor, 
-                                            <?php
-                                                echo date("d-m-Y") . "<br>";
-                                            ?>
+                                        <br/>Bogor, <?php echo $req['request_at']; ?>
                                         <br/>Pemohon Informasi: 
                                         <br/>
                                         <br/>
