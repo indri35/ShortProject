@@ -72,6 +72,11 @@
                                        ?>
                             </li>
                             <li class="list-group-item col-lg-12">
+                              <p class ="col-lg-4"><b>Pesan</b></p> <p class="col-lg-8">: <?php if($row->pesan==NULL)  {echo 'Pesan Belum Tersedia ';}
+                                  else { echo $row->pesan ;}
+                                       ?>
+                            </li>
+                            <li class="list-group-item col-lg-12">
                               <p class ="col-lg-4"><b>Action</b></p> <p class="col-lg-8">: 
                               <?php if($row->berkas_upload==NULL) {
                               ?>

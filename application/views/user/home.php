@@ -18,11 +18,11 @@
           </div>
           <!--/ Carousel item end -->
           <div class="item">
-            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/IstanaPresidenBogor-01.jpg" alt="slider">
+            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/wilujeng-sumping.jpg" alt="slider">
           </div>
           <!--/ Carousel item end -->
           <div class="item">
-            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/GunungSalak.jpg" alt="slider">
+            <img class="img-responsive" src="<?php echo base_url() ?>assets/user/margo/images/slider/slide.jpg" alt="slider">
           </div>
           <!--/ Carousel item end -->
         </div>

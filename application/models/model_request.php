@@ -60,6 +60,20 @@ class Model_request extends CI_model{
 		$this->db->join('t_doc_req_data AS t2', 't1.id = t2.id_req');
 		$this->db->where('t1.nik_pemohon',$nik);
 		$this->db->where('t2.berkas_upload', NULL);
+		$this->db->where('t2.pesan_tolak', NULL, TRUE);
+		$this->db->order_by("t2.id_req","desc");		
+
+		$query = $this->db->get();
+        return $query;
+    }
+
+    function request_ditolak($nik){
+
+    	$this->db->select('*');
+		$this->db->from('t_request AS t1');
+		$this->db->join('t_doc_req_data AS t2', 't1.id = t2.id_req');
+		$this->db->where('t1.nik_pemohon',$nik);
+		$this->db->where('t2.pesan_tolak is NOT NULL', NULL, FALSE);
 		$this->db->order_by("t2.id_req","desc");		
 
 		$query = $this->db->get();

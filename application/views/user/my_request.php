@@ -27,6 +27,7 @@
                   <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-desktop"></i>Semua Daftar Permohonan</a></li>
                   <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-check"></i>Permohonan yang Telah Ditanggapi</a></li>
                   <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-close"></i>Permohonan yang Belum Ditanggapi</a></li>
+                  <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-close"></i>Permohonan yang Ditolak</a></li>
                 </ul>
 
                 <!-- Tab panels -->
@@ -119,6 +120,41 @@
                           <?php 
                               $i = 1;
                               foreach($request_belum_ditanggapi->result() as $row){ 
+                          ?>
+
+                          <tr>
+                              <td><?= $i ?></td>    
+                              <td><?php echo $row->tujuan_permohonan_info; ?></td>
+                              <td><?php echo $row->kode_berkas; ?></td>
+                              <td><?php echo $row->nama_berkas; ?></td>
+                              <td><?php echo $row->kode_skpd; ?></td>
+                              <td><?php echo $row->request_at; ?></td>
+                              <td><a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-xs">Ajukan Keberatan</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></td>
+                          </tr>
+                          <?php
+                              $i++; }
+                          ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- Tab Content 3 -->
+                  <div class="tab-pane fade" id="tab-4">
+                    <table id="example4" class="table table-bordered table-striped">
+                      <thead>
+                      <tr>
+                        <th></th>
+                        <th>Tujuan Permohonan Informasi</th>
+                        <th>Kode Berkas</th>
+                        <th>Nama Berkas</th>
+                        <th>Kode SKPD</th>
+                        <th>Tanggal Request</th>
+                        <th>Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <?php 
+                              $i = 1;
+                              foreach($request_ditolak->result() as $row){ 
                           ?>
 
                           <tr>

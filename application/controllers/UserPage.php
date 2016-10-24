@@ -459,6 +459,7 @@ class UserPage extends CI_Controller {
                     $data['request_all'] = $this->model_request->request_all($nik);
                     $data['request_ditanggapi'] = $this->model_request->request_ditanggapi($nik);
                     $data['request_belum_ditanggapi'] = $this->model_request->request_belum_ditanggapi($nik);
+                    $data['request_ditolak'] = $this->model_request->request_ditolak($nik);
                     
                     $this->load->view('user/header_login'); 
                     $this->load->view('user/my_request', $data);
