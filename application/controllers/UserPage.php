@@ -4,7 +4,9 @@ class UserPage extends CI_Controller {
                 parent::__construct();
                 $this->load->model("model_user");
                 $this->load->model("model_dokumen");
-                $this->load->model("model_request"); //constructor yang dipanggil ketika memanggil products.php untuk melakukan pemanggilan pada model : products_model.php yang ada di folder models
+                $this->load->model("model_request");
+                $this->load->model(array('model_skpd'));
+                $this->load->model(array('model_humas')); //constructor yang dipanggil ketika memanggil products.php untuk melakukan pemanggilan pada model : products_model.php yang ada di folder models
                 $this->load->helper(array('form', 'url'));
         }
         
@@ -15,6 +17,34 @@ class UserPage extends CI_Controller {
                         $this->load->view('user/header_login');
                         $this->load->view('user/home');
                         $this->load->view('user/footer');
+                }
+                if($this->session->userdata('skpd')){   
+                $skpd= $this->session->userdata('kode_skpd');
+                // menyimpan data permohonan dokumen untuk dipassing ke vie
+                $a = $this->model_skpd->getAllPendingReq($skpd);
+                $b = $this->model_skpd->getAllSentReq($skpd);
+                $c = $this->model_skpd->getAllReq($skpd);
+                $d = $this->model_skpd->getAllDoc($skpd);
+                $e = $this->model_skpd->getAllCom($skpd);
+                $data= array( 'request'=> $a, 'sent' => $b,'all'=> $c,'dokumen'=> $d,'complain'=> $e);
+                
+                $this->load->view('skpd/header');
+                $this->load->view('skpd/index',$data);
+                $this->load->view('skpd/footer');
+                }
+                if($this->session->userdata('humas'))
+                {  
+                    // menyimpan data permohonan dokumen untuk dipassing ke view
+                    $a = $this->model_humas->getAllSentReq();
+                    $b = $this->model_humas->getAllPendingReq();
+                    $c = $this->model_humas->getAllDoc();
+                    $d = $this->model_humas->getAllUser();
+
+                    $data= array( 'sent'=> $a, 'pending' => $b,'dokumen'=> $c, 'user' => $d);
+
+                    $this->load->view('humas/header');
+                    $this->load->view('humas/index',$data);
+                    $this->load->view('humas/footer');
                 }
                 else{
                 //If no session, redirect to login page
