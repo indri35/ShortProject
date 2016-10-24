@@ -10,10 +10,6 @@
                     ?>
           </div>
           <div class="col-md-6">
-            <ul class="breadcrumbs">
-              <li><a href="<?php echo base_url() ?>">Home</a></li>
-              <li>Detail Pemohon</li>
-            </ul>
           </div>
         </div>
       </div>
