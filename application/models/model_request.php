@@ -6,8 +6,8 @@ class Model_request extends CI_model{
         // mereturn seluruh data dari tabel siswa
         return $this->db->get('t_request');
     }
-
-
+  
+//request function
     function request(){
     	$this->db->select('*');
 		$this->db->from('t_request AS t1');
