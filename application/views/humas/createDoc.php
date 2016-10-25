@@ -45,7 +45,13 @@
                     </div>
                     <div class="form-group">
                       <label>kategori</label>
-                      <input type="text" name="kategori" class="form-control"  placeholder="Masyarakat">
+                      <select type="text" name="kategori" class="form-control">
+                      <option value="NULL">Select document..</option>
+                        <option value="Informasi Berkala">Informasi Berkala</option>
+                        <option value="Berdasarkan Permintaan">Berdasarkan Permintaan</option>
+                        <option value="Informasi Serta-merta">Informasi Serta-merta</option>
+                        <option value="Dikecualikan">Dikecualikan</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>Deskripsi</label>
