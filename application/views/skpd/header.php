@@ -55,15 +55,17 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- User Account: style can be found in dropdown.less -->
+              <?php $user_img = !empty($this->session->userdata('ktp')) ? $this->session->userdata('ktp') : 'no-avatar.jpg';?>
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="<?php echo base_url()?>assets/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="<?php echo base_url().'assets/ktp/'.$user_img;?>" class="user-image" alt="User Image">
                   <span class="hidden-xs"><?php echo $this->session->userdata('nama'); ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
+                  
                   <li class="user-header">
-                    <img src="<?php echo base_url()?>assets/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="<?php echo base_url().'assets/ktp/'.$user_img;?>" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $this->session->userdata('nama'); ?>
                       <small><?php echo $this->session->userdata('kode_skpd'); ?></small>
@@ -72,7 +74,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="<?php echo base_url() ?>skpd/profile/<?php echo $this->session->userdata('id'); ?>" class="btn btn-default btn-flat">Profile</a>
+                      <a href="<?php echo base_url() ?>skpd/profile" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a href="<?php echo base_url() ?>skpd/logout" class="btn btn-default btn-flat">Sign out</a>
@@ -94,7 +96,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="<?php echo base_url()?>assets/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="<?php echo base_url().'assets/ktp/'.$user_img;?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p><?php echo $this->session->userdata('nama'); ?></p>

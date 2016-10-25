@@ -52,8 +52,7 @@ class Skpd extends CI_Controller{
     public function profile(){
     if($this->session->userdata('skpd'))
         { 
-            $this->load->model('model_skpd');
-            $id = $this->uri->segment(3);
+            $id = $this->session->userdata('id');
             $data['profile'] = $this->model_skpd->profile($id)->row_array();
 
             $this->load->view('skpd/header');
@@ -66,6 +65,66 @@ class Skpd extends CI_Controller{
                 redirect('UserPage/login', 'refresh');
             }
     }
+
+    public function edit_profile()
+        {
+        if($this->session->userdata('skpd'))
+            {
+                $id = $this->session->userdata('id');
+                $data['profile'] = $this->model_skpd->profile($id)->row_array();
+
+                $this->load->view('skpd/header');
+                $this->load->view('skpd/edit_profile',$data);
+                $this->load->view('skpd/footer');
+            }
+        else
+           {
+             //If no session, redirect to login page
+             redirect('UserPage/login', 'refresh');
+           }
+         }
+
+    public function edit_profile_data(){
+                $config['upload_path'] = 'assets/ktp/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['overwrite'] = TRUE;
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()){
+                    $error = array('error' => $this->upload->display_errors());
+                    echo "<script>window.alert('Format file ktp tidak sesuai')
+           window.location.href='javascript:history.back()';</script>";
+                }
+                else{
+                    $upload_data = $this->upload->data();
+                    $gambar_value = $upload_data['file_name'];
+                
+                        
+                // selesai upload foto, berikut adalah input database
+                        
+                $data = array(
+                                'kode_skpd' => $this->input->post('kode_skpd'),
+                                'nik' => $this->input->post('nik'),
+                                'nama' => $this->input->post('nama'),
+                                'alamat' => $this->input->post('alamat'),
+                                'no_tlpn' => $this->input->post('no_tlpn'),
+                                'no_hp' => $this->input->post('no_hp'),
+                                'email' => $this->input->post('email'),
+                                'ktp' => $gambar_value
+                                );
+
+                $id= $this->input->post('id');
+
+                $this->db->where('id',$id);
+                $this->db->update('t_user', $data);
+
+                $this->session->unset_userdata('logged_in');
+                session_destroy();
+                echo "<script>window.alert('Edit profil berhasil, silahkan lakukan login ulang.')
+                window.location.href='profile';</script>"; //redirect page ke halaman utama controller products
+            }
+        }
 
     public function pendingRequest(){
     if($this->session->userdata('skpd'))

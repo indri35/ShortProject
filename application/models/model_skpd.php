@@ -47,6 +47,17 @@ class Model_skpd extends CI_model{
         return $this->db->get_where('t_user',array('id'=>$id));
     }
 
+    function editProfile($daba,$data,$id)
+    {   
+        if(isset($_POST['simpan'])) {
+            $this->db->where($id);
+            $this->db->update($daba, $data);
+            $notif['info'] = 'Berhasil Menyimpan';
+            
+        }
+        $notif['info'] = 'Gagal menyimpan';
+    }
+
     function respon($daba,$data)
     {
         //untuk insert data ke database
