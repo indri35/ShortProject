@@ -238,8 +238,8 @@ class Humas extends CI_Controller{
                 $this->session->set_flashdata('something', 'Tanggapi, Upload file gagal!');
             }
             else{
-                $data = array('upload_data' => $this->upload->data());
-                $gambar_value = $this->input->post('gambar_value');
+                $upload_data = $this->upload->data();
+                $gambar_value = $upload_data['file_name'];
             }
         }          
             // selesai upload foto, berikut adalah input database
@@ -282,8 +282,8 @@ class Humas extends CI_Controller{
                 $this->session->set_flashdata('something', 'Upload file gagal!');
             }
             else{
-                $data = array('upload_data' => $this->upload->data());
-                $gambar_value = $this->input->post('gambar_value');
+                $upload_data = $this->upload->data();
+                $gambar_value = $upload_data['file_name'];
             }
                     
             // selesai upload foto, berikut adalah input database   
@@ -477,8 +477,8 @@ class Humas extends CI_Controller{
                 $this->session->set_flashdata('something', 'Upload file gagal!');
             }
             else{
-                $data = array('upload_data' => $this->upload->data());
-                $gambar_value = $this->input->post('gambar_value');
+                $upload_data = $this->upload->data();
+                $gambar_value = $upload_data['file_name'];
             }
                     
             // selesai upload foto, berikut adalah input database
