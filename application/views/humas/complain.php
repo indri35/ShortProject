@@ -5,10 +5,10 @@
         <section class="content-header">
           <h1>
             User complain list
-            <small>SKPD </small>
+            <small>Humas</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="<?= base_url() ?>skpd/index"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="<?= base_url() ?>humas/index"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">User complain</li>
           </ol>
         </section>
@@ -40,10 +40,10 @@
                       <td><?php echo $no ;?></td>
                       <td><?php echo $com->nik_pemohon;?></td>
                       <td><?php echo $com->nama_berkas;?></td>
-                      <td><a href="<?= base_url() ?>skpd/show/<?= $com->nik_pemohon ?>/<?= $com->no_req ?>" class="btn btn-success"> Detail</a></td>
+                      <td><a href="<?= base_url() ?>humas/show/<?= $com->nik_pemohon ?>/<?= $com->no_req ?>" class="btn btn-success"> Detail</a></td>
                       <td><?php echo $com->date_upload; ?></td>
                       <td><?php echo $com->form_keberatan;?></td>
-                      <td><a href="<?= base_url() ?>skpd/tanggapi_keberatan/<?= $com->no_req ?>" class="btn btn-success">Tanggapi</a>
+                      <td><a href="<?= base_url() ?>humas/tanggapi_keberatan/<?= $com->no_req?>" class="btn btn-success">Tanggapi</a>
                           </td>
                     <?php $no++; };?>
                   </tbody>

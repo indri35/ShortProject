@@ -43,7 +43,7 @@
                 <a href="<?= base_url() ?>humas/pendingRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
@@ -56,9 +56,9 @@
                 <a href="<?= base_url() ?>humas/document" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <!-- small box -->
-              <div class="small-box bg-red">
+              <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3><?php echo $user->num_rows();?></h3>
                   <p>User list</p>
@@ -67,6 +67,19 @@
                   <i class="ion ion-android-person"></i>
                 </div>
                 <a href="<?= base_url() ?>humas/user" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-2">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3><?php echo $complain->num_rows();?></h3>
+                  <p>Complain list</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-android-person"></i>
+                </div>
+                <a href="<?= base_url() ?>humas/complain" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
           </div><!-- /.row -->

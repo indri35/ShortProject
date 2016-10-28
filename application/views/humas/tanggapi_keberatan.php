@@ -5,10 +5,10 @@
     <section class="content-header">
       <h1>
         Respond User Complain
-        <small>SKPD </small>
+        <small>Humas </small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?= base_url() ?>skpd"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?= base_url() ?>humas"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">>Complain list</a></li>
       </ol>
     </section>
@@ -23,7 +23,7 @@
               <h3 class="box-title">User Complain</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <?php echo form_open_multipart('skpd/do_upload_keberatan'); ?>
+            <?php echo form_open_multipart('humas/do_upload_keberatan'); ?>
             <?php echo form_hidden('no_req',$this->uri->segment(3)); ?>
               <div class="box-body">
                 <div class="form-group">

@@ -30,6 +30,10 @@ class Model_humas extends CI_model{
     function getAllSkpd(){
          return $this->db->get('t_skpd');
     }
+
+    function getAllCom(){
+         return $this->db->query("SELECT * FROM t_doc_req_data WHERE form_keberatan !='' AND date_upload_keberatan IS NULL;");
+    }
     
     function profile($id){
         return $this->db->get_where('t_user',array('id'=>$id));

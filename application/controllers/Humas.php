@@ -16,8 +16,8 @@ class Humas extends CI_Controller{
             $b = $this->model_humas->getAllPendingReq();
             $c = $this->model_humas->getAllDoc();
             $d = $this->model_humas->getAllUser();
-
-            $data= array( 'sent'=> $a, 'pending' => $b,'dokumen'=> $c, 'user' => $d);
+            $e = $this->model_humas->getAllCom();
+            $data= array( 'sent'=> $a, 'pending' => $b,'dokumen'=> $c, 'user' => $d, 'complain' => $e);
 
             $this->load->view('humas/header');
             $this->load->view('humas/index',$data);
@@ -85,6 +85,22 @@ class Humas extends CI_Controller{
             
             $this->load->view('humas/header');
             $this->load->view('humas/user',$data);
+            $this->load->view('humas/footer');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function complain(){
+    if($this->session->userdata('humas'))
+        { 
+            $data['comp'] = $this->model_humas->getAllCom();
+            
+            $this->load->view('humas/header');
+            $this->load->view('humas/complain',$data);
             $this->load->view('humas/footer');
         }
     else
@@ -216,6 +232,28 @@ class Humas extends CI_Controller{
         }
     }
 
+    public function tanggapi_keberatan(){
+    if($this->session->userdata('humas'))
+        { 
+            $this->load->model('model_humas');
+            $id = $this->uri->segment(3);
+            $a['reqs'] = $this->model_humas->tanggapi($id)->row_array();
+
+            $b['doc']=$this->model_humas->getAllDoc();
+
+            $data = array_merge($a, $b);
+
+            $this->load->view('humas/header');
+            $this->load->view('humas/tanggapi_keberatan',$data);
+            $this->load->view('humas/footer');
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
     public function do_upload(){
     if($this->session->userdata('humas'))
         {
@@ -256,6 +294,55 @@ class Humas extends CI_Controller{
             $this->db->query("UPDATE t_doc_req SET date_upload='$date_upload', berkas_upload='$gambar_value', pesan='$pesan'  WHERE no_req='$no_req';");
 
             redirect('humas',$notif); //redirect page ke halaman utama controller products   
+        }
+    else
+        {
+            //If no session, redirect to login page
+            redirect('UserPage/login', 'refresh');
+        }
+    }
+
+    public function do_upload_keberatan(){
+    if($this->session->userdata('humas'))
+        {
+            if($this->input->post('doc') != 'NULL'){
+            $gambar_value = $this->input->post('doc');
+        }
+        else{
+            $config['upload_path'] = 'assets/dokumen/';
+            $config['allowed_types'] = 'jpg|png|pdf';
+            $config['max_size']     = '1000';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload()){
+                $error = array('error' => $this->upload->display_errors());
+                $gambar_value = FALSE;
+                $this->session->set_flashdata('something', 'Upload file gagal!');
+            }
+            else{
+                $upload_data = $this->upload->data();
+                $gambar_value = $upload_data['file_name'];
+            }
+        }
+                    
+            // selesai upload foto, berikut adalah input database
+            $date_upload=$this->input->post('date_upload');   
+            $no_req= $this->input->post('no_req');     
+            $pesan = $this->input->post('pesan');
+            $data = array(
+                            'no_req' => $no_req,
+                            'date_upload' => $date_upload,
+                            'pesan' => $pesan, 
+                            'berkas_upload' => $gambar_value
+                         );
+
+            $this->db->query("UPDATE t_doc_req SET date_upload_keberatan='$date_upload', berkas_upload='$gambar_value',  pesan='$pesan'  WHERE no_req='$no_req';");
+
+            redirect('humas'); //redirect page ke halaman utama controller products      
+            
         }
     else
         {
