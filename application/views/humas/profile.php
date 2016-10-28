@@ -22,7 +22,8 @@
               <div class="box-body">
                 <table class="table table-bordered table-striped dataTable">
                     <a href="<?php echo base_url() ?>humas/edit_profile" class="btn btn-primary">EDIT PROFIL </a>
-                    <tr><th>Foto profil</th><td><img src="<?php echo base_url(); ?>assets/ktp/<?php echo $profile['ktp']; ?>" ></td></tr>
+                    <?php $user_img = !empty($this->session->userdata('ktp')) ? $this->session->userdata('ktp') : 'no-avatar.jpg';?>
+                    <tr><th>Foto profil</th><td><img src="<?php echo base_url().'assets/ktp/'.$user_img;?>"  alt="User Image"></td></tr>
                     <tr><th >Hak akses</th><td><?php if($profile['hak_akses']==1){echo 'User';} elseif($profile['hak_akses']==2){echo 'Admin humas';} else {echo 'Admin SKPD';} ?></td></tr>
                     <tr><th>Kode SKPD</th><td><?php echo $profile['kode_skpd'];?></td></tr>
                     <tr><th>NIK</th><td><?php echo $profile['nik'];?></td></tr>
