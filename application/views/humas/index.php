@@ -45,7 +45,7 @@
             </div><!-- ./col -->
             <div class="col-lg-2">
               <!-- small box -->
-              <div class="small-box bg-yellow">
+              <div class="small-box bg-teal">
                 <div class="inner">
                   <h3><?php echo $dokumen->num_rows();?></h3>
                   <p>Document list</p>
