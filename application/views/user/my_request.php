@@ -25,9 +25,10 @@
                 <!-- Nav Tabs -->
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-desktop"></i>Semua Daftar Permohonan</a></li>
-                  <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-check"></i>Permohonan yang Telah Ditanggapi</a></li>
-                  <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-close"></i>Permohonan yang Belum Ditanggapi</a></li>
-                  <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-close"></i>Permohonan yang Ditolak</a></li>
+                  <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-check"></i>Telah Ditanggapi</a></li>
+                  <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-close"></i>Belum Ditanggapi</a></li>
+                  <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-close"></i>Ditolak</a></li>
+                  <li><a href="#tab-5" data-toggle="tab"><i class="fa fa-close"></i>dengan Pengajuan Keberatan</a></li>
                 </ul>
 
                 <!-- Tab panels -->
@@ -137,7 +138,7 @@
                       </tbody>
                     </table>
                   </div>
-                  <!-- Tab Content 3 -->
+                  <!-- Tab Content 4 -->
                   <div class="tab-pane fade" id="tab-4">
                     <table id="example4" class="table table-bordered table-striped">
                       <thead>
@@ -165,6 +166,52 @@
                               <td><?php echo $row->kode_skpd; ?></td>
                               <td><?php echo $row->request_at; ?></td>
                               <td><a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-xs">Ajukan Keberatan</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></td>
+                          </tr>
+                          <?php
+                              $i++; }
+                          ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- Tab Content 5 -->
+                  <div class="tab-pane fade" id="tab-5">
+                    <table id="example5" class="table table-bordered table-striped">
+                      <thead>
+                      <tr>
+                        <th></th>
+                        <th>Tujuan Permohonan Informasi</th>
+                        <th>Kode Berkas</th>
+                        <th>Nama Berkas</th>
+                        <th>Kode SKPD</th>
+                        <th>Tanggal Keberatan</th>
+                        <th>Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <?php 
+                              $i = 1;
+                              foreach($request_keberatan->result() as $row){ 
+                          ?>
+
+                          <tr>
+                              <td><?= $i ?></td>    
+                              <td><?php echo $row->tujuan_permohonan_info; ?></td>
+                              <td><?php echo $row->kode_berkas; ?></td>
+                              <td><?php echo $row->nama_berkas; ?></td>
+                              <td><?php echo $row->kode_skpd; ?></td>
+                              <td><?php echo $row->date_keberatan; ?></td>
+                              <td>
+                                <?php if($row->date_upload_keberatan==NULL) {
+                              ?>
+                              <a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></p>
+                              <?php 
+                                ;} else {
+                              ?>
+                              <a href="<?php echo base_url() ?>assets/dokumen/<?php echo $row->berkas_upload; ?> " download class="btn btn-success btn-xs">Download</a>&nbsp<a href="<?php echo base_url() ?>UserPage/request_detail/<?= $row->no_req ?>" class="btn btn-info btn-xs">Detail</a></p>
+                              <?php
+                                ;}
+                              ?>
+                              </td>
                           </tr>
                           <?php
                               $i++; }

@@ -427,7 +427,7 @@ class UserPage extends CI_Controller {
 
                 if (!$this->upload->do_upload()){
                     $error = array('error' => $this->upload->display_errors());
-                    echo "<script>window.alert('Format file ktp tidak sesuai')
+                    echo "<script>window.alert('Format file keberatan tidak sesuai')
            window.location.href='javascript:history.back()';</script>";
                 }
                 else{
@@ -438,7 +438,7 @@ class UserPage extends CI_Controller {
                 // selesai upload foto, berikut adalah input database
                 $data = array(
                                 'form_keberatan' => $gambar_value,
-                                'date_upload_keberatan' => $this->input->post('date_upload_keberatan')
+                                'date_keberatan' => $this->input->post('date_upload_keberatan')
                                 );
                 $condition['no_req'] = $this->input->post('no_req');
                 $this->model_request->RequestKeberatan('t_doc_req',$data, $condition); //passing variable $data ke products_model
@@ -491,6 +491,7 @@ class UserPage extends CI_Controller {
                     $data['request_ditanggapi'] = $this->model_request->request_ditanggapi($nik);
                     $data['request_belum_ditanggapi'] = $this->model_request->request_belum_ditanggapi($nik);
                     $data['request_ditolak'] = $this->model_request->request_ditolak($nik);
+                    $data['request_keberatan'] = $this->model_request->dengan_keberatan($nik);
                     
                     $this->load->view('user/header_login'); 
                     $this->load->view('user/my_request', $data);

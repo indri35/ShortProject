@@ -78,13 +78,30 @@
                             </li>
                             <li class="list-group-item col-lg-12">
                               <p class ="col-lg-4"><b>Action</b></p> <p class="col-lg-8">: 
-                              <?php if($row->berkas_upload==NULL) {
-                              ?>
-                              <a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-ms">Ajukan Keberatan</a></p>
+                              <!-- permohonan sudah direspon tanpa keberatan-->
                               <?php 
-                                ;} else {
+                                if($row->berkas_upload!=NULL AND $row->form_keberatan==NULL) {
                               ?>
                               <a href="<?php echo base_url() ?>assets/dokumen/<?php echo $row->berkas_upload; ?>" download class="btn btn-success btn-ms">Download Berkas</a>&nbsp<a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-ms">Ajukan Keberatan</a></p>
+                              <!-- permohonan ditolak/belum direspon tanpa keberatan-->
+                              <?php 
+                                ;} elseif($row->berkas_upload==NULL AND $row->form_keberatan==NULL) {
+                              ?>
+                              <a href="<?php echo base_url() ?>UserPage/upload_form_keberatan/<?= $row->no_req ?>" class="btn btn-warning btn-ms">Ajukan Keberatan</a></p>
+                              <!-- permohonan sudah direspon (belum respon keberatan)-->
+                              <?php 
+                                ;} elseif($row->berkas_upload!=NULL AND $row->date_upload_keberatan==NULL) {
+                              ?>
+                              <a href="<?php echo base_url() ?>assets/dokumen/<?php echo $row->berkas_upload; ?>" download class="btn btn-success btn-ms">Download Berkas Lama</a></p>
+                              <!-- permohonan sudah direspon (sudah respon keberatan)-->
+                              <?php 
+                                ;} elseif($row->berkas_upload!=NULL AND $row->date_upload_keberatan!=NULL) {
+                              ?>
+                              <a href="<?php echo base_url() ?>assets/dokumen/<?php echo $row->berkas_upload; ?>" download class="btn btn-success btn-ms">Download Berkas Baru</a></p>
+                              <?php 
+                                ;} else{
+                              ?>
+                              -</p>
                               <?php
                                 ;}
                               ?>

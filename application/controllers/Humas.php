@@ -339,7 +339,7 @@ class Humas extends CI_Controller{
                             'berkas_upload' => $gambar_value
                          );
 
-            $this->db->query("UPDATE t_doc_req SET date_upload_keberatan='$date_upload', berkas_upload='$gambar_value',  pesan='$pesan'  WHERE no_req='$no_req';");
+            $this->db->query("UPDATE t_doc_req SET date_upload_keberatan='$date_upload',date_upload='$date_upload', berkas_upload='$gambar_value',  pesan='$pesan'  WHERE no_req='$no_req';");
 
             redirect('humas'); //redirect page ke halaman utama controller products      
             

@@ -36,6 +36,7 @@ CREATE TABLE `t_doc_req` (
   `pesan` varchar(256) DEFAULT NULL,
   `pesan_tolak` varchar(256) DEFAULT NULL,
   `date_upload_keberatan` date DEFAULT NULL
+  `date_keberatan` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
