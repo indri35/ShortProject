@@ -18,7 +18,8 @@ class UserPage extends CI_Controller {
                         $this->load->view('user/home');
                         $this->load->view('user/footer');
                 }
-                if($this->session->userdata('skpd')){   
+
+                elseif($this->session->userdata('skpd')){   
                 $skpd= $this->session->userdata('kode_skpd');
                 // menyimpan data permohonan dokumen untuk dipassing ke vie
                 $a = $this->model_skpd->getAllPendingReq($skpd);
@@ -32,7 +33,7 @@ class UserPage extends CI_Controller {
                 $this->load->view('skpd/index',$data);
                 $this->load->view('skpd/footer');
                 }
-                if($this->session->userdata('humas'))
+                elseif($this->session->userdata('humas'))
                 {  
                     // menyimpan data permohonan dokumen untuk dipassing ke view
                     $a = $this->model_humas->getAllSentReq();
@@ -240,7 +241,7 @@ class UserPage extends CI_Controller {
                 else{
                     $upload_data = $this->upload->data();
                     $gambar_value = $upload_data['file_name'];
-                
+        
                         
                     // selesai upload foto, berikut adalah input database
                     $this->load->library('form_validation');
